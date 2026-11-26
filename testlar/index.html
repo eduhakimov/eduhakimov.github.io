@@ -1,0 +1,908 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Test markazi – Hakimov B.M.</title>
+<meta name="description" content="Test markazi: Maʼlumotlar bazasi, IT asoslari (MTA), Kiberxavfsizlik, Elektronika va sxemotexnika fanlari boʻyicha mashq va imtihon testlari. Muallif: Hakimov Bahtiyorjon Muzaffar oʻgʻli.">
+<meta name="author" content="Hakimov Bahtiyorjon Muzaffar o'g'li">
+<link rel="canonical" href="https://eduhakimov.github.io/testlar/">
+<meta name="color-scheme" content="light dark">
+<style>
+:root{
+  --bg:#fbfaf7;--fg:#1d1d1f;--muted:#5f6368;--accent:#1f5fa8;--accent-fg:#fff;
+  --line:#e3e1dc;--card:#fff;--soft:#f2f0eb;
+  --ok:#1e7a3c;--ok-bg:#e8f5ec;--bad:#b3261e;--bad-bg:#fbeaea;--warn:#8a5a00;
+  --serif:Georgia,"Times New Roman",serif;
+  --ui:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --mono:ui-monospace,Consolas,"Courier New",monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#141517;--fg:#e8e8e6;--muted:#a3a7ad;--accent:#7fb2f0;--accent-fg:#0f1215;
+    --line:#2c2e33;--card:#1b1c1f;--soft:#222429;
+    --ok:#6fcf8e;--ok-bg:#16291d;--bad:#f28b82;--bad-bg:#2e1a1a;--warn:#f0c36d;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 var(--ui);overflow-wrap:anywhere}
+a{color:var(--accent)}
+h1,h2,h3{font-family:var(--serif);font-weight:normal;line-height:1.25;margin:0 0 .4em}
+h1{font-size:2rem}
+h2{font-size:1.45rem}
+h3{font-size:1.15rem}
+.wrap{max-width:860px;margin:0 auto;padding:0 16px}
+header.site{border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap}
+header.site a{text-decoration:none;font-size:.95rem}
+header.site a:hover{text-decoration:underline}
+.brand{font-family:var(--serif);font-size:1.05rem;color:var(--muted)}
+main{padding:28px 0 40px}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:.875rem;padding:18px 0 28px}
+.muted{color:var(--muted)}
+.hidden{display:none!important}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+[tabindex="-1"]:focus{outline:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* buttons */
+.btn{font:inherit;font-size:.95rem;border:1px solid var(--line);background:var(--card);color:var(--fg);
+  border-radius:8px;padding:.55em 1em;cursor:pointer;min-height:42px}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.row.end{justify-content:flex-end}
+.row.between{justify-content:space-between}
+
+/* home */
+.intro{margin-bottom:24px}
+.intro p{margin:.2em 0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.card{display:block;width:100%;text-align:left;font:inherit;color:inherit;background:var(--card);
+  border:1px solid var(--line);border-radius:12px;padding:18px;cursor:pointer;transition:border-color .15s,transform .15s}
+.card:hover{border-color:var(--accent);transform:translateY(-1px)}
+.card .tag{display:inline-block;font-size:.75rem;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.card h3{margin-bottom:.3em}
+.card p{margin:0 0 10px;color:var(--muted);font-size:.9rem}
+.card .meta{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:.85rem;border-top:1px solid var(--line);padding-top:10px}
+.howto{margin-top:28px;font-size:.9rem;color:var(--muted)}
+.howto ul{padding-left:1.2em;margin:.4em 0}
+
+/* panel */
+.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+fieldset{border:1px solid var(--line);border-radius:10px;margin:0 0 16px;padding:12px 14px}
+legend{padding:0 6px;font-weight:600;font-size:.95rem}
+.choice{display:flex;gap:10px;align-items:flex-start;padding:6px 0;cursor:pointer}
+.choice input{margin-top:.3em;width:18px;height:18px;accent-color:var(--accent);flex:none}
+.choice small{display:block;color:var(--muted)}
+.inline-choices{display:flex;flex-wrap:wrap;gap:6px 18px}
+select{font:inherit;padding:.45em .6em;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--fg);min-height:40px}
+.note{font-size:.85rem;color:var(--muted);margin:.2em 0 0}
+
+/* quiz */
+.qtop{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.qtop .info{font-size:.9rem;color:var(--muted)}
+.timer{font-variant-numeric:tabular-nums;font-weight:600;border:1px solid var(--line);border-radius:8px;padding:.2em .6em;background:var(--card)}
+.timer.low{color:var(--bad);border-color:var(--bad)}
+.bar{height:8px;background:var(--soft);border-radius:99px;overflow:hidden;margin-bottom:16px;border:1px solid var(--line)}
+.bar > span{display:block;height:100%;width:0;background:var(--accent);transition:width .2s}
+.qtext{font-family:var(--serif);font-size:1.3rem;margin:0 0 16px;white-space:pre-line}
+.opts{display:grid;gap:10px;margin-bottom:14px}
+.opt{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;font:inherit;color:inherit;
+  background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;min-height:48px}
+.opt:hover{border-color:var(--accent)}
+.opt .k{flex:none;display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1px solid var(--line);font-weight:600;font-size:.85rem;background:var(--soft)}
+.opt .t{padding-top:2px}
+.opt.sel{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.opt.sel .k{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+.opt.right{border-color:var(--ok);background:var(--ok-bg)}
+.opt.right .k{background:var(--ok);color:var(--bg);border-color:var(--ok)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
+.opt.wrong .k{background:var(--bad);color:var(--bg);border-color:var(--bad)}
+.opt[aria-disabled="true"]{cursor:default}
+.feedback{border-radius:10px;padding:12px 14px;margin-bottom:14px;border:1px solid var(--line)}
+.feedback:empty{display:none}
+.feedback.ok{border-color:var(--ok);background:var(--ok-bg)}
+.feedback.bad{border-color:var(--bad);background:var(--bad-bg)}
+.feedback b{display:block;margin-bottom:2px}
+.navq{margin-top:18px;border-top:1px solid var(--line);padding-top:14px}
+.navq h3{font-family:var(--ui);font-size:.85rem;font-weight:600;color:var(--muted);margin-bottom:8px}
+.dots{display:flex;flex-wrap:wrap;gap:6px}
+.dot{font:inherit;font-size:.8rem;min-width:36px;height:36px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--fg);cursor:pointer;padding:0 4px}
+.dot.ans{background:var(--soft);border-color:var(--muted)}
+.dot.r{background:var(--ok-bg);border-color:var(--ok);color:var(--ok)}
+.dot.w{background:var(--bad-bg);border-color:var(--bad);color:var(--bad)}
+.dot.cur{outline:2px solid var(--accent);outline-offset:1px;font-weight:700}
+.kbd{font-size:.8rem;color:var(--muted);margin-top:12px}
+kbd{font-family:var(--mono);font-size:.8em;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 .35em;background:var(--card)}
+
+/* result */
+.score{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0 18px}
+.stat{flex:1 1 140px;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.stat .v{font-family:var(--serif);font-size:1.8rem;line-height:1.1}
+.stat .l{font-size:.8rem;color:var(--muted)}
+.grade-5{color:var(--ok)}.grade-4{color:var(--accent)}.grade-3{color:var(--warn)}.grade-2{color:var(--bad)}
+.badge{display:inline-block;font-size:.8rem;border:1px solid var(--ok);color:var(--ok);border-radius:99px;padding:.1em .7em;margin-left:6px;vertical-align:middle}
+.review{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:12px}
+.review li{border:1px solid var(--line);border-left:4px solid var(--bad);border-radius:8px;padding:12px 14px;background:var(--card)}
+.review .rq{font-weight:600;margin-bottom:6px;white-space:pre-line}
+.review p{margin:.25em 0;font-size:.95rem}
+.review .yours{color:var(--bad)}
+.review .corr{color:var(--ok)}
+.review .ex{color:var(--muted)}
+
+dialog{border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--fg);padding:20px;max-width:min(420px,calc(100vw - 32px))}
+dialog::backdrop{background:rgba(0,0,0,.45)}
+dialog p{margin:0 0 16px}
+
+@media (max-width:480px){
+  h1{font-size:1.65rem}
+  .qtext{font-size:1.15rem}
+  .panel{padding:16px 14px}
+  .row.nav .btn{flex:1 1 auto}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a href="https://eduhakimov.github.io/">← Bosh sahifa</a>
+    <span class="brand">Hakimov B.M.</span>
+  </div>
+</header>
+
+<main class="wrap" id="app">
+  <!-- HOME -->
+  <section id="home" aria-labelledby="home-h">
+    <div class="intro">
+      <h1 id="home-h" tabindex="-1">Test markazi</h1>
+      <p>Muallif: Hakimov Bahtiyorjon Muzaffar oʻgʻli, Andijon davlat universiteti</p>
+      <p>Fanni tanlang, rejimni belgilang va bilimingizni sinab koʻring.</p>
+    </div>
+    <div class="grid" id="cards"></div>
+    <div class="howto">
+      <h3>Qanday ishlaydi?</h3>
+      <ul>
+        <li><b>Mashq</b> rejimida har bir javobdan soʻng toʻgʻri javob va izoh darhol koʻrsatiladi.</li>
+        <li><b>Imtihon</b> rejimida natija faqat oxirida chiqadi; xohlasangiz vaqt cheklovini qoʻying.</li>
+        <li>Savollar va javob variantlari har safar aralashtiriladi.</li>
+        <li>Klaviatura: <kbd>1</kbd>–<kbd>4</kbd> yoki <kbd>A</kbd>–<kbd>D</kbd> — javob, <kbd>Enter</kbd> — keyingi savol, <kbd>←</kbd>/<kbd>→</kbd> — oldingi/keyingi.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SETUP -->
+  <section id="setup" class="hidden" aria-labelledby="setup-h">
+    <div class="row between" style="margin-bottom:12px">
+      <button type="button" class="btn ghost" id="setup-back">← Fanlar</button>
+    </div>
+    <div class="panel">
+      <h2 id="setup-h" tabindex="-1">Fan</h2>
+      <p class="muted" id="setup-sub"></p>
+      <form id="setup-form" novalidate>
+        <fieldset>
+          <legend>Rejim</legend>
+          <label class="choice"><input type="radio" name="mode" value="practice" checked>
+            <span>Mashq<small>Har bir javobdan keyin toʻgʻri javob va izoh koʻrsatiladi.</small></span></label>
+          <label class="choice"><input type="radio" name="mode" value="exam">
+            <span>Imtihon<small>Natija va izohlar faqat test yakunlangach koʻrsatiladi.</small></span></label>
+        </fieldset>
+        <fieldset>
+          <legend>Savollar soni</legend>
+          <div class="inline-choices" id="count-choices"></div>
+        </fieldset>
+        <fieldset id="timer-fs">
+          <legend>Vaqt cheklovi (faqat Imtihon)</legend>
+          <label for="timer-sel" class="sr">Vaqt cheklovi</label>
+          <select id="timer-sel" disabled>
+            <option value="0">Cheklovsiz</option>
+            <option value="10">10 daqiqa</option>
+            <option value="20">20 daqiqa</option>
+            <option value="30">30 daqiqa</option>
+            <option value="45">45 daqiqa</option>
+          </select>
+          <p class="note">Vaqt tugaganda test avtomatik yakunlanadi.</p>
+        </fieldset>
+        <div class="row end">
+          <button type="submit" class="btn primary">Testni boshlash</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="hidden" aria-labelledby="quiz-h">
+    <div class="qtop">
+      <div>
+        <h2 id="quiz-h" tabindex="-1" style="margin:0;font-size:1.15rem"></h2>
+        <div class="info" id="quiz-info"></div>
+      </div>
+      <div class="row">
+        <span class="timer hidden" id="timer" role="timer" aria-label="Qolgan vaqt"></span>
+        <button type="button" class="btn ghost" id="quiz-exit">Chiqish</button>
+      </div>
+    </div>
+    <div class="bar" role="progressbar" id="progress" aria-label="Javob berilgan savollar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
+    <div class="panel">
+      <p class="muted" id="q-num" style="margin:0 0 6px;font-size:.9rem"></p>
+      <p class="qtext" id="q-text"></p>
+      <div class="opts" id="opts" role="group" aria-labelledby="q-text"></div>
+      <div class="feedback" id="feedback" aria-live="polite"></div>
+      <div class="row between nav">
+        <button type="button" class="btn" id="prev-btn">← Oldingi</button>
+        <div class="row nav">
+          <button type="button" class="btn" id="finish-btn">Yakunlash</button>
+          <button type="button" class="btn primary" id="next-btn">Keyingi →</button>
+        </div>
+      </div>
+      <div class="navq">
+        <h3 id="nav-h">Savollar</h3>
+        <div class="dots" id="dots" role="group" aria-labelledby="nav-h"></div>
+      </div>
+      <p class="kbd">Klaviatura: <kbd>1</kbd>–<kbd>4</kbd> / <kbd>A</kbd>–<kbd>D</kbd> javob, <kbd>Enter</kbd> keyingi, <kbd>←</kbd> <kbd>→</kbd> harakat.</p>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section id="result" class="hidden" aria-labelledby="result-h">
+    <div class="panel">
+      <h2 id="result-h" tabindex="-1">Natija</h2>
+      <p class="muted" id="result-sub"></p>
+      <div class="score" id="score"></div>
+      <div class="row" id="result-actions"></div>
+      <div id="review-wrap"></div>
+    </div>
+  </section>
+</main>
+
+<dialog id="dlg" aria-labelledby="dlg-msg">
+  <p id="dlg-msg"></p>
+  <div class="row end">
+    <button type="button" class="btn" id="dlg-no">Bekor qilish</button>
+    <button type="button" class="btn primary" id="dlg-yes">Ha</button>
+  </div>
+</dialog>
+
+<footer>
+  <div class="wrap">© 2026 Hakimov Bahtiyorjon Muzaffar oʻgʻli. Barcha huquqlar himoyalangan.</div>
+</footer>
+
+<!--
+  Savollar bazasi. Har bir savol: q — savol matni, o — 4 ta variant (o[0] har doim TOʻGʻRI javob;
+  variantlar ekranga chiqarishdan oldin har safar aralashtiriladi), e — bir jumlali izoh.
+-->
+<script type="application/json" id="quiz-data">
+{"subjects":[
+{"id":"mb","tag":"MB","title":"Maʼlumotlar bazasi","desc":"Relyatsion model, kalitlar, normallashtirish, SQL, tranzaksiyalar, indekslar, ER diagrammalar.","questions":[
+{"q":"Relyatsion modelda jadvalning bitta qatori qanday ataladi?","o":["Kortej (tuple, yozuv)","Atribut","Domen","Sxema"],"e":"Relyatsion modelda qator — kortej (yozuv), ustun esa atribut deb ataladi."},
+{"q":"Relyatsion jadvaldagi ustun nima deb ataladi?","o":["Atribut","Kortej","Kardinallik","Indeks"],"e":"Ustun obyektning bitta xususiyatini ifodalaydi va atribut deyiladi."},
+{"q":"Atribut qabul qilishi mumkin boʻlgan barcha joiz qiymatlar toʻplami qanday ataladi?","o":["Domen","Kalit","Kortej","Munosabat darajasi"],"e":"Domen — atribut uchun ruxsat etilgan qiymatlar toʻplami (masalan, 1 dan 5 gacha butun sonlar)."},
+{"q":"Birlamchi kalit (PRIMARY KEY) haqidagi qaysi tasdiq toʻgʻri?","o":["Uning qiymatlari takrorlanmaydi va NULL boʻlishi mumkin emas","U NULL qiymat qabul qilishi mumkin","Bitta jadvalda bir nechta birlamchi kalit eʼlon qilinadi","U faqat matnli ustunga qoʻyiladi"],"e":"Birlamchi kalit har bir qatorni yagona aniqlaydi, shuning uchun uning qiymatlari noyob va NULL boʻlmasligi shart."},
+{"q":"Tashqi kalit (FOREIGN KEY) qanday vazifani bajaradi?","o":["Boshqa jadvalning kalitiga havola qilib, jadvallar orasidagi bogʻlanishni taʼminlaydi","Jadvaldagi maʼlumotlarni shifrlaydi","Qatorlarni alifbo tartibida saralaydi","Ustunga avtomatik tartib raqam beradi"],"e":"Tashqi kalit qiymati bogʻlangan (ota) jadvaldagi mavjud kalit qiymatiga mos kelishi kerak — bu havola yaxlitligidir."},
+{"q":"Bir nechta ustundan tashkil topgan birlamchi kalit qanday ataladi?","o":["Tarkibiy (composite) kalit","Surrogat kalit","Tashqi kalit","Unikal indeks"],"e":"Agar qatorni yagona aniqlash uchun bir nechta ustun birgalikda kerak boʻlsa, bunday kalit tarkibiy kalit deyiladi."},
+{"q":"Nomzod (candidate) kalit qanday kalit?","o":["Qatorlarni yagona aniqlaydigan minimal atributlar toʻplami","Har doim bitta ustundan iborat kalit","Boshqa jadvalga havola qiluvchi kalit","NULL qiymatlarga ruxsat beruvchi kalit"],"e":"Nomzod kalit — ortiqcha atributi boʻlmagan superkalit; nomzodlardan biri birlamchi kalit sifatida tanlanadi."},
+{"q":"Nomzod kalitlardan biri birlamchi kalit qilib tanlangach, qolgan nomzod kalitlar qanday ataladi?","o":["Muqobil (alternate) kalitlar","Tashqi kalitlar","Tarkibiy atributlar","Hisoblanadigan ustunlar"],"e":"Birlamchi kalit sifatida tanlanmagan nomzod kalitlar muqobil kalitlar deb ataladi va odatda UNIQUE cheklovi bilan himoyalanadi."},
+{"q":"Birinchi normal shakl (1NF) ning asosiy talabi qaysi?","o":["Har bir katakda faqat bitta boʻlinmas (atomar) qiymat boʻlishi","Qisman funksional bogʻliqliklarning boʻlmasligi","Tranzitiv bogʻliqliklarning boʻlmasligi","Barcha ustunlarning indekslangan boʻlishi"],"e":"1NF da takrorlanuvchi guruhlar va bir katakda bir nechta qiymat (masalan, «tel1, tel2») boʻlmasligi kerak."},
+{"q":"Ikkinchi normal shakl (2NF) qanday talab qoʻyadi?","o":["Jadval 1NF da boʻlishi va kalit boʻlmagan atributlar tarkibiy kalitning bir qismiga emas, butun kalitga bogʻliq boʻlishi","Jadvalda faqat atomar qiymatlar boʻlishining oʻzi yetarli","Jadvalda hech qanday tashqi kalit boʻlmasligi","Har bir jadvalda kamida ikkita ustun boʻlishi"],"e":"2NF qisman bogʻliqlikni yoʻqotadi: kalit boʻlmagan har bir atribut butun birlamchi kalitga toʻliq bogʻliq boʻlishi kerak."},
+{"q":"Uchinchi normal shakl (3NF) qanday talab qoʻyadi?","o":["Jadval 2NF da boʻlishi va kalit boʻlmagan atributlar orasida tranzitiv bogʻliqlik boʻlmasligi","Jadvalda kamida uchta ustun boʻlishi","Har bir jadvalda uchta nomzod kalit boʻlishi","Birlamchi kalitning faqat bitta ustundan iborat boʻlishi"],"e":"3NF da kalit boʻlmagan atribut boshqa kalit boʻlmagan atribut orqali (tranzitiv) kalitga bogʻlanmasligi kerak."},
+{"q":"Talaba(talaba_id, ism, guruh_id, guruh_nomi) jadvalida birlamchi kalit talaba_id, guruh_nomi esa guruh_id ga bogʻliq. Qaysi normal shakl buziladi?","o":["3NF — tranzitiv bogʻliqlik bor","1NF — atomar boʻlmagan qiymat bor","2NF — qisman bogʻliqlik bor","Hech qaysi — jadval 3NF da"],"e":"talaba_id → guruh_id → guruh_nomi zanjiri tranzitiv bogʻliqlikdir; kalit bitta ustunli boʻlgani uchun qisman bogʻliqlik (2NF buzilishi) boʻlmaydi."},
+{"q":"Baho(talaba_id, fan_id, talaba_ismi, baho) jadvalida birlamchi kalit (talaba_id, fan_id), talaba_ismi esa faqat talaba_id ga bogʻliq. Qaysi normal shakl buziladi?","o":["2NF — qisman funksional bogʻliqlik bor","1NF — atomar boʻlmagan qiymat bor","Hech qaysi shakl buzilmagan","Faqat BCNF buziladi, 3NF esa bajarilgan"],"e":"talaba_ismi tarkibiy kalitning faqat bir qismiga bogʻliq — bu qisman bogʻliqlik, demak 2NF (va undan yuqori shakllar) bajarilmaydi."},
+{"q":"Normallashtirishning asosiy maqsadi nima?","o":["Maʼlumotlar takrorlanishini va qoʻshish, oʻzgartirish, oʻchirish anomaliyalarini kamaytirish","Jadvallar sonini har doim kamaytirish","Maʼlumotlarni shifrlash","Faqat grafik interfeysni soddalashtirish"],"e":"Normallashtirish ortiqcha takrorlanishni yoʻqotib, anomaliyalarning oldini oladi; odatda bunda jadvallar soni koʻpayadi."},
+{"q":"SELECT DISTINCT shahar FROM talaba; soʻrovida DISTINCT nima qiladi?","o":["Natijadagi takrorlanuvchi qatorlarni chiqarib tashlaydi","Natijani shahar boʻyicha saralaydi","Faqat NULL boʻlmagan qiymatlarni sanaydi","Jadvaldan takrorlanuvchi qatorlarni oʻchiradi"],"e":"DISTINCT faqat soʻrov natijasidagi bir xil qatorlarni bitta qilib koʻrsatadi, jadvaldagi maʼlumot oʻzgarmaydi."},
+{"q":"WHERE va HAVING orasidagi farq qaysi javobda toʻgʻri koʻrsatilgan?","o":["WHERE guruhlashdan oldin qatorlarni, HAVING esa GROUP BY dan keyin guruhlarni filtrlaydi","WHERE guruhlarni, HAVING esa alohida qatorlarni filtrlaydi","Ular hamma holatda bir xil ishlaydi","HAVING faqat UPDATE buyrugʻida ishlatiladi"],"e":"Agregat funksiya natijasi (masalan, COUNT(*)) boʻyicha shart faqat HAVING da yoziladi, chunki u guruhlashdan keyin bajariladi."},
+{"q":"Talabalari soni 5 tadan koʻp boʻlgan guruhlarni topadigan toʻgʻri soʻrov qaysi?","o":["SELECT guruh, COUNT(*) FROM talaba GROUP BY guruh HAVING COUNT(*) > 5;","SELECT guruh, COUNT(*) FROM talaba WHERE COUNT(*) > 5 GROUP BY guruh;","SELECT guruh, COUNT(*) FROM talaba GROUP BY guruh WHERE COUNT(*) > 5;","SELECT guruh, COUNT(*) FROM talaba ORDER BY COUNT(*) > 5;"],"e":"Guruhlar boʻyicha agregat shart GROUP BY dan keyin HAVING orqali yoziladi; WHERE da agregat funksiya ishlatib boʻlmaydi."},
+{"q":"INNER JOIN natijasida qaysi qatorlar qaytadi?","o":["Faqat ikkala jadvalda ham bogʻlanish shartiga mos keladigan qatorlar","Chap jadvalning barcha qatorlari","Ikkala jadval qatorlarining barcha juftliklari (dekart koʻpaytma)","Faqat mos juftligi topilmagan qatorlar"],"e":"INNER JOIN ikki jadvaldan ON shartini qanoatlantiruvchi juftliklarnigina qaytaradi."},
+{"q":"LEFT JOIN haqida qaysi tasdiq toʻgʻri?","o":["Chap jadvalning barcha qatorlari qaytadi; oʻng jadvalda mosi boʻlmasa, uning ustunlari NULL boʻladi","Faqat oʻng jadvalning barcha qatorlari qaytadi","Faqat ikkala jadvalda mos kelgan qatorlar qaytadi","Chap jadvaldan faqat birinchi qator qaytadi"],"e":"LEFT (OUTER) JOIN chap jadvaldagi har bir qatorni saqlaydi, mos juftlik yoʻq boʻlsa oʻng tomon NULL bilan toʻldiriladi."},
+{"q":"A jadvalda 3 ta, B jadvalda 4 ta qator bor. SELECT * FROM A CROSS JOIN B; necha qator qaytaradi?","o":["12","7","4","1"],"e":"CROSS JOIN dekart koʻpaytma beradi: 3 × 4 = 12 qator."},
+{"q":"Quyidagilardan qaysi guruh DDL (maʼlumotlarni taʼriflash tili) buyruqlari?","o":["CREATE, ALTER, DROP","SELECT, INSERT, UPDATE","GRANT, REVOKE","COMMIT, ROLLBACK"],"e":"DDL obyektlar tuzilmasini yaratadi va oʻzgartiradi; INSERT/UPDATE — DML, GRANT/REVOKE — DCL, COMMIT/ROLLBACK — TCL."},
+{"q":"Qaysi buyruq DML (maʼlumotlarni boshqarish tili) ga tegishli?","o":["UPDATE","CREATE","DROP","ALTER"],"e":"DML jadvaldagi maʼlumotlar bilan ishlaydi: SELECT, INSERT, UPDATE, DELETE."},
+{"q":"DELETE FROM talaba; va DROP TABLE talaba; buyruqlarining farqi nimada?","o":["DELETE qatorlarni oʻchiradi va jadval tuzilmasi qoladi, DROP TABLE esa jadvalni butunlay oʻchiradi","DELETE jadvalni butunlay oʻchiradi, DROP TABLE faqat qatorlarni","Ikkalasi ham bir xil natija beradi","DELETE faqat ustunlarni oʻchiradi"],"e":"DELETE dan keyin boʻsh jadval qoladi, DROP TABLE dan keyin esa jadval va uning tuzilmasi yoʻqoladi."},
+{"q":"ORDER BY narx DESC ifodasi nima qiladi?","o":["Natijani narx boʻyicha kamayish tartibida saralaydi","Natijani narx boʻyicha oʻsish tartibida saralaydi","Natijani narx boʻyicha guruhlaydi","Narxi NULL boʻlgan qatorlarni olib tashlaydi"],"e":"DESC — kamayish (descending), ASC — oʻsish tartibi; ASC standart qiymat hisoblanadi."},
+{"q":"COUNT(*) va COUNT(telefon) ning farqi nimada?","o":["COUNT(telefon) telefon ustunidagi NULL qiymatli qatorlarni sanamaydi","COUNT(*) NULL qiymatli qatorlarni sanamaydi","Ular hech qachon farq qilmaydi","COUNT(telefon) faqat sonli ustunlarda ishlaydi"],"e":"COUNT(*) barcha qatorlarni, COUNT(ustun) esa shu ustunda NULL boʻlmagan qiymatlarni sanaydi."},
+{"q":"WHERE ism LIKE 'A%' sharti qaysi qatorlarni tanlaydi?","o":["Ismi A harfi bilan boshlanadigan qatorlarni","Ismi A harfi bilan tugaydigan qatorlarni","Ismi aynan «A%» ga teng qatorlarni","Ismida A harfi umuman yoʻq qatorlarni"],"e":"LIKE da % istalgan uzunlikdagi (jumladan boʻsh) belgilar ketma-ketligini bildiradi, shuning uchun 'A%' — A bilan boshlanadi."},
+{"q":"Telefon raqami kiritilmagan (NULL) talabalarni toʻgʻri tanlaydigan shart qaysi?","o":["WHERE telefon IS NULL","WHERE telefon = NULL","WHERE telefon == NULL","WHERE telefon LIKE NULL"],"e":"NULL bilan = orqali solishtirish natijasi UNKNOWN boʻladi, shuning uchun IS NULL yoki IS NOT NULL ishlatiladi."},
+{"q":"WHERE yosh BETWEEN 18 AND 20 sharti qaysi qiymatlarni oʻz ichiga oladi?","o":["18, 19 va 20 ni (chegaralar ham kiradi)","Faqat 19 ni","Faqat 18 va 19 ni","Faqat 19 va 20 ni"],"e":"BETWEEN ikkala chegarani ham oʻz ichiga oladi: yosh >= 18 AND yosh <= 20."},
+{"q":"Ustundagi qiymatlarning oʻrtacha qiymatini qaytaradigan agregat funksiya qaysi?","o":["AVG()","SUM()","MAX()","COUNT()"],"e":"AVG — oʻrtacha (average), SUM — yigʻindi, MAX — eng katta qiymat, COUNT — soni."},
+{"q":"UNION va UNION ALL ning farqi nimada?","o":["UNION takrorlanuvchi qatorlarni olib tashlaydi, UNION ALL esa barcha qatorlarni qoldiradi","UNION ALL takrorlanuvchi qatorlarni olib tashlaydi, UNION esa yoʻq","UNION jadvallarni gorizontal (ustun boʻyicha) birlashtiradi","Ular faqat sintaksis jihatdan farq qiladi"],"e":"UNION natijada DISTINCT qoʻllaydi; UNION ALL buni qilmagani uchun odatda tezroq ishlaydi."},
+{"q":"Taqdimot (VIEW) nima?","o":["Saqlangan SELECT soʻroviga asoslangan virtual jadval","Jadvalning diskdagi zaxira nusxasi","Indeksning boshqa nomi","Tranzaksiyalar jurnali"],"e":"VIEW maʼlumotni alohida saqlamaydi (oddiy holatda), unga murojaat qilinganda asosidagi soʻrov bajariladi."},
+{"q":"UNIQUE cheklovi nimani taʼminlaydi?","o":["Ustundagi qiymatlar takrorlanmasligini","Ustunga NULL yozilmasligini","Ustunga standart qiymat berilishini","Qiymatning shartga (masalan, narx > 0) mosligini tekshirishni"],"e":"NULL ni taqiqlash — NOT NULL, standart qiymat — DEFAULT, shart boʻyicha tekshirish — CHECK vazifasi."},
+{"q":"ON DELETE CASCADE bilan eʼlon qilingan tashqi kalit qanday ishlaydi?","o":["Ota jadvaldagi yozuv oʻchirilsa, unga havola qiluvchi bola yozuvlar ham avtomatik oʻchiriladi","Ota jadvaldagi yozuvni oʻchirish har doim taqiqlanadi","Bola yozuvlardagi tashqi kalit 0 ga oʻzgartiriladi","Oʻchirilgan yozuv avtomatik tiklanadi"],"e":"CASCADE oʻchirishni bogʻliq jadvallarga «zanjir» boʻylab tarqatadi va osilib qolgan havolalarga yoʻl qoʻymaydi."},
+{"q":"ACID tamoyilidagi atomarlik (Atomicity) nimani anglatadi?","o":["Tranzaksiya yo toʻliq bajariladi, yoki umuman bajarilmaydi","Tasdiqlangan oʻzgarishlar nosozlikdan keyin ham saqlanadi","Parallel tranzaksiyalar bir-biriga xalal bermaydi","Maʼlumotlar har doim shifrlangan holda saqlanadi"],"e":"Masalan, pul oʻtkazmasida hisobdan yechish va boshqa hisobga qoʻshish birga bajariladi yoki ikkalasi ham bekor qilinadi."},
+{"q":"ACID tamoyilidagi barqarorlik (Durability) nimani anglatadi?","o":["COMMIT qilingan oʻzgarishlar tizim nosozligidan keyin ham saqlanib qoladi","Tranzaksiya qisman bajarilishi mumkin","Bir vaqtda faqat bitta foydalanuvchi ishlay oladi","Maʼlumotlar bazasi hech qachon toʻxtamaydi"],"e":"Barqarorlik jurnal (log) va diskka yozish orqali taʼminlanadi: tasdiqlangan natija yoʻqolmaydi."},
+{"q":"ACID tamoyilidagi izolyatsiya (Isolation) nimani anglatadi?","o":["Parallel bajarilayotgan tranzaksiyalar bir-birining tugallanmagan oraliq natijalarini koʻrmasligi","Har bir jadval alohida serverda saqlanishi","Maʼlumotlar bazasining tarmoqdan uzib qoʻyilishi","Tranzaksiya faqat bitta jadval bilan ishlashi"],"e":"Izolyatsiya darajasiga qarab parallel tranzaksiyalar natijasi ularni ketma-ket bajarilgandagiga imkon qadar yaqin boʻladi."},
+{"q":"ROLLBACK buyrugʻi nima qiladi?","o":["Joriy tranzaksiyadagi tasdiqlanmagan oʻzgarishlarni bekor qiladi","Tranzaksiyadagi oʻzgarishlarni doimiy saqlaydi","Jadvalni oʻchirib yuboradi","Maʼlumotlar bazasini qayta ishga tushiradi"],"e":"COMMIT oʻzgarishlarni tasdiqlaydi, ROLLBACK esa ularni tranzaksiya boshidagi holatga qaytaradi."},
+{"q":"Indeks yaratishning asosiy maqsadi nima?","o":["Qidiruv, saralash va bogʻlash (JOIN) soʻrovlarini tezlashtirish","Diskda egallanadigan joyni kamaytirish","INSERT amallarini tezlashtirish","Maʼlumotlarni shifrlash"],"e":"Indeks (koʻpincha B-daraxt) kerakli qatorlarni butun jadvalni koʻrib chiqmasdan topishga yordam beradi."},
+{"q":"Indekslarning kamchiligi qaysi?","o":["Qoʻshimcha xotira egallaydi va INSERT, UPDATE, DELETE amallarini sekinlashtirishi mumkin","SELECT soʻrovlarini har doim sekinlashtiradi","Jadvalda faqat bitta ustun qoldiradi","Birlamchi kalitni yaratishni taqiqlaydi"],"e":"Har bir oʻzgarishda indeks ham yangilanishi kerak, shuning uchun keraksiz indekslar yozish amallariga zarar qiladi."},
+{"q":"Chen notatsiyasidagi ER diagrammada mohiyat (entity) qanday shaklda tasvirlanadi?","o":["Toʻrtburchak","Romb","Oval (ellips)","Uchburchak"],"e":"Chen notatsiyasida mohiyat — toʻrtburchak, atribut — oval, aloqa — romb bilan tasvirlanadi."},
+{"q":"Chen notatsiyasidagi ER diagrammada atribut qanday shaklda tasvirlanadi?","o":["Oval (ellips)","Toʻrtburchak","Romb","Olti burchak"],"e":"Atributlar oval shaklida chiziladi va chiziq bilan oʻz mohiyatiga ulanadi."},
+{"q":"Chen notatsiyasidagi ER diagrammada mohiyatlar orasidagi aloqa (relationship) qanday shaklda tasvirlanadi?","o":["Romb","Oval (ellips)","Toʻrtburchak","Doira"],"e":"Aloqa romb bilan chiziladi va bogʻlanayotgan mohiyatlar (toʻrtburchaklar) bilan chiziqlar orqali ulanadi."},
+{"q":"Bir talaba bir nechta fanni oʻqiydi, bir fanni esa koʻplab talabalar oʻqiydi. Bu qanday aloqa turi?","o":["Koʻpga-koʻp (M:N)","Birga-bir (1:1)","Birga-koʻp (1:N)","Aloqa mavjud emas"],"e":"Ikkala tomondan ham «koʻp» boʻlgani uchun bu M:N aloqadir."},
+{"q":"Koʻpga-koʻp (M:N) aloqa relyatsion modelda qanday amalga oshiriladi?","o":["Ikkala jadval kalitlarini tashqi kalit sifatida saqlovchi oraliq (bogʻlovchi) jadval orqali","Ikkala jadvalni bitta jadvalga birlashtirib","Ikkala jadvalga bir xil birlamchi kalit berib","Faqat indeks yaratish orqali"],"e":"Masalan, Talaba va Fan uchun Talaba_Fan(talaba_id, fan_id) jadvali yaratiladi."},
+{"q":"Birga-koʻp (1:N) aloqada tashqi kalit qaysi jadvalga qoʻyiladi?","o":["«Koʻp» (N) tomondagi jadvalga","«Bir» (1) tomondagi jadvalga","Ikkala jadvalga ham majburiy ravishda","Hech qaysi jadvalga qoʻyilmaydi"],"e":"Masalan, bir guruhda koʻp talaba boʻlsa, guruh_id tashqi kaliti Talaba jadvalida saqlanadi."},
+{"q":"Quyidagilardan qaysi biri relyatsion maʼlumotlar bazasini boshqarish tizimi (MBBT)?","o":["PostgreSQL","Microsoft Word","Adobe Photoshop","Google Chrome"],"e":"PostgreSQL, MySQL, SQLite, Oracle va Microsoft SQL Server — relyatsion MBBTlarga misol."}
+]},
+{"id":"mta","tag":"MTA","title":"IT asoslari (MTA)","desc":"Windows asoslari, fayl tizimlari, foydalanuvchilar va ruxsatlar, tarmoq asoslari, apparat taʼminot, bulut texnologiyalari.","questions":[
+{"q":"Qaysi fayl tizimi fayl va papkalar darajasida ruxsatlarni (ACL) qoʻllab-quvvatlaydi?","o":["NTFS","FAT32","FAT16","exFAT"],"e":"NTFS ruxsatlar, shifrlash (EFS), kvotalar va jurnallashni qoʻllaydi; FAT oilasi fayl tizimlarida ruxsatlar yoʻq."},
+{"q":"FAT32 fayl tizimida bitta faylning maksimal hajmi qancha?","o":["Taxminan 4 GB (4 GiB dan 1 bayt kam)","2 MB","16 TB","Cheklov yoʻq"],"e":"FAT32 da fayl hajmi 32 bitli maydonda saqlangani uchun 4 GiB dan katta faylni yozib boʻlmaydi."},
+{"q":"Windowsda ishlayotgan jarayonlarni koʻrish va «qotib qolgan» dasturni toʻxtatish uchun qaysi vosita ishlatiladi?","o":["Task Manager (Vazifalar dispetcheri)","Disk Cleanup","Character Map","Paint"],"e":"Task Manager jarayonlar, unumdorlik (CPU, xotira) va avtoyuklanuvchi dasturlarni koʻrsatadi."},
+{"q":"Windowsda Ctrl+Shift+Esc tugmalar birikmasi nima qiladi?","o":["Task Manager ni bevosita ochadi","Kompyuterni oʻchiradi","Ish stolini koʻrsatadi","Ekran rasmini oladi"],"e":"Ctrl+Shift+Esc — Task Manager ni oraliq menyusiz ochishning tezkor usuli."},
+{"q":"Windowsda tizim, xavfsizlik va ilovalar hodisalari jurnallarini qaysi vosita orqali koʻrish mumkin?","o":["Event Viewer","Device Manager","Disk Management","Snipping Tool"],"e":"Event Viewer (Hodisalarni koʻrish vositasi) xatolar va ogohlantirishlarni tahlil qilishda asosiy manba hisoblanadi."},
+{"q":"Qurilma drayverlarini yangilash, oʻchirish yoki qurilma holatini tekshirish uchun qaysi vosita ishlatiladi?","o":["Device Manager (Qurilmalar dispetcheri)","Event Viewer","Registry Editor","Windows Media Player"],"e":"Device Manager da muammoli qurilmalar sariq ogohlantirish belgisi bilan koʻrsatiladi."},
+{"q":"Windowsdagi UAC (User Account Control) ning vazifasi nima?","o":["Administrator huquqi talab qilinadigan amallardan oldin tasdiq soʻrab, ruxsatsiz oʻzgarishlarning oldini olish","Internet tezligini oshirish","Fayllarni avtomatik zaxiralash","Ekran yorugʻligini boshqarish"],"e":"UAC dasturlarni odatda cheklangan huquqlarda ishga tushiradi va huquqni oshirish uchun foydalanuvchi roziligini soʻraydi."},
+{"q":"Windows reyestri (Registry) nima?","o":["Tizim va dasturlar sozlamalari saqlanadigan ierarxik maʼlumotlar bazasi","Oʻchirilgan fayllar saqlanadigan papka","Internet brauzerining tarixi","Printerlar navbati"],"e":"Reyestr HKEY_LOCAL_MACHINE, HKEY_CURRENT_USER kabi kalitlardan iborat; uni notoʻgʻri tahrirlash tizimni ishdan chiqarishi mumkin."},
+{"q":"Foydalanuvchiga bir guruh orqali papkani oʻqishga ruxsat (Allow Read), boshqa guruh orqali esa xuddi shu papka uchun aniq taqiq (Deny Read) berilgan. Natija qanday?","o":["Oʻqish taqiqlanadi — aniq Deny ustun keladi","Oʻqishga ruxsat beriladi — Allow ustun keladi","Foydalanuvchi faqat yozish huquqini oladi","Ruxsatlar oʻzaro bekor boʻlib, toʻliq nazorat beriladi"],"e":"NTFS ruxsatlari jamlanadi, ammo bir xil darajadagi aniq Deny har doim Allow dan ustun turadi."},
+{"q":"Papkaga tarmoq orqali kirilganda umumiy foydalanish (Share) va NTFS ruxsatlari qanday birgalikda ishlaydi?","o":["Ikkalasidan eng cheklovchi (eng kam) ruxsat amal qiladi","Ikkalasidan eng koʻp ruxsat amal qiladi","Faqat Share ruxsatlari hisobga olinadi","Faqat NTFS ruxsatlari hisobga olinadi"],"e":"Masalan, Share — Read, NTFS — Modify boʻlsa, tarmoq orqali faqat Read imkoniyati qoladi."},
+{"q":"Domen (Active Directory) tarmogʻining ishchi guruh (workgroup) ga nisbatan asosiy afzalligi nima?","o":["Foydalanuvchi hisoblari, kompyuterlar va siyosatlarni markazlashgan holda boshqarish","Internetga ulanishsiz ishlay olishi","Har bir kompyuterda alohida hisoblar yaratilishi","Antivirusga ehtiyoj qolmasligi"],"e":"Domenda hisoblar domen kontrollerida saqlanadi va guruh siyosatlari (Group Policy) barcha kompyuterlarga qoʻllanadi."},
+{"q":"IPv4 manzil necha bitdan iborat?","o":["32 bit","64 bit","128 bit","48 bit"],"e":"IPv4 manzil 4 ta oktetdan (4 × 8 = 32 bit) iborat, masalan 192.168.1.10."},
+{"q":"IPv6 manzil necha bitdan iborat?","o":["128 bit","32 bit","64 bit","256 bit"],"e":"IPv6 128 bitli boʻlib, oʻn oltilik sanoq sistemasida 8 ta guruh koʻrinishida yoziladi."},
+{"q":"MAC manzil nima?","o":["Tarmoq adapterining 48 bitli fizik (apparat) manzili","Kompyuterga DHCP tomonidan beriladigan manzil","Veb-saytning domen nomi","Elektron pochta manzili"],"e":"MAC manzil kanal (2-) pogʻonasida ishlatiladi va odatda 00-1A-2B-3C-4D-5E koʻrinishida yoziladi."},
+{"q":"DNS xizmatining asosiy vazifasi nima?","o":["Domen nomlarini IP manzillarga aylantirish","Qurilmalarga IP manzillarni avtomatik tarqatish","Elektron pochta xabarlarini shifrlash","Fayllarni serverga yuklash"],"e":"Masalan, DNS «example.com» nomini mos IP manzilga aylantiradi, shunda brauzer serverga ulanadi."},
+{"q":"DHCP serverning vazifasi nima?","o":["Qurilmalarga IP manzil, tarmoq niqobi, shlyuz va DNS sozlamalarini avtomatik berish","Domen nomlarini IP manzilga aylantirish","Veb-sahifalarni keshlash","Viruslarni aniqlash"],"e":"DHCP manzillarni qoʻlda sozlash zaruratini yoʻqotadi va manzillar takrorlanishining oldini oladi."},
+{"q":"Kompyuter 169.254.x.x koʻrinishidagi IP manzil oldi. Bu odatda nimani bildiradi?","o":["Kompyuter DHCP serverdan manzil ola olmagan (APIPA manzili)","Kompyuter internetga muvaffaqiyatli ulangan","Bu manzil provayder tomonidan berilgan ommaviy manzil","Bu loopback manzil"],"e":"Windows DHCP javob bermaganda 169.254.0.0/16 diapazonidan avtomatik (APIPA) manzil oladi; bunday manzil bilan internetga chiqib boʻlmaydi."},
+{"q":"Quyidagilardan qaysi biri xususiy (private) IPv4 manzil?","o":["192.168.1.10","8.8.8.8","172.32.0.1","11.0.0.1"],"e":"Xususiy diapazonlar: 10.0.0.0/8, 172.16.0.0–172.31.255.255 va 192.168.0.0/16; 172.32.0.1 ular tarkibiga kirmaydi."},
+{"q":"Kompyuterning oʻziga murojaat qiluvchi (loopback) IPv4 manzil qaysi?","o":["127.0.0.1","192.168.0.1","0.0.0.0","255.255.255.255"],"e":"127.0.0.1 (localhost) tarmoq stekini tashqi tarmoqqa chiqmasdan tekshirish uchun ishlatiladi."},
+{"q":"/24 prefiksiga mos keluvchi tarmoq niqobi (subnet mask) qaysi?","o":["255.255.255.0","255.255.0.0","255.0.0.0","255.255.255.128"],"e":"/24 — birinchi 24 bit birlar: 11111111.11111111.11111111.00000000 = 255.255.255.0."},
+{"q":"/24 tarmoqda qurilmalarga beriladigan (xost) manzillar soni nechta?","o":["254","256","255","252"],"e":"8 bitli xost qismi 256 ta kombinatsiya beradi, ulardan tarmoq manzili va keng eshittirish (broadcast) manzili ayriladi: 256 − 2 = 254."},
+{"q":"OSI modeli nechta pogʻonadan (qatlamdan) iborat?","o":["7","4","5","8"],"e":"OSI: fizik, kanal, tarmoq, transport, seans, taqdimot va amaliy (ilova) pogʻonalari."},
+{"q":"Marshrutizator (router) OSI modelining qaysi pogʻonasida ishlaydi?","o":["Tarmoq (3-) pogʻonasi","Kanal (2-) pogʻonasi","Fizik (1-) pogʻonasi","Taqdimot (6-) pogʻonasi"],"e":"Router IP manzillar asosida turli tarmoqlar orasida paketlarni yoʻnaltiradi."},
+{"q":"Kommutator (switch) kadrlarni qaysi manzil asosida yoʻnaltiradi?","o":["MAC manzil asosida (2-pogʻona)","IP manzil asosida (3-pogʻona)","Port raqami asosida (4-pogʻona)","Domen nomi asosida (7-pogʻona)"],"e":"Oddiy (boshqarilmaydigan) kommutator MAC manzillar jadvali yordamida kadrni faqat kerakli portga uzatadi."},
+{"q":"TCP va UDP protokollarining asosiy farqi nimada?","o":["TCP ulanish oʻrnatadi va yetkazishni kafolatlaydi, UDP esa ulanishsiz va yetkazishni kafolatlamaydi","UDP ulanish oʻrnatadi, TCP esa ulanishsiz ishlaydi","TCP faqat lokal tarmoqda, UDP faqat internetda ishlaydi","Ular bir xil, faqat nomi farq qiladi"],"e":"TCP tasdiqlash va qayta yuborish mexanizmiga ega; UDP esa kam kechikish muhim boʻlgan joylarda (ovozli aloqa, DNS soʻrovlari) qulay."},
+{"q":"HTTPS protokoli standart boʻyicha qaysi TCP portidan foydalanadi?","o":["443","80","21","25"],"e":"80 — HTTP, 21 — FTP, 25 — SMTP; HTTPS esa 443-portda ishlaydi."},
+{"q":"SSH (xavfsiz masofaviy ulanish) standart boʻyicha qaysi portdan foydalanadi?","o":["22","23","21","3389"],"e":"23 — Telnet (shifrlanmagan), 3389 — RDP; SSH esa 22-portda shifrlangan ulanish beradi."},
+{"q":"Windowsning masofaviy ish stoli protokoli (RDP) standart boʻyicha qaysi portdan foydalanadi?","o":["3389","22","443","110"],"e":"RDP 3389-portda ishlaydi; bu portni internetga ochiq qoldirish xavfli hisoblanadi."},
+{"q":"DNS soʻrovlari standart boʻyicha qaysi portdan foydalanadi?","o":["53","67","80","143"],"e":"DNS 53-portda (asosan UDP, zarur boʻlsa TCP) ishlaydi; 67 — DHCP server porti."},
+{"q":"ping buyrugʻi qaysi protokoldan foydalanadi?","o":["ICMP","ARP","SMTP","FTP"],"e":"ping ICMP Echo Request yuborib, Echo Reply javobini kutadi va kechikishni oʻlchaydi."},
+{"q":"ARP protokolining vazifasi nima?","o":["Lokal tarmoqda IP manzilga mos MAC manzilni aniqlash","Domen nomini IP manzilga aylantirish","IP manzillarni avtomatik tarqatish","Elektron pochtani yuborish"],"e":"Kadrni yuborish uchun qabul qiluvchining MAC manzili kerak, ARP uni IP manzil orqali topadi."},
+{"q":"Windowsda ipconfig /all buyrugʻi nimani koʻrsatadi?","o":["Tarmoq adapterlarining IP, MAC, shlyuz, DNS va DHCP sozlamalarini","Faqat internet tezligini","Ochiq turgan veb-saytlar roʻyxatini","Kompyuterga ulangan printerlarni"],"e":"ipconfig /all — tarmoq muammolarini tashxislashda birinchi ishlatiladigan buyruqlardan biri."},
+{"q":"tracert (traceroute) buyrugʻi nimani koʻrsatadi?","o":["Paket manzilgacha oʻtadigan marshrutizatorlar (hoplar) ketma-ketligini","Kompyuterdagi barcha fayllarni","Faqat DNS server manzilini","Tarmoq kartasining drayver versiyasini"],"e":"tracert har bir oraliq marshrutizatorgacha boʻlgan kechikishni koʻrsatib, muammo qayerdaligini aniqlashga yordam beradi."},
+{"q":"TCP/IP modelida IP protokoli qaysi qatlamda ishlaydi?","o":["Internet qatlami","Transport qatlami","Ilova (amaliy) qatlami","Seans qatlami"],"e":"TCP/IP modelida IP — Internet qatlamida, TCP va UDP — transport qatlamida ishlaydi; seans qatlami bu modelda alohida yoʻq."},
+{"q":"Operativ xotira (RAM) haqida qaysi tasdiq toʻgʻri?","o":["Ishlayotgan dasturlar va maʼlumotlarni vaqtincha saqlaydi va elektr oʻchsa tozalanadi","Maʼlumotlarni elektr oʻchganda ham doimiy saqlaydi","Faqat videotasvirlarni qayta ishlaydi","Kompyuterni elektr bilan taʼminlaydi"],"e":"RAM — energiyaga bogʻliq (volatile) xotira; doimiy saqlash uchun SSD yoki HDD ishlatiladi."},
+{"q":"SSD ning HDD ga nisbatan asosiy afzalligi nima?","o":["Harakatlanuvchi mexanik qismlari yoʻq va odatda ancha tezroq ishlaydi","Har doim kattaroq hajmga ega","Elektr energiyasisiz ishlay oladi","Maʼlumotni RAM ga umuman yuklamaydi"],"e":"SSD flesh xotirada ishlaydi, shuning uchun kirish vaqti qisqa, zarbaga chidamliroq va shovqinsiz."},
+{"q":"Kompyuterning qaysi qismi dastur buyruqlarini bajaradi va hisob-kitoblarni amalga oshiradi?","o":["Markaziy protsessor (CPU)","Blok pitaniya (PSU)","Qattiq disk (HDD)","Tarmoq kartasi (NIC)"],"e":"CPU buyruqlarni xotiradan oʻqib, dekodlab, bajaradi."},
+{"q":"1 bayt necha bitdan iborat?","o":["8","4","10","16"],"e":"1 bayt = 8 bit; bitta bayt 256 xil qiymatni (0–255) ifodalay oladi."},
+{"q":"BIOS/UEFI ning asosiy vazifasi nima?","o":["Kompyuter yoqilganda apparatni tekshirish (POST) va operatsion tizim yuklanishini boshlash","Internetdagi sahifalarni koʻrsatish","Fayllarni arxivlash","Matnli hujjatlarni tahrirlash"],"e":"BIOS/UEFI — ona platadagi mikrodastur (firmware); u yuklash qurilmasini tanlab, OT yuklovchisiga boshqaruvni beradi."},
+{"q":"Blok pitaniya (PSU) ning vazifasi nima?","o":["Tarmoqdagi oʻzgaruvchan tokni kompyuter qismlari uchun past kuchlanishli oʻzgarmas tokka aylantirish","Maʼlumotlarni doimiy saqlash","Tasvirni monitorga chiqarish","Protsessorni sovutish"],"e":"PSU 220 V oʻzgaruvchan tokdan +12 V, +5 V va +3,3 V oʻzgarmas kuchlanishlarni hosil qiladi."},
+{"q":"Bulut xizmatida mijozga virtual serverlar, tarmoq va saqlash resurslari beriladi, operatsion tizim va dasturlarni esa mijozning oʻzi boshqaradi. Bu qaysi model?","o":["IaaS (infratuzilma xizmat sifatida)","PaaS (platforma xizmat sifatida)","SaaS (dasturiy taʼminot xizmat sifatida)","On-premises (mahalliy infratuzilma)"],"e":"IaaS da provayder apparat va virtualizatsiyani, mijoz esa OT, dasturlar va maʼlumotlarni boshqaradi."},
+{"q":"Quyidagilardan qaysi biri SaaS modeliga misol boʻladi?","o":["Brauzer orqali foydalaniladigan tayyor elektron pochta xizmati","Ijaraga olingan virtual mashina","Dastur kodini joylashtirish uchun boshqariladigan platforma","Kompyuterga oʻrnatilgan oflayn matn muharriri"],"e":"SaaS da foydalanuvchi tayyor ilovadan foydalanadi, infratuzilma va dastur yangilanishlarini provayder boshqaradi."},
+{"q":"PaaS modeli nimani taqdim etadi?","o":["Dasturchilar serverlarni boshqarmasdan oʻz ilovalarini ishlab chiqib joylashtiradigan platformani","Faqat fizik serverlarni ijaraga berishni","Faqat tayyor ofis dasturlarini","Uy kompyuterlari uchun antivirusni"],"e":"PaaS da OT, ishga tushirish muhiti va masshtablashni provayder taʼminlaydi, mijoz esa kod va maʼlumotga eʼtibor beradi."},
+{"q":"Gibrid bulut nima?","o":["Xususiy (private) va ommaviy (public) bulutning birgalikda ishlatilishi","Faqat bitta tashkilot uchun ajratilgan bulut","Faqat ommaviy bulut","Internetga ulanmagan kompyuterlar tarmogʻi"],"e":"Gibrid modelda, masalan, maxfiy maʼlumot xususiy bulutda, yuqori yuklama esa ommaviy bulutda qayta ishlanadi."},
+{"q":"Bulutning yuklamaga qarab resurslarni avtomatik koʻpaytirish yoki kamaytirish xususiyati qanday ataladi?","o":["Elastiklik (elasticity)","Defragmentatsiya","Arxivlash","Formatlash"],"e":"Elastiklik tufayli mijoz faqat amalda ishlatilgan resurslar uchun toʻlaydi."},
+{"q":"Gipervizor (hypervisor) qanday vazifani bajaradi?","o":["Bitta fizik kompyuterda bir nechta virtual mashinani yaratish va ishga tushirish","Ekran tasvirini kattalashtirish","Tarmoq kabelini sinash","Printer drayverlarini oʻrnatish"],"e":"Gipervizor (masalan, Hyper-V, VMware ESXi, VirtualBox) apparat resurslarini virtual mashinalar orasida taqsimlaydi."},
+{"q":"Kundalik ishlar uchun qaysi turdagi foydalanuvchi hisobidan foydalanish xavfsizroq?","o":["Standart (oddiy) foydalanuvchi hisobi","Administrator hisobi","Parolsiz mehmon (Guest) hisobi","Barcha foydalanuvchilar uchun umumiy bitta hisob"],"e":"Eng kam imtiyoz tamoyiliga koʻra, zararli dastur standart hisobda tizimga kamroq ziyon yetkaza oladi."}
+]},
+{"id":"kx","tag":"KX","title":"Kiberxavfsizlik","desc":"CIA triadasi, zararli dasturlar, fishing, parollar va MFA, shifrlash, xesh, xavfsizlik devorlari, zaxiralash.","questions":[
+{"q":"CIA triadasidagi konfidensiallik (Confidentiality) nimani anglatadi?","o":["Maʼlumotga faqat ruxsati bor shaxslar kira olishini","Maʼlumotning ruxsatsiz oʻzgartirilmaganligini","Tizimning kerak paytda ishlab turishini","Maʼlumotlarning zaxira nusxasi borligini"],"e":"Konfidensiallik shifrlash va kirishni boshqarish orqali taʼminlanadi."},
+{"q":"CIA triadasidagi yaxlitlik (Integrity) nimani anglatadi?","o":["Maʼlumot ruxsatsiz oʻzgartirilmagan va toʻgʻri ekanini","Maʼlumotni faqat egasi koʻra olishini","Server doimo ishlab turishini","Parolning uzunligini"],"e":"Yaxlitlik xesh, raqamli imzo va oʻzgartirish huquqlarini cheklash orqali taʼminlanadi."},
+{"q":"CIA triadasidagi foydalanuvchanlik (Availability) nimani anglatadi?","o":["Ruxsatli foydalanuvchilar kerak paytda tizim va maʼlumotdan foydalana olishini","Maʼlumotning shifrlanganligini","Maʼlumot oʻzgartirilmaganligini","Foydalanuvchining shaxsi tasdiqlanganini"],"e":"Foydalanuvchanlik zaxiralash, ortiqcha (rezerv) qurilmalar va DDoS dan himoya bilan taʼminlanadi."},
+{"q":"DDoS hujumi CIA triadasining qaysi jihatiga birinchi navbatda zarar yetkazadi?","o":["Foydalanuvchanlik (Availability)","Konfidensiallik (Confidentiality)","Yaxlitlik (Integrity)","Autentifikatsiya"],"e":"DDoS serverni soxta soʻrovlar bilan toʻldirib, haqiqiy foydalanuvchilar uchun xizmatni ishlamaydigan qiladi."},
+{"q":"Yuklab olingan faylning xesh qiymatini rasmiy saytda eʼlon qilingan qiymat bilan solishtirish CIA ning qaysi jihatini tekshiradi?","o":["Yaxlitlik (Integrity)","Foydalanuvchanlik (Availability)","Konfidensiallik (Confidentiality)","Anonimlik"],"e":"Xesh mos kelsa, fayl yuklab olish jarayonida oʻzgartirilmagan yoki buzilmagan boʻladi."},
+{"q":"Virus va qurt (worm) ning asosiy farqi nimada?","o":["Qurt tarmoq orqali oʻzini oʻzi mustaqil tarqatadi, virus esa boshqa fayl yoki dasturga yopishib, u ishga tushirilganda tarqaladi","Virus faqat telefonlarni, qurt faqat kompyuterlarni zararlaydi","Qurt hech qachon zarar yetkazmaydi","Ular orasida hech qanday farq yoʻq"],"e":"Qurt foydalanuvchi harakatisiz zaifliklar orqali tez tarqalishi mumkin, virusga esa «xost» dastur kerak."},
+{"q":"Troyan (Trojan horse) dasturi nima?","o":["Foydali dastur boʻlib koʻrinib, yashirincha zararli amallar bajaradigan dastur","Tarmoq trafigini tezlashtiradigan dastur","Antivirusning bir turi","Fayllarni siqadigan arxivator"],"e":"Troyan oʻzini oʻzi koʻpaytirmaydi; u foydalanuvchini aldab, oʻzini oʻrnattirishga erishadi."},
+{"q":"Fayllarni shifrlab qoʻyib, ularni ochish uchun toʻlov talab qiladigan zararli dastur qanday ataladi?","o":["Ransomware (toʻlov talab qiluvchi dastur)","Adware","Keylogger","Rootkit"],"e":"Ransomwarega qarshi eng ishonchli himoya — muntazam va tarmoqdan ajratilgan zaxira nusxalar."},
+{"q":"Klaviaturada bosilgan tugmalarni yashirincha yozib oladigan zararli dastur qanday ataladi?","o":["Keylogger","Adware","Ransomware","Worm"],"e":"Keylogger orqali parollar va karta maʼlumotlari oʻgʻirlanishi mumkin."},
+{"q":"Tizimda oʻz mavjudligini va boshqa zararli jarayonlarni chuqur (yadro) darajada yashiradigan zararli dastur qanday ataladi?","o":["Rootkit","Adware","Phishing","Spam"],"e":"Rootkitni oddiy vositalar bilan aniqlash qiyin; koʻpincha tizimni qayta oʻrnatish talab etiladi."},
+{"q":"Botnet nima?","o":["Tajovuzkor masofadan boshqaradigan zararlangan qurilmalar tarmogʻi","Antivirus kompaniyalari tarmogʻi","Xavfsiz VPN serverlar guruhi","Chat-botlar uchun dasturlash tili"],"e":"Botnetlar DDoS hujumlari, spam tarqatish va parollarni terib topishda ishlatiladi."},
+{"q":"Fishing (phishing) hujumi nima?","o":["Ishonchli tashkilot nomidan soxta xabar yuborib, parol yoki karta maʼlumotlarini olishga urinish","Serverni soʻrovlar bilan toʻldirib ishdan chiqarish","Diskdagi fayllarni shifrlash","Wi-Fi signalini kuchaytirish"],"e":"Fishing texnik zaiflikdan emas, inson ishonchidan foydalanadi — bu ijtimoiy muhandislik turidir."},
+{"q":"Muayyan shaxs yoki tashkilot haqida maʼlumot yigʻib, aynan unga moslashtirilgan fishing qanday ataladi?","o":["Nishonli fishing (spear phishing)","Ommaviy spam","DDoS","Brute-force"],"e":"Spear phishing xatlari shaxsiy tafsilotlarni oʻz ichiga olgani uchun ishonarliroq va xavfliroq boʻladi."},
+{"q":"Quyidagilardan qaysi biri fishing xatiga xos belgi?","o":["Shoshilinch harakat talab qilinadi va yuboruvchi domeni rasmiy domenga oʻxshash, lekin undan farq qiladi","Xatda hech qanday havola va ilova yoʻq","Xat oldindan kelishilgan uchrashuv haqida","Xat sizning oʻzingiz yuborgan xatga javob sifatida kelgan"],"e":"«Hisobingiz 24 soatda bloklanadi» kabi bosim va «examp1e.com» kabi soxta domenlar fishingning tipik belgilaridir."},
+{"q":"Kimdir oʻzini IT boʻlimi xodimi deb tanishtirib, telefon orqali parolingizni soʻramoqda. Bu qanday hujum?","o":["Ijtimoiy muhandislik (vishing/pretexting)","SQL inyeksiya","DDoS hujumi","Brute-force hujumi"],"e":"Haqiqiy IT xodimlari parolingizni hech qachon soʻramaydi; bunday soʻrovni rasmiy kanal orqali tekshiring."},
+{"q":"Ruxsati boʻlmagan shaxsning xodim ortidan ochiq qolgan eshik orqali himoyalangan hududga kirib olishi qanday ataladi?","o":["Tailgating (piggybacking)","Fishing","Keylogging","Spam"],"e":"Tailgating — jismoniy ijtimoiy muhandislik; unga qarshi turniketlar va xodimlarni oʻqitish yordam beradi."},
+{"q":"Shubhali xat olganda eng toʻgʻri harakat qaysi?","o":["Havolani bosmasdan va ilovani ochmasdan, xabar haqida IT yoki xavfsizlik boʻlimiga xabar berish","Havolani bosib, sahifa haqiqiyligini tekshirish","Xatni barcha hamkasblarga ogohlantirish uchun yuborish","Xatga javob yozib, yuboruvchidan kimligini soʻrash"],"e":"Havolani ochish yoki javob yozish tajovuzkorga imkoniyat beradi; xabar berish esa boshqalarni ham himoya qiladi."},
+{"q":"Qaysi parol tavsifi eng kuchli parolga mos keladi?","o":["Uzun, katta-kichik harflar, raqam va belgilar aralashgan hamda boshqa saytlarda ishlatilmagan parol","Tugʻilgan sanangiz","Ismingiz va «123» qoʻshimchasi","Barcha saytlar uchun bir xil, lekin uzun parol"],"e":"Parolning kuchi uzunligi, tasodifiyligi va noyobligiga bogʻliq; shaxsiy maʼlumotlar osongina taxmin qilinadi."},
+{"q":"Bitta parolni bir nechta saytda ishlatishning asosiy xavfi nima?","o":["Bitta saytdan sizib chiqqan parol bilan boshqa hisoblaringizga ham kirish mumkin boʻladi","Parol tezroq eskiradi","Saytlar sekin ishlay boshlaydi","Parolni eslab qolish qiyinlashadi"],"e":"Tajovuzkorlar sizib chiqqan login-parollarni boshqa xizmatlarda avtomatik sinab koʻradi (credential stuffing)."},
+{"q":"Koʻp faktorli autentifikatsiya (MFA) nima?","o":["Ikki yoki undan ortiq turli toifadagi omil (bilim, egalik, biometriya) bilan shaxsni tasdiqlash","Bitta parolni ikki marta kiritish","Parolni har kuni oʻzgartirish","Bir nechta foydalanuvchining bitta hisobdan foydalanishi"],"e":"Omillar: siz biladigan narsa (parol), sizda bor narsa (telefon, kalit) va sizning oʻzingiz (barmoq izi)."},
+{"q":"Quyidagilardan qaysi biri haqiqiy koʻp faktorli autentifikatsiya hisoblanadi?","o":["Parol + telefondagi autentifikator ilovasi kodi","Parol + maxfiy savolga javob","Ikkita turli parol","Login + parol"],"e":"Parol va maxfiy savol bir xil toifadagi (bilim) omillardir; telefon esa «egalik» omili boʻlgani uchun ikkinchi faktor hisoblanadi."},
+{"q":"Parol menejerining asosiy afzalligi nima?","o":["Har bir sayt uchun kuchli va noyob parollar yaratib, ularni shifrlangan holda saqlaydi","Parollarni ochiq matnli faylga yozadi","Parolsiz kirishga majburlaydi","Saytlarni tezroq yuklaydi"],"e":"Foydalanuvchi faqat bitta kuchli asosiy parolni eslab qoladi, qolganlarini menejer boshqaradi."},
+{"q":"Barcha mumkin boʻlgan parol kombinatsiyalarini ketma-ket sinab koʻrish hujumi qanday ataladi?","o":["Brute-force (toʻliq terib chiqish)","Fishing","Tailgating","Spoofing"],"e":"Parol qanchalik uzun va murakkab boʻlsa, brute-force uchun shuncha koʻp vaqt kerak boʻladi."},
+{"q":"Bir necha marta notoʻgʻri parol kiritilgandan keyin hisobni vaqtincha bloklash (account lockout) asosan qaysi hujumga qarshi qaratilgan?","o":["Parolni onlayn terib topish (brute-force)","Ransomware","Tailgating","DDoS"],"e":"Bloklash urinishlar sonini cheklab, parolni koʻp marta sinab koʻrishni amalda imkonsiz qiladi."},
+{"q":"Simmetrik shifrlashning asosiy xususiyati qaysi?","o":["Shifrlash va deshifrlash uchun bitta umumiy kalit ishlatiladi","Ochiq va yopiq kalitlar jufti ishlatiladi","Shifrlangan maʼlumotni hech qachon ochib boʻlmaydi","Kalit umuman ishlatilmaydi"],"e":"Simmetrik shifrlash tez ishlaydi, lekin kalitni tomonlar orasida xavfsiz almashish muammosi bor."},
+{"q":"AES algoritmi qaysi turga kiradi?","o":["Simmetrik shifrlash","Asimmetrik shifrlash","Xesh-funksiya","Maʼlumotlarni siqish (kompressiya)"],"e":"AES — keng qoʻllanadigan simmetrik blokli shifr (128, 192 yoki 256 bitli kalit)."},
+{"q":"RSA algoritmi qaysi turga kiradi?","o":["Asimmetrik (ochiq kalitli) shifrlash","Simmetrik shifrlash","Xesh-funksiya","Kodlash (Base64)"],"e":"RSA ochiq va yopiq kalitlar juftidan foydalanadi; u shifrlash va raqamli imzo uchun ishlatiladi."},
+{"q":"Asimmetrik shifrlashda Aliga faqat u oʻqiy oladigan maxfiy xabar yuborish uchun xabar qaysi kalit bilan shifrlanadi?","o":["Alining ochiq (public) kaliti bilan","Alining yopiq (private) kaliti bilan","Yuboruvchining yopiq kaliti bilan","Kalitsiz yuboriladi"],"e":"Alining ochiq kaliti bilan shifrlangan xabarni faqat Alidagi yopiq kalit bilan ochish mumkin."},
+{"q":"Raqamli imzo yaratishda hujjat xeshi qaysi kalit bilan imzolanadi?","o":["Yuboruvchining yopiq (private) kaliti bilan","Yuboruvchining ochiq kaliti bilan","Qabul qiluvchining ochiq kaliti bilan","Umumiy simmetrik kalit bilan"],"e":"Imzoni har kim yuboruvchining ochiq kaliti bilan tekshira oladi, lekin uni faqat yopiq kalit egasi yarata oladi."},
+{"q":"Kriptografik xesh-funksiyaning asosiy xususiyati qaysi?","o":["Bir tomonlama: xesh qiymatidan asl maʼlumotni tiklash amalda mumkin emas","Xeshni kalit yordamida asl matnga qaytarish mumkin","Har xil kirishlar har doim bir xil xesh beradi","Xesh uzunligi kirish maʼlumoti uzunligiga teng"],"e":"Xesh qatʼiy uzunlikda boʻladi va kirishdagi kichik oʻzgarish ham butunlay boshqa xesh beradi."},
+{"q":"SHA-256 xesh-funksiyasi natijasining uzunligi qancha?","o":["256 bit","128 bit","512 bit","Kirish maʼlumoti uzunligiga teng"],"e":"Nomidagi 256 natija uzunligini bildiradi: 256 bit = 32 bayt = 64 ta oʻn oltilik belgi."},
+{"q":"Parollarni xeshlashda «tuz» (salt) nima uchun ishlatiladi?","o":["Bir xil parollar turli xesh berishi va tayyor xesh jadvallari (rainbow table) samarasiz boʻlishi uchun","Parolni qisqartirish uchun","Xeshni qayta ochish (deshifrlash) uchun","Parolni ochiq matnda saqlash uchun"],"e":"Salt — har bir foydalanuvchi uchun alohida tasodifiy qiymat; u xeshlashdan oldin parolga qoʻshiladi."},
+{"q":"Brauzerdagi HTTPS (qulf belgisi) nimani kafolatlaydi?","o":["Brauzer va server orasidagi trafik TLS orqali shifrlanganini","Sayt egasi firibgar emasligini","Saytda hech qanday zararli dastur yoʻqligini","Sahifa tezroq yuklanishini"],"e":"Firibgarlar ham HTTPS sertifikat olishi mumkin, shuning uchun domen nomini doim alohida tekshirish kerak."},
+{"q":"Xavfsizlik devori (firewall) ning asosiy vazifasi nima?","o":["Belgilangan qoidalar asosida kiruvchi va chiquvchi tarmoq trafigini ruxsat berish yoki bloklash","Diskdagi viruslarni davolash","Parollarni saqlash","Fayllarni zaxiralash"],"e":"Firewall IP manzil, port va protokol kabi mezonlar boʻyicha trafikni filtrlaydi."},
+{"q":"Xavfsizlik devori qoidalarini sozlashda qaysi yondashuv xavfsizroq hisoblanadi?","o":["Aniq ruxsat berilmagan barcha trafikni taqiqlash (default deny)","Aniq taqiqlanmagan barcha trafikka ruxsat berish (default allow)","Barcha portlarni ochiq qoldirish","Qoidalarsiz ishlash"],"e":"«Default deny» faqat zarur xizmatlarni ochib qoʻyadi va hujum yuzasini kamaytiradi."},
+{"q":"IDS va IPS tizimlarining farqi nimada?","o":["IDS shubhali faoliyatni aniqlab ogohlantiradi, IPS esa uni avtomatik bloklashi ham mumkin","IPS faqat ogohlantiradi, IDS esa bloklaydi","IDS faqat parollarni tekshiradi","Ular aynan bir xil tizim"],"e":"IDS — aniqlash (Detection), IPS — oldini olish (Prevention) tizimi."},
+{"q":"Zaxiralashdagi «3-2-1» qoidasi nimani anglatadi?","o":["Kamida 3 nusxa, 2 xil saqlash vositasida, ulardan 1 tasi boshqa joyda (offsayt) saqlanadi","3 kunda 2 marta, 1 soat davomida zaxiralash","3 ta parol, 2 ta login, 1 ta kalit","3 ta server, 2 ta tarmoq, 1 ta firewall"],"e":"Bu qoida bitta nosozlik, oʻgʻirlik yoki yongʻin barcha nusxalarni yoʻq qilib yuborishining oldini oladi."},
+{"q":"Inkremental zaxiralash qanday maʼlumotlarni nusxalaydi?","o":["Oxirgi har qanday (toʻliq yoki inkremental) zaxiradan keyin oʻzgargan maʼlumotlarni","Har safar oxirgi toʻliq zaxiradan keyin oʻzgargan barcha maʼlumotlarni","Har safar barcha maʼlumotlarni toʻliq","Faqat operatsion tizim fayllarini"],"e":"Oxirgi toʻliq zaxiradan beri oʻzgarganlarning barchasini nusxalash — differensial zaxiralash deyiladi."},
+{"q":"Ransomware hujumidan keyin maʼlumotlarni tiklashning eng ishonchli usuli qaysi?","o":["Muntazam olingan, tarmoqdan ajratilgan va tiklanishi sinab koʻrilgan zaxira nusxalardan tiklash","Tajovuzkorga toʻlov toʻlash","Kompyuterni qayta yoqish","Fayllar nomini oʻzgartirish"],"e":"Toʻlov fayllar qaytarilishini kafolatlamaydi; oflayn zaxira esa hujumchi yeta olmaydigan nusxani saqlaydi."},
+{"q":"Ommaviy (jamoat joyidagi) Wi-Fi tarmogʻidan foydalanganda qaysi tavsiya toʻgʻri?","o":["Maxfiy amallarni (bank, shaxsiy kabinet) bajarmaslik yoki ishonchli VPN dan foydalanish","Har doim ochiq tarmoqqa avtomatik ulanishni yoqib qoʻyish","Barcha parollarni ochiq tarmoqda yangilash","Firewall ni oʻchirib qoʻyish"],"e":"Ochiq tarmoqda trafik tutib olinishi yoki soxta kirish nuqtasi ishlatilishi mumkin."},
+{"q":"Dasturiy taʼminotni oʻz vaqtida yangilab borish nima uchun muhim?","o":["Yangilanishlar maʼlum zaifliklarni yopadigan xavfsizlik yamalarini (patch) oʻz ichiga oladi","Yangilanishlar faqat dizaynni oʻzgartiradi","Yangilanish kompyuterni har doim sekinlashtiradi","Yangilanish parollarni oʻchirib yuboradi"],"e":"Koʻp hujumlar yamasi allaqachon chiqarilgan, lekin oʻrnatilmagan zaifliklardan foydalanadi."},
+{"q":"Eng kam imtiyoz tamoyili (principle of least privilege) nimani talab qiladi?","o":["Foydalanuvchi va dasturlarga faqat vazifasini bajarishi uchun zarur boʻlgan minimal huquqlarni berishni","Barcha xodimlarga administrator huquqini berishni","Huquqlarni umuman bermaslikni","Faqat rahbarlarga parol berishni"],"e":"Hisob buzilgan taqdirda ham kam huquq yetkazilishi mumkin boʻlgan zararni cheklaydi."},
+{"q":"«Nol kun» (zero-day) zaifligi nima?","o":["Ishlab chiqaruvchiga hali maʼlum boʻlmagan yoki yamasi hali chiqarilmagan zaiflik","Yil boshida chiqariladigan yangilanish","Zararsiz dasturiy xatolik","Parol muddati tugagan kun"],"e":"Zero-day zaifliklarga qarshi tayyor yama boʻlmagani uchun ular ayniqsa xavfli hisoblanadi."},
+{"q":"Ish joyida egasi nomaʼlum USB fleshka topib oldingiz. Qanday qilish kerak?","o":["Uni kompyuterga ulamasdan IT yoki xavfsizlik xizmatiga topshirish","Egasini aniqlash uchun ish kompyuteriga ulab koʻrish","Uyga olib ketib, shaxsiy kompyuterda tekshirish","Ichidagi fayllarni hamkasblarga tarqatish"],"e":"Tashlab qoʻyilgan fleshkalar zararli dastur yuqtirish uchun ataylab ishlatiladi (baiting hujumi)."},
+{"q":"«Oʻrtadagi odam» (man-in-the-middle) hujumi nima?","o":["Ikki tomon oʻrtasidagi aloqani yashirincha tutib olish yoki oʻzgartirish","Serverni soʻrovlar bilan toʻldirish","Parolni toʻliq terib chiqish","Fayllarni shifrlab toʻlov talab qilish"],"e":"Shifrlangan aloqa (TLS) va sertifikatlarni tekshirish bunday hujumdan himoya qiladi."},
+{"q":"SQL inyeksiya hujumidan himoyalanishning eng samarali usuli qaysi?","o":["Parametrlangan soʻrovlar (prepared statements) dan foydalanish","Maʼlumotlar bazasi nomini oʻzgartirish","Saytni faqat kechasi ishlatish","Barcha xatolarni foydalanuvchiga batafsil koʻrsatish"],"e":"Parametrlangan soʻrovlarda foydalanuvchi kiritgan qiymat SQL kodi sifatida emas, faqat maʼlumot sifatida qabul qilinadi."},
+{"q":"Autentifikatsiya va avtorizatsiyaning farqi nimada?","o":["Autentifikatsiya — foydalanuvchi shaxsini tasdiqlash, avtorizatsiya — unga qanday huquqlar berilganini aniqlash","Autentifikatsiya — huquq berish, avtorizatsiya — shaxsni tasdiqlash","Ikkalasi ham faqat shifrlashni bildiradi","Ular aynan bir xil jarayon"],"e":"Avval «Siz kimsiz?» (autentifikatsiya), soʻng «Sizga nimaga ruxsat bor?» (avtorizatsiya) savoliga javob beriladi."}
+]},
+{"id":"es","tag":"E va S","title":"Elektronika va sxemotexnika","desc":"Om qonuni, rezistorlar ulanishi, kondensatorlar, diodlar, tranzistorlar, mantiqiy elementlar, Bul algebrasi, triggerlar, sanoq sistemalari.","questions":[
+{"q":"Kuchlanish 12 V, qarshilik 4 Ω boʻlsa, zanjirdagi tok kuchi qancha?","o":["3 A","48 A","0,33 A","16 A"],"e":"Om qonuni: I = U / R = 12 V / 4 Ω = 3 A."},
+{"q":"220 Ω li rezistor orqali 0,5 A tok oqmoqda. Rezistordagi kuchlanish qancha?","o":["110 V","440 V","220,5 V","0,0023 V"],"e":"U = I · R = 0,5 A · 220 Ω = 110 V."},
+{"q":"Qurilma 12 V kuchlanishda 2 A tok isteʼmol qiladi. Uning quvvati qancha?","o":["24 W","6 W","14 W","144 W"],"e":"Quvvat P = U · I = 12 V · 2 A = 24 W."},
+{"q":"10 Ω li rezistordan 2 A tok oqmoqda. Rezistorda ajraladigan quvvat qancha?","o":["40 W","20 W","5 W","400 W"],"e":"P = I² · R = 2² · 10 = 40 W."},
+{"q":"100 Ω, 220 Ω va 330 Ω li rezistorlar ketma-ket ulangan. Umumiy qarshilik qancha?","o":["650 Ω","56,9 Ω","330 Ω","220 Ω"],"e":"Ketma-ket ulanishda qarshiliklar qoʻshiladi: 100 + 220 + 330 = 650 Ω."},
+{"q":"Ikkita 10 kΩ li rezistor parallel ulangan. Umumiy qarshilik qancha?","o":["5 kΩ","20 kΩ","10 kΩ","2,5 kΩ"],"e":"Ikkita teng R parallel ulansa, umumiy qarshilik R / 2 = 5 kΩ boʻladi."},
+{"q":"6 Ω va 3 Ω li rezistorlar parallel ulangan. Umumiy qarshilik qancha?","o":["2 Ω","9 Ω","4,5 Ω","18 Ω"],"e":"R = (R1 · R2) / (R1 + R2) = (6 · 3) / (6 + 3) = 18 / 9 = 2 Ω."},
+{"q":"Rezistorlar parallel ulanganda umumiy qarshilik haqida qaysi tasdiq toʻgʻri?","o":["U eng kichik qarshilikdan ham kichik boʻladi","U eng katta qarshilikdan ham katta boʻladi","U qarshiliklar yigʻindisiga teng","U har doim eng katta qarshilikka teng"],"e":"Har bir parallel tarmoq tok uchun qoʻshimcha yoʻl ochadi, shuning uchun umumiy qarshilik kamayadi."},
+{"q":"Ketma-ket ulangan elementlar uchun qaysi tasdiq toʻgʻri?","o":["Barcha elementlardan bir xil tok oqadi","Barcha elementlarda kuchlanish bir xil boʻladi","Umumiy qarshilik eng kichik qarshilikdan kichik","Tok faqat birinchi elementdan oqadi"],"e":"Ketma-ket zanjirda tok uchun yagona yoʻl bor, shuning uchun tok hamma joyda bir xil, kuchlanish esa taqsimlanadi."},
+{"q":"Parallel ulangan elementlar uchun qaysi tasdiq toʻgʻri?","o":["Barcha tarmoqlarda kuchlanish bir xil boʻladi","Barcha tarmoqlarda tok har doim bir xil boʻladi","Umumiy qarshilik qarshiliklar yigʻindisiga teng","Kuchlanish tarmoqlar orasida taqsimlanadi"],"e":"Parallel tarmoqlar bir xil ikki tugunga ulangani uchun ulardagi kuchlanish teng, toklar esa qarshilikka qarab taqsimlanadi."},
+{"q":"Kirxgofning birinchi (toklar) qonuni nimani taʼkidlaydi?","o":["Tugunga kiruvchi toklar yigʻindisi undan chiquvchi toklar yigʻindisiga teng","Berk kontur boʻylab kuchlanishlar yigʻindisi tok kuchiga teng","Tok kuchlanishga teskari proporsional","Quvvat tokning kvadratiga teng"],"e":"Bu qonun zaryadning saqlanishidan kelib chiqadi: tugunda zaryad toʻplanmaydi."},
+{"q":"10 V manbaga R1 = 1 kΩ (yuqorida) va R2 = 4 kΩ (pastda) ketma-ket ulangan. R2 dagi chiqish kuchlanishi qancha?","o":["8 V","2 V","2,5 V","10 V"],"e":"Kuchlanish boʻlgich: Uchiq = U · R2 / (R1 + R2) = 10 · 4 / 5 = 8 V."},
+{"q":"Elektr sigʻimining (kondensator sigʻimining) oʻlchov birligi qaysi?","o":["Farad (F)","Genri (H)","Om (Ω)","Vatt (W)"],"e":"Genri — induktivlik, Om — qarshilik, Vatt — quvvat birligi."},
+{"q":"Oʻzgarmas tok zanjirida kondensator toʻliq zaryadlangach qanday holatda boʻladi?","o":["Oʻzgarmas tokni oʻtkazmaydi (zanjirni uzgandek boʻladi)","Qisqa tutashuv kabi tokni toʻliq oʻtkazadi","Tokni kuchaytiradi","Tokni oʻzgaruvchan tokka aylantiradi"],"e":"Zaryadlangan kondensator orqali oʻzgarmas tok oqmaydi; u oʻzgaruvchan signalni esa oʻtkazadi."},
+{"q":"10 µF va 22 µF li kondensatorlar parallel ulangan. Umumiy sigʻim qancha?","o":["32 µF","6,9 µF","12 µF","220 µF"],"e":"Parallel ulanishda sigʻimlar qoʻshiladi: 10 + 22 = 32 µF (rezistorlarga teskari)."},
+{"q":"Ikkita 10 µF li kondensator ketma-ket ulangan. Umumiy sigʻim qancha?","o":["5 µF","20 µF","10 µF","100 µF"],"e":"Ketma-ket ulanishda 1/C = 1/C1 + 1/C2; ikkita teng sigʻim uchun C / 2 = 5 µF."},
+{"q":"100 µF li kondensator 5 V kuchlanishgacha zaryadlangan. Undagi zaryad miqdori qancha?","o":["500 µC","20 µC","0,05 µC","105 µC"],"e":"Q = C · U = 100 µF · 5 V = 500 µC (0,5 mC)."},
+{"q":"R = 10 kΩ va C = 100 µF boʻlgan RC zanjirning vaqt doimiysi τ qancha?","o":["1 s","0,1 s","10 s","1000 s"],"e":"τ = R · C = 10 000 Ω · 0,0001 F = 1 s; taxminan 5τ da kondensator deyarli toʻliq zaryadlanadi."},
+{"q":"Diodning asosiy xususiyati qaysi?","o":["Tokni asosan bir yoʻnalishda oʻtkazadi","Tokni ikkala yoʻnalishda bir xil oʻtkazadi","Elektr energiyasini toʻplaydi","Kuchlanishni har doim oshiradi"],"e":"Diod toʻgʻri ulanganda tok oʻtkazadi, teskari ulanganda esa (teshilish kuchlanishigacha) deyarli oʻtkazmaydi."},
+{"q":"Kremniy diodning toʻgʻri yoʻnalishdagi kuchlanish tushuvi taxminan qancha?","o":["0,6–0,7 V","0,2–0,3 V","5 V","12 V"],"e":"Kremniy diod uchun ~0,7 V, germaniy diod uchun ~0,3 V qabul qilinadi."},
+{"q":"Diod qachon toʻgʻri yoʻnalishda ulangan (toʻgʻri siljitilgan) hisoblanadi?","o":["Anod katodga nisbatan musbat potensialda boʻlganda","Katod anodga nisbatan musbat potensialda boʻlganda","Anod va katod potensiallari teng boʻlganda","Diod kondensatorga parallel ulanganda"],"e":"Anod (+), katod (−) boʻlsa, p-n oʻtishning potensial toʻsigʻi kamayib, tok oqa boshlaydi."},
+{"q":"Stabilitron (Zener diod) asosan nima uchun ishlatiladi?","o":["Teskari ulanishda kuchlanishni barqarorlash (stabilizatsiya) uchun","Yorugʻlik chiqarish uchun","Signalni kuchaytirish uchun","Elektr energiyasini toʻplash uchun"],"e":"Stabilitron teskari teshilish rejimida ishlaydi va undagi kuchlanish deyarli oʻzgarmas boʻlib qoladi."},
+{"q":"Yorugʻlik diodi (LED) ga ketma-ket rezistor nima uchun ulanadi?","o":["Tokni cheklab, LEDni kuyib qolishdan saqlash uchun","Yorugʻlik rangini oʻzgartirish uchun","LED ni teskari yoʻnalishda ishlatish uchun","Kuchlanishni oshirish uchun"],"e":"LED ning qarshiligi kichik va nochiziqli; rezistorsiz tok xavfli darajaga koʻtarilishi mumkin."},
+{"q":"Diodli koʻprik (toʻgʻrilagich) ning vazifasi nima?","o":["Oʻzgaruvchan tokni bir yoʻnalishli (oʻzgarmas) tokka aylantirish","Oʻzgarmas tokni oʻzgaruvchan tokka aylantirish","Kuchlanish chastotasini oshirish","Signalni kuchaytirish"],"e":"Toʻrt diodli koʻprik ikkala yarim davrni ham bir yoʻnalishga keltiradi; keyin kondensator pulsatsiyani tekislaydi."},
+{"q":"Bipolyar tranzistor (BJT) chiqishlari qanday nomlanadi?","o":["Emitter, baza, kollektor","Istok, stok, zatvor","Anod, katod, boshqaruvchi elektrod","Kirish, chiqish, yer"],"e":"Istok, stok, zatvor — maydoniy (FET) tranzistorga, boshqaruvchi elektrod esa tiristorga tegishli."},
+{"q":"Bipolyar tranzistordagi toklar orasidagi toʻgʻri munosabat qaysi?","o":["Iᴇ = Iʙ + Iᴄ","Iᴄ = Iʙ + Iᴇ","Iʙ = Iᴄ + Iᴇ","Iᴇ = Iᴄ − Iʙ"],"e":"Kirxgofning toklar qonuniga koʻra emitter toki baza va kollektor toklari yigʻindisiga teng."},
+{"q":"Tranzistorning tok boʻyicha kuchaytirish koeffitsiyenti β = 100, baza toki 20 µA. Faol rejimdagi kollektor toki qancha?","o":["2 mA","0,2 mA","20 mA","5 mA"],"e":"Iᴄ = β · Iʙ = 100 · 20 µA = 2000 µA = 2 mA."},
+{"q":"Kalit rejimida ishlayotgan tranzistor «yoqilgan» holatda qaysi rejimda boʻladi?","o":["Toʻyinish (saturation) rejimida","Berk (cutoff) rejimida","Faol (kuchaytirish) rejimida","Teskari teshilish rejimida"],"e":"Toʻyinishda kollektor–emitter kuchlanishi juda kichik boʻlib, tranzistor yopiq kalitdek tok oʻtkazadi; berk rejim — «oʻchirilgan» holat."},
+{"q":"NPN tranzistorning shartli belgisida strelka qayerda va qaysi yoʻnalishda koʻrsatiladi?","o":["Emitterda, tranzistordan tashqariga yoʻnalgan","Emitterda, tranzistor ichiga yoʻnalgan","Kollektorda, tashqariga yoʻnalgan","Bazada, ichkariga yoʻnalgan"],"e":"Strelka emitter tokining yoʻnalishini koʻrsatadi: NPN da tashqariga, PNP da ichkariga."},
+{"q":"VA (AND) mantiqiy elementining chiqishi qachon 1 ga teng boʻladi?","o":["Barcha kirishlar 1 boʻlgandagina","Kamida bitta kirish 1 boʻlganda","Barcha kirishlar 0 boʻlganda","Kirishlar har xil boʻlganda"],"e":"AND — mantiqiy koʻpaytirish: A · B = 1 faqat A = 1 va B = 1 boʻlganda."},
+{"q":"YOKI (OR) mantiqiy elementining chiqishi qachon 1 ga teng boʻladi?","o":["Kamida bitta kirish 1 boʻlganda","Barcha kirishlar 1 boʻlgandagina","Barcha kirishlar 0 boʻlganda","Hech qachon"],"e":"OR — mantiqiy qoʻshish: A + B = 0 faqat ikkala kirish ham 0 boʻlganda."},
+{"q":"Istisno qiluvchi YOKI (XOR) elementi uchun A = 1, B = 1 boʻlsa, chiqish nechaga teng?","o":["0","1","Noaniq","2"],"e":"XOR kirishlar har xil boʻlganda 1, bir xil boʻlganda 0 beradi."},
+{"q":"VA-EMAS (NAND) elementi uchun A = 1, B = 1 boʻlsa, chiqish nechaga teng?","o":["0","1","Noaniq","2"],"e":"NAND — AND natijasining inkori: 1 · 1 = 1, inkori esa 0."},
+{"q":"YOKI-EMAS (NOR) elementi uchun A = 0, B = 0 boʻlsa, chiqish nechaga teng?","o":["1","0","Noaniq","2"],"e":"NOR — OR natijasining inkori: 0 + 0 = 0, inkori esa 1."},
+{"q":"Qaysi mantiqiy elementlar «universal» hisoblanadi, yaʼni ulardan istalgan mantiqiy funksiyani yigʻish mumkin?","o":["NAND va NOR","AND va OR","Faqat NOT","XOR va XNOR"],"e":"Faqat NAND (yoki faqat NOR) elementlaridan NOT, AND va OR ni, demak istalgan funksiyani hosil qilish mumkin."},
+{"q":"3 ta kirishli mantiqiy funksiyaning rostlik jadvalida nechta qator boʻladi?","o":["8","6","3","9"],"e":"n ta kirish uchun 2ⁿ ta kombinatsiya bor: 2³ = 8."},
+{"q":"De Morgan qonuniga koʻra ¬(A · B) nimaga teng?","o":["¬A + ¬B","¬A · ¬B","A + B","¬A · B"],"e":"Koʻpaytmaning inkori inkorlar yigʻindisiga teng; xuddi shunday ¬(A + B) = ¬A · ¬B."},
+{"q":"Bul algebrasida A + A · B ifodasi nimaga soddalashadi?","o":["A","B","A · B","1"],"e":"Yutilish qonuni: A + A·B = A·(1 + B) = A·1 = A."},
+{"q":"Bul algebrasida A · ¬A ifodasi nimaga teng?","o":["0","1","A","¬A"],"e":"Oʻzgaruvchi va uning inkori bir vaqtda 1 boʻla olmaydi, shuning uchun koʻpaytma doim 0."},
+{"q":"Bul algebrasida A + 1 ifodasi nimaga teng?","o":["1","A","0","¬A"],"e":"Kirishlardan biri 1 boʻlsa, YOKI amali natijasi A ning qiymatidan qatʼi nazar 1 boʻladi."},
+{"q":"Ikkilik sanoq sistemasidagi 1011₂ soni oʻnlik sistemada nechaga teng?","o":["11","13","10","22"],"e":"1·8 + 0·4 + 1·2 + 1·1 = 11."},
+{"q":"Oʻnlik sistemadagi 25 soni ikkilik sistemada qanday yoziladi?","o":["11001","10011","11010","10101"],"e":"25 = 16 + 8 + 1, demak 1·16 + 1·8 + 0·4 + 0·2 + 1·1 = 11001₂."},
+{"q":"Oʻn oltilik sistemadagi FF₁₆ soni oʻnlik sistemada nechaga teng?","o":["255","256","240","1515"],"e":"F = 15, demak 15·16 + 15 = 255."},
+{"q":"Oʻn oltilik sistemadagi 2A₁₆ soni oʻnlik sistemada nechaga teng?","o":["42","26","210","32"],"e":"A = 10, demak 2·16 + 10 = 42."},
+{"q":"Sakkizlik sistemadagi 17₈ soni oʻnlik sistemada nechaga teng?","o":["15","17","23","7"],"e":"1·8 + 7 = 15."},
+{"q":"8 bitli ishorasiz ikkilik son qabul qila oladigan eng katta qiymat qancha?","o":["255","256","127","128"],"e":"Barcha 8 bit 1 boʻlsa: 2⁸ − 1 = 255; qiymatlar diapazoni 0 dan 255 gacha."},
+{"q":"Ikkilik sonlarni qoʻshing: 0110₂ + 0011₂ = ?","o":["1001₂","1010₂","0111₂","1100₂"],"e":"6 + 3 = 9, oʻnlik 9 esa ikkilikda 1001₂."},
+{"q":"D-trigger (D flip-flop) qanday ishlaydi?","o":["Takt signali kelganda D kirishdagi qiymatni Q chiqishga yozib, keyingi taktgacha saqlaydi","D kirish qiymatini har doim inkor qilib chiqaradi","Har bir taktda holatini albatta teskarisiga oʻzgartiradi","Faqat analog signallarni kuchaytiradi"],"e":"D-trigger — bir bitli xotira katagi; registrlar shunday triggerlardan yigʻiladi."},
+{"q":"NOR elementlari asosidagi asinxron RS-triggerda S = 1 va R = 1 boʻlsa, qanday holat yuzaga keladi?","o":["Taqiqlangan (noaniq) holat","Trigger 1 ga oʻrnatiladi","Trigger 0 ga tashlanadi","Trigger oldingi holatini saqlaydi"],"e":"Bunda Q va ¬Q ikkalasi ham 0 boʻlib qoladi, kirishlar olib tashlanganda esa natija oldindan aytib boʻlmaydi — shuning uchun bu kombinatsiya taqiqlanadi."},
+{"q":"JK-triggerda J = 1 va K = 1 boʻlsa, takt signali kelganda nima sodir boʻladi?","o":["Trigger holatini teskarisiga oʻzgartiradi (toggle)","Trigger 0 ga tashlanadi","Trigger 1 ga oʻrnatiladi","Trigger holatini oʻzgartirmaydi"],"e":"JK-trigger RS-triggerdagi taqiqlangan holat oʻrniga «almashtirish» rejimini beradi."},
+{"q":"Bitta trigger necha bit maʼlumotni saqlay oladi?","o":["1 bit","8 bit","2 bit","4 bit"],"e":"Trigger ikki barqaror holatga (0 yoki 1) ega, yaʼni bitta bitni saqlaydi; n bitli registr uchun n ta trigger kerak."},
+{"q":"Ketma-ketlikli (sequential) sxema kombinatsion sxemadan nimasi bilan farq qiladi?","o":["Uning chiqishi joriy kirishlardan tashqari oldingi holatga (xotiraga) ham bogʻliq","Uning chiqishi faqat joriy kirishlarga bogʻliq","U faqat bitta mantiqiy elementdan iborat","U elektr energiyasisiz ishlaydi"],"e":"Triggerlar, registrlar va hisoblagichlar ketma-ketlikli sxemalarga, shifratorlar va summatorlar kombinatsion sxemalarga misol."}
+]}
+]}
+</script>
+
+<script>
+(function () {
+  'use strict';
+
+  var DATA = JSON.parse(document.getElementById('quiz-data').textContent);
+  var SUBJECTS = DATA.subjects;
+  var STORE_KEY = 'testlar.best.v1';
+  var LETTERS = ['A', 'B', 'C', 'D'];
+
+  /* ---------- storage ---------- */
+  function loadBest() {
+    try {
+      var raw = window.localStorage.getItem(STORE_KEY);
+      var obj = raw ? JSON.parse(raw) : {};
+      return (obj && typeof obj === 'object') ? obj : {};
+    } catch (e) { return {}; }
+  }
+  function saveBest(id, pct) {
+    try {
+      var b = loadBest();
+      if (typeof b[id] !== 'number' || pct > b[id]) {
+        b[id] = pct;
+        window.localStorage.setItem(STORE_KEY, JSON.stringify(b));
+        return true;
+      }
+    } catch (e) { /* localStorage unavailable */ }
+    return false;
+  }
+
+  /* ---------- helpers ---------- */
+  function $(id) { return document.getElementById(id); }
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+  function shuffle(a) {
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+  function subjectById(id) {
+    for (var i = 0; i < SUBJECTS.length; i++) if (SUBJECTS[i].id === id) return SUBJECTS[i];
+    return null;
+  }
+  function gradeOf(pct) {
+    if (pct >= 86) return { n: 5, t: 'Aʼlo' };
+    if (pct >= 71) return { n: 4, t: 'Yaxshi' };
+    if (pct >= 56) return { n: 3, t: 'Qoniqarli' };
+    return { n: 2, t: 'Qoniqarsiz' };
+  }
+  function fmtTime(s) {
+    var m = Math.floor(s / 60), r = s % 60;
+    return (m < 10 ? '0' : '') + m + ':' + (r < 10 ? '0' : '') + r;
+  }
+
+  var SCREENS = ['home', 'setup', 'quiz', 'result'];
+  function show(id, focusId) {
+    SCREENS.forEach(function (s) { $(s).classList.toggle('hidden', s !== id); });
+    window.scrollTo(0, 0);
+    var f = $(focusId || (id + '-h'));
+    if (f) f.focus();
+  }
+
+  /* ---------- confirm dialog ---------- */
+  var dlg = $('dlg'), dlgCb = null;
+  function ask(msg, yesLabel, cb) {
+    if (!dlg || typeof dlg.showModal !== 'function') {
+      if (window.confirm(msg)) cb();
+      return;
+    }
+    $('dlg-msg').textContent = msg;
+    $('dlg-yes').textContent = yesLabel || 'Ha';
+    dlgCb = cb;
+    dlg.showModal();
+    $('dlg-no').focus();
+  }
+  $('dlg-no').addEventListener('click', function () { dlgCb = null; dlg.close(); });
+  $('dlg-yes').addEventListener('click', function () {
+    var cb = dlgCb; dlgCb = null; dlg.close(); if (cb) cb();
+  });
+
+  /* ---------- home ---------- */
+  function renderHome() {
+    var best = loadBest();
+    var box = $('cards');
+    box.textContent = '';
+    SUBJECTS.forEach(function (s) {
+      var b = el('button', 'card');
+      b.type = 'button';
+      var bestTxt = (typeof best[s.id] === 'number') ? ('Eng yaxshi natija: ' + best[s.id] + '%') : 'Hali topshirilmagan';
+      b.setAttribute('aria-label', s.title + '. ' + s.questions.length + ' ta savol. ' + bestTxt);
+      b.appendChild(el('span', 'tag', s.tag));
+      b.appendChild(el('h3', null, s.title));
+      b.appendChild(el('p', null, s.desc));
+      var meta = el('span', 'meta');
+      meta.appendChild(el('span', null, s.questions.length + ' ta savol'));
+      meta.appendChild(el('span', 'muted', bestTxt));
+      b.appendChild(meta);
+      b.addEventListener('click', function () { openSetup(s.id); });
+      box.appendChild(b);
+    });
+  }
+
+  /* ---------- setup ---------- */
+  var setupSubject = null;
+  function openSetup(id) {
+    var s = subjectById(id);
+    setupSubject = s;
+    $('setup-h').textContent = s.title;
+    $('setup-sub').textContent = 'Savollar bazasida ' + s.questions.length + ' ta savol bor.';
+    var cc = $('count-choices');
+    cc.textContent = '';
+    [10, 20, 0].forEach(function (n, i) {
+      if (n && n >= s.questions.length) return;
+      var lab = el('label', 'choice');
+      var inp = document.createElement('input');
+      inp.type = 'radio'; inp.name = 'count'; inp.value = String(n);
+      if (i === 0) inp.checked = true;
+      lab.appendChild(inp);
+      lab.appendChild(el('span', null, n ? (n + ' ta') : ('Hammasi (' + s.questions.length + ')')));
+      cc.appendChild(lab);
+    });
+    if (!cc.querySelector('input:checked')) cc.querySelector('input').checked = true;
+    syncTimer();
+    show('setup');
+  }
+  function syncTimer() {
+    var exam = document.querySelector('input[name="mode"]:checked').value === 'exam';
+    $('timer-sel').disabled = !exam;
+    $('timer-fs').classList.toggle('muted', !exam);
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('input[name="mode"]'), function (r) {
+    r.addEventListener('change', syncTimer);
+  });
+  $('setup-back').addEventListener('click', function () { renderHome(); show('home'); });
+  $('setup-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var mode = document.querySelector('input[name="mode"]:checked').value;
+    var count = parseInt(document.querySelector('input[name="count"]:checked').value, 10) || 0;
+    var minutes = mode === 'exam' ? (parseInt($('timer-sel').value, 10) || 0) : 0;
+    startQuiz(setupSubject, mode, setupSubject.questions, count, minutes, false);
+  });
+
+  /* ---------- quiz ---------- */
+  var S = null;
+
+  function startQuiz(subj, mode, pool, count, minutes, isRetry) {
+    stopTimer();
+    var qs = shuffle(pool.slice());
+    if (count && count < qs.length) qs = qs.slice(0, count);
+    var items = qs.map(function (q) {
+      var opts = q.o.map(function (t, i) { return { t: t, c: i === 0 }; });
+      return { q: q, opts: shuffle(opts), chosen: -1 };
+    });
+    S = {
+      subj: subj, mode: mode, items: items, idx: 0, minutes: minutes,
+      timeLeft: minutes * 60, timer: null, started: Date.now(), isRetry: isRetry, done: false
+    };
+    $('quiz-h').textContent = subj.title + (isRetry ? ' — xatolar ustida ishlash' : '');
+    $('quiz-info').textContent = (mode === 'exam' ? 'Imtihon rejimi' : 'Mashq rejimi') + ' · ' + items.length + ' ta savol';
+    var tEl = $('timer');
+    if (minutes) {
+      tEl.classList.remove('hidden', 'low');
+      tEl.textContent = fmtTime(S.timeLeft);
+      S.timer = window.setInterval(tick, 1000);
+    } else {
+      tEl.classList.add('hidden');
+    }
+    renderQuestion();
+    show('quiz', 'q-text');
+  }
+
+  function tick() {
+    if (!S || S.done) return;
+    S.timeLeft--;
+    var tEl = $('timer');
+    tEl.textContent = fmtTime(Math.max(0, S.timeLeft));
+    if (S.timeLeft <= 60) tEl.classList.add('low');
+    if (S.timeLeft <= 0) {
+      if (dlg && dlg.open) dlg.close();
+      finish(true);
+    }
+  }
+  function stopTimer() {
+    if (S && S.timer) { window.clearInterval(S.timer); S.timer = null; }
+  }
+
+  function answeredCount() {
+    var n = 0;
+    S.items.forEach(function (it) { if (it.chosen >= 0) n++; });
+    return n;
+  }
+
+  function renderQuestion() {
+    var it = S.items[S.idx], total = S.items.length;
+    var practice = S.mode === 'practice';
+    var locked = practice && it.chosen >= 0;
+
+    $('q-num').textContent = 'Savol ' + (S.idx + 1) + ' / ' + total;
+    $('q-text').textContent = it.q.q;
+    var qt = $('q-text'); qt.setAttribute('tabindex', '-1');
+
+    var ans = answeredCount();
+    var pct = Math.round(ans / total * 100);
+    var bar = $('progress');
+    bar.firstElementChild.style.width = pct + '%';
+    bar.setAttribute('aria-valuenow', String(pct));
+    bar.setAttribute('aria-valuetext', ans + ' / ' + total + ' savolga javob berilgan');
+
+    var box = $('opts');
+    box.textContent = '';
+    it.opts.forEach(function (o, i) {
+      var b = el('button', 'opt');
+      b.type = 'button';
+      b.setAttribute('data-i', String(i));
+      var k = el('span', 'k', LETTERS[i]); k.setAttribute('aria-hidden', 'true');
+      b.appendChild(k);
+      b.appendChild(el('span', 't', o.t));
+      var label = LETTERS[i] + ' variant: ' + o.t;
+      if (locked) {
+        b.setAttribute('aria-disabled', 'true');
+        if (o.c) { b.classList.add('right'); label += '. Toʻgʻri javob'; }
+        else if (i === it.chosen) { b.classList.add('wrong'); label += '. Sizning javobingiz, notoʻgʻri'; }
+      } else {
+        b.setAttribute('aria-pressed', i === it.chosen ? 'true' : 'false');
+        if (i === it.chosen) b.classList.add('sel');
+      }
+      b.setAttribute('aria-label', label);
+      b.addEventListener('click', function () { choose(i); });
+      box.appendChild(b);
+    });
+
+    var fb = $('feedback');
+    fb.className = 'feedback';
+    fb.textContent = '';
+    if (locked) {
+      var right = it.opts[it.chosen].c;
+      fb.classList.add(right ? 'ok' : 'bad');
+      var head = el('b', null, right ? 'Toʻgʻri!' : 'Notoʻgʻri.');
+      fb.appendChild(head);
+      if (!right) {
+        var corr = it.opts.filter(function (o) { return o.c; })[0];
+        fb.appendChild(el('span', null, 'Toʻgʻri javob: ' + corr.t + '. '));
+      }
+      fb.appendChild(el('span', null, it.q.e));
+    }
+
+    $('prev-btn').disabled = S.idx === 0;
+    var last = S.idx === total - 1;
+    $('next-btn').textContent = last ? 'Yakunlash' : 'Keyingi →';
+
+    renderDots();
+  }
+
+  function renderDots() {
+    var box = $('dots');
+    box.textContent = '';
+    S.items.forEach(function (it, i) {
+      var d = el('button', 'dot', String(i + 1));
+      d.type = 'button';
+      var state = 'javob berilmagan';
+      if (it.chosen >= 0) {
+        if (S.mode === 'practice') {
+          var ok = it.opts[it.chosen].c;
+          d.classList.add(ok ? 'r' : 'w');
+          state = ok ? 'toʻgʻri' : 'notoʻgʻri';
+        } else {
+          d.classList.add('ans');
+          state = 'javob berilgan';
+        }
+      }
+      if (i === S.idx) { d.classList.add('cur'); d.setAttribute('aria-current', 'step'); }
+      d.setAttribute('aria-label', (i + 1) + '-savol, ' + state);
+      d.addEventListener('click', function () { go(i); });
+      box.appendChild(d);
+    });
+  }
+
+  function choose(i) {
+    if (!S || S.done) return;
+    var it = S.items[S.idx];
+    if (i < 0 || i >= it.opts.length) return;
+    if (S.mode === 'practice' && it.chosen >= 0) return; // locked after first answer
+    it.chosen = i;
+    renderQuestion();
+    var btn = $('opts').querySelector('[data-i="' + i + '"]');
+    if (btn) btn.focus();
+  }
+
+  function go(i) {
+    if (!S) return;
+    if (i < 0 || i >= S.items.length) return;
+    S.idx = i;
+    renderQuestion();
+    $('q-text').focus();
+  }
+
+  function next() {
+    if (S.idx < S.items.length - 1) go(S.idx + 1);
+    else askFinish();
+  }
+
+  function askFinish() {
+    var left = S.items.length - answeredCount();
+    var msg = 'Testni yakunlaysizmi?' + (left ? (' Javob berilmagan savollar: ' + left + ' ta.') : ' Barcha savollarga javob berdingiz.');
+    ask(msg, 'Ha, yakunlash', function () { finish(false); });
+  }
+
+  $('prev-btn').addEventListener('click', function () { go(S.idx - 1); });
+  $('next-btn').addEventListener('click', next);
+  $('finish-btn').addEventListener('click', askFinish);
+  $('quiz-exit').addEventListener('click', function () {
+    ask('Testdan chiqasizmi? Joriy natijalar saqlanmaydi.', 'Ha, chiqish', function () {
+      stopTimer(); S = null; renderHome(); show('home');
+    });
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (!S || S.done || $('quiz').classList.contains('hidden')) return;
+    if (dlg && dlg.open) return;
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    var t = e.target, tag = t && t.tagName;
+    if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
+    var k = e.key;
+    var map = { '1': 0, '2': 1, '3': 2, '4': 3, 'a': 0, 'b': 1, 'c': 2, 'd': 3 };
+    var lk = (k || '').toLowerCase();
+    if (Object.prototype.hasOwnProperty.call(map, lk)) {
+      e.preventDefault(); choose(map[lk]); return;
+    }
+    if (k === 'Enter') {
+      // Enter on navigation buttons keeps its normal behaviour
+      var isOpt = t && t.classList && t.classList.contains('opt');
+      if (tag === 'BUTTON' && !isOpt) return;
+      e.preventDefault(); next(); return;
+    }
+    if (k === 'ArrowRight') { e.preventDefault(); if (S.idx < S.items.length - 1) go(S.idx + 1); return; }
+    if (k === 'ArrowLeft') { e.preventDefault(); if (S.idx > 0) go(S.idx - 1); }
+  });
+
+  /* ---------- result ---------- */
+  function finish(timeUp) {
+    if (!S || S.done) return;
+    S.done = true;
+    stopTimer();
+    var total = S.items.length, correct = 0, wrong = [];
+    S.items.forEach(function (it) {
+      if (it.chosen >= 0 && it.opts[it.chosen].c) correct++;
+      else wrong.push(it);
+    });
+    var pct = Math.round(correct / total * 100);
+    var g = gradeOf(pct);
+    var record = false;
+    if (!S.isRetry) record = saveBest(S.subj.id, pct);
+    var spent = Math.round((Date.now() - S.started) / 1000);
+
+    $('result-h').textContent = 'Natija: ' + S.subj.title;
+    $('result-sub').textContent = (timeUp ? 'Vaqt tugadi — test avtomatik yakunlandi. ' : '') +
+      (S.mode === 'exam' ? 'Imtihon rejimi' : 'Mashq rejimi') +
+      (S.isRetry ? ' · xatolar ustida ishlash' : '') + ' · sarflangan vaqt ' + fmtTime(spent);
+
+    var sc = $('score');
+    sc.textContent = '';
+    function stat(v, l, cls) {
+      var d = el('div', 'stat');
+      var vv = el('div', 'v' + (cls ? ' ' + cls : ''), v);
+      d.appendChild(vv);
+      d.appendChild(el('div', 'l', l));
+      sc.appendChild(d);
+      return vv;
+    }
+    stat(correct + ' / ' + total, 'Toʻgʻri javoblar');
+    stat(pct + '%', 'Foiz');
+    var gv = stat(g.t, 'Baho (' + g.n + ')', 'grade-' + g.n);
+    if (record) { var bd = el('span', 'badge', 'Yangi rekord!'); gv.appendChild(bd); }
+
+    var acts = $('result-actions');
+    acts.textContent = '';
+    var subj = S.subj, mode = S.mode, minutes = S.minutes;
+    if (wrong.length) {
+      var rb = el('button', 'btn primary', 'Xatolarni qayta ishlash (' + wrong.length + ')');
+      rb.type = 'button';
+      var pool = wrong.map(function (it) { return it.q; });
+      rb.addEventListener('click', function () { startQuiz(subj, mode, pool, 0, 0, true); });
+      acts.appendChild(rb);
+    }
+    var again = el('button', 'btn', 'Yangi test');
+    again.type = 'button';
+    again.addEventListener('click', function () { openSetup(subj.id); });
+    acts.appendChild(again);
+    var home = el('button', 'btn ghost', 'Fanlar roʻyxati');
+    home.type = 'button';
+    home.addEventListener('click', function () { renderHome(); show('home'); });
+    acts.appendChild(home);
+
+    var rw = $('review-wrap');
+    rw.textContent = '';
+    if (!wrong.length) {
+      rw.appendChild(el('p', null, 'Barcha javoblar toʻgʻri — ajoyib natija!'));
+    } else {
+      rw.appendChild(el('h3', null, 'Xatolar va toʻgʻri javoblar (' + wrong.length + ')'));
+      var ul = el('ol', 'review');
+      wrong.forEach(function (it) {
+        var li = el('li');
+        li.appendChild(el('div', 'rq', it.q.q));
+        var yours = it.chosen >= 0 ? it.opts[it.chosen].t : 'Javob berilmagan';
+        li.appendChild(el('p', 'yours', 'Sizning javobingiz: ' + yours));
+        li.appendChild(el('p', 'corr', 'Toʻgʻri javob: ' + it.q.o[0]));
+        li.appendChild(el('p', 'ex', it.q.e));
+        ul.appendChild(li);
+      });
+      rw.appendChild(ul);
+    }
+    S = null;
+    show('result');
+  }
+
+  renderHome();
+})();
+</script>
+</body>
+</html>
