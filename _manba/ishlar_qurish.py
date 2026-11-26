@@ -279,7 +279,7 @@ h2{font-size:21px;margin:36px 0 12px;padding-bottom:6px;border-bottom:1px solid 
 .go{font:13px system-ui,sans-serif;color:var(--acc);margin-top:6px}
 ul{padding-left:22px}li{margin:0 0 8px}dl dt{font-weight:600;margin-top:12px}dl dd{margin:2px 0 0 0;color:var(--fg)}
 .box{border:1px solid var(--line);border-left:3px solid var(--lk);border-radius:8px;padding:12px 16px;background:var(--card);font:14px/1.55 system-ui,sans-serif;color:var(--mut);margin:24px 0}
-footer{margin-top:40px;color:var(--mut);font:13px system-ui,sans-serif}"""
+a{color:var(--acc)}footer{margin-top:40px;color:var(--mut);font:13px system-ui,sans-serif}"""
 
 def bosh(title, desc, url, extra=""):
     return f"""<!doctype html><html lang="uz"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -323,6 +323,7 @@ s += ('<h2>Ilmiy ishlar</h2><div class="g">'
       '</div>\n')
 s += '<h2 id="yutuqlar">Yutuqlar va sertifikatlar</h2><ul>' + "".join(f'<li><b>{e(a)}</b><br><span class="t">{e(b)}</span></li>' for a, b in YUTUQLAR) + '</ul>\n'
 s += '<p class="t">Onlayn kurs sertifikatlari: ' + " · ".join(e(x) for x in SERTIFIKATLAR) + '.</p>\n'
+s += '<p><a class="go" href="../yutuqlar/">Barcha yutuqlar va 43 ta xalqaro sertifikat ro\'yxati →</a></p>\n'
 s += FOOT
 open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(s)
 
@@ -348,5 +349,116 @@ for i in ISHLAR:
     s += FOOT
     open(os.path.join(OUT, i["slug"] + ".html"), "w", encoding="utf-8").write(s)
 
+# YUTUQ_SAHIFA
+# ---------- yutuqlar sahifasi (../yutuqlar/)
+CV = "https://www.coursera.org/verify/"
+DAVLAT = [
+    ("Beruniy nomidagi davlat stipendiyasi sohibi", "O'zbekiston Respublikasi Oliy ta'lim, fan va innovatsiyalar vazirligi, 2024/2025 o'quv yili. Guvohnoma: 11.12.2024, № 4/4-1."),
+    ("Bakalavriat imtiyozli diplom bilan", "GPA 4.94 (99 ball). Magistraturaga 2025-yilda qo'shimcha davlat granti asosida qabul qilingan."),
+    ("Prezident davlat stipendiyasiga nomzod", "2026/2027 o'quv yili, universitet rektori tavsiyanomasi: 20.07.2026, № 01-3066."),
+    ("Dasturiy mahsulot va ma'lumotlar bazasi guvohnomalari (DGU/BGU)", "Adliya vazirligi huzuridagi Intellektual mulk agentligi: ZiyoAnim, Smart traffic, Smart switch, elektr ta'minotini boshqaruvchi aqlli tizim va boshqalar."),
+    ("\"Kompyuter grafikasi\" o'quv qo'llanmasi (hammuallif)", "162 bet, ADU nashr ruxsatnomasi 09.07.2024 (buyruq № 0102571). Antiplagiat: originallik 98.15%."),
+]
+TANLOV = [
+    ("\"Yil talabasi\" tanlovi, 2023", "Respublika bosqichi ishtirokchisi."),
+    ("\"Mirzo Ulug'bek vorislari\" tanlovi, 2024", "Respublika bosqichi ishtirokchisi, innovatsion loyiha bilan."),
+    ("\"Cyber102 Week\" IT tanlovi", "Faxrli o'rin."),
+    ("Andijon viloyati IIB tashakkurnomasi", "Yoshlar va voyaga yetmaganlar o'rtasida jinoyatchilikning oldini olishdagi hamkorlik uchun. 03.12.2025, № 01-0023-25."),
+    ("ADU rektori tashakkurnomalari (4 ta)", "A'lo o'qish va jamoat ishlaridagi faollik (2024/2025), \"Yoshlar kuni\" va \"Navro'z\" ko'rik-tanlovlari, ommaviy tadbirlardagi tashabbuskorlik uchun."),
+    ("Onlayn olimpiada, I darajali diplom", "Telegram orqali o'tkazilgan onlayn olimpiada."),
+]
+# (platforma, [(kurs, tashkilot, sana, coursera_tekshirish_kodi)])
+XALQARO = [
+    ("Coursera", [
+        ("Foundations of User Experience (UX) Design", "Google", "17.12.2023", "ZN89LEP24TFK"),
+        ("Fundamentals of Graphic Design", "California Institute of the Arts", "17.12.2023", "NBKGP66Y9ZCF"),
+        ("Introduction to Cybersecurity Tools & Cyber Attacks", "IBM", "15.12.2023", "EEKNY5GU86KK"),
+        ("Design Fundamentals with AI", "Adobe", "02.03.2026", "OJUOVPKC6LKE"),
+        ("Generative AI Content Creation", "Adobe", "02.03.2026", "DN5TB0NHN4IL"),
+        ("Digital Marketing", "Adobe", "02.03.2026", "E7URFOPKUFHU"),
+        ("Social Media Content and Strategy", "Adobe", "02.03.2026", "LFTC67EF1EZO"),
+        ("Multichannel Content Marketing", "Adobe", "04.03.2026", "EKOCX2KFQYJQ"),
+        ("Adobe Illustrator CC: Part 2", "Logical Operations", "04.03.2026", "K8RH4J8LLDXE"),
+        ("Agile Leadership: Introduction to Change", "University of Colorado System", "08.04.2024", "TFRX8XPTSFLJ"),
+        ("Introduction to Cybersecurity Fundamentals", "Coursera Instructor Network", "08.04.2024", "9UNQ9TN4FY2V"),
+        ("Get Started with Figma", "Coursera Project Network", "17.12.2023", "52BX87KJCYGS"),
+        ("Create eye-catching logos using Canva for an ebrand", "Coursera Project Network", "17.12.2023", "N55VR7L2LCNR"),
+    ]),
+    ("Google, Cisco va boshqa xalqaro kompaniyalar", [
+        ("Google Certified Educator, Level 1", "Google for Education", "22.01.2022", None),
+        ("Get Connected", "Cisco Networking Academy", "08.01.2022", None),
+        ("Responsive Web Design (≈300 soat)", "freeCodeCamp", "28.10.2022", None),
+        ("Python", "Kaggle", "", None),
+        ("Cyber Security Global Virtual Internship", "Clifford Chance · Forage", "30.11.2022", None),
+        ("Digital Skills: Digital Marketing", "Accenture · FutureLearn", "", None),
+        ("ISO/IEC 27001 Information Security Associate", "SkillFront", "28.01.2023", None),
+    ]),
+    ("LinkedIn Learning (PMI PDU / NASBA CPE)", [
+        ("Communication Foundations", "LinkedIn Learning", "29.11.2022", None),
+        ("Managing Projects with Microsoft 365", "LinkedIn Learning", "29.11.2022", None),
+        ("What is Graphic Design?", "LinkedIn Learning", "29.11.2022", None),
+        ("Writing a Resume", "LinkedIn Learning", "29.11.2022", None),
+        ("Video Interview Tips", "LinkedIn Learning", "29.11.2022", None),
+        ("Project Management Foundations: Teams", "LinkedIn Learning", "15.06.2023", None),
+        ("Building Resilience", "LinkedIn Learning", "09.10.2023", None),
+    ]),
+    ("GCFGlobal", [
+        ("Beginning Graphic Design", "GCFGlobal", "23.03.2024", None),
+        ("Photoshop Basics", "GCFGlobal", "23.03.2024", None),
+        ("Digital Photography", "GCFGlobal", "23.03.2024", None),
+        ("Windows Basics", "GCFGlobal", "23.03.2024", None),
+        ("macOS Basics", "GCFGlobal", "23.03.2024", None),
+    ]),
+    ("Mind Luster", [
+        ("Adobe After Effects and Techniques", "Mind Luster", "21.02.2024", None),
+        ("Adobe Illustrator", "Mind Luster", "21.02.2024", None),
+        ("Adobe XD Tools Essentials", "Mind Luster", "21.02.2024", None),
+        ("Professional Photoshop Guide", "Mind Luster", "21.02.2024", None),
+        ("Graphic Design", "Mind Luster", "21.02.2024", None),
+    ]),
+    ("Boshqa xalqaro o'quv markazlari", [
+        ("MS Office (short course), baho: Pass", "Oxford Home Study Centre", "29.11.2022", None),
+        ("Video editing with Premiere Pro (2 oy)", "Aula.bg, Bolgariya", "28.06.2022", None),
+        ("Graphic Design (online course)", "EDUCBA", "", None),
+        ("Python for Beginners", "Simplilearn SkillUp", "", None),
+        ("Getting Started with Python", "iTronix Solutions", "28.01.2023", None),
+        ("Cyber Security certification program", "The Digital Adda", "28.01.2023", None),
+    ]),
+]
+TIL = [("Ingliz tili, B2", "Ibrat Academy · Yoshlar ishlari agentligi, 27.08.2024"),
+       ("Rus tili, B2", "Ibrat Academy · Yoshlar ishlari agentligi, 27.08.2024")]
+JAMI = sum(len(k) for _, k in XALQARO)
+YB = "https://eduhakimov.github.io/yutuqlar/"
+YO = os.path.join(os.path.dirname(os.path.abspath(OUT)), "yutuqlar")
+os.makedirs(YO, exist_ok=True)
+ld = {"@context": "https://schema.org", "@type": "ProfilePage", "url": YB,
+      "mainEntity": {"@type": "Person", "name": "Bahtiyorjon Hakimov", "url": "https://eduhakimov.github.io/",
+                     "hasCredential": [dict({"@type": "EducationalOccupationalCredential", "name": k,
+                                             "recognizedBy": {"@type": "Organization", "name": t}},
+                                            **({"url": CV + c} if c else {}))
+                                       for _, ks in XALQARO for k, t, d, c in ks]}}
+s = bosh("Yutuqlar va sertifikatlar – Hakimov Bahtiyorjon",
+         f"Hakimov Bahtiyorjon Muzaffar o'g'lining davlat mukofotlari, tanlovlardagi natijalari va {JAMI} ta xalqaro sertifikati: Google, IBM, Adobe, Cisco, Coursera.",
+         YB, f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n')
+s += '<nav><a href="../">← Ilmiy ishlar</a><a href="../ishlar/">Barcha ishlar</a><a href="../galereya/">Galereya</a><a href="' + TG + '">Telegram</a></nav>\n'
+s += (f'<h1>Yutuqlar va sertifikatlar</h1><p class="sub">{e(MUALLIF)} · davlat mukofotlari, tanlovlar va {JAMI} ta xalqaro sertifikat. '
+      "Ma'lumotlar asl hujjatlar asosida yozilgan; Coursera sertifikatlarini havola orqali tekshirish mumkin.</p>\n")
+li = lambda a, b: f'<li><b>{e(a)}</b><br><span class="t">{e(b)}</span></li>'
+s += "<h2>Davlat mukofotlari va rasmiy e'tirof</h2><ul>" + "".join(li(a, b) for a, b in DAVLAT) + '</ul>\n'
+s += '<h2>Tanlovlar va tashakkurnomalar</h2><ul>' + "".join(li(a, b) for a, b in TANLOV) + '</ul>\n'
+s += f'<h2>Xalqaro sertifikatlar ({JAMI} ta)</h2>\n'
+for plat, ks in XALQARO:
+    s += f'<h3 style="font-size:17px;margin:22px 0 8px">{e(plat)} <span class="t">· {len(ks)} ta</span></h3><ul>'
+    for k, t, d, c in ks:
+        izoh = " · ".join(x for x in (t, d) if x)
+        tek = f' · <a href="{CV}{c}">tekshirish ↗</a>' if c else ""
+        s += f'<li><b>{e(k)}</b><br><span class="t">{e(izoh)}{tek}</span></li>'
+    s += '</ul>\n'
+s += '<h2>Til sertifikatlari</h2><ul>' + "".join(li(a, b) for a, b in TIL) + '</ul>\n'
+s += ("<div class=\"box\">Sertifikatlarning asl nusxalari muallifda saqlanadi. Hujjatlarni ko'rish yoki tekshirish uchun "
+      f'<a href="{TG}">Telegram</a> orqali bog\'laning.</div>\n')
+s += FOOT
+open(os.path.join(YO, "index.html"), "w", encoding="utf-8").write(s)
+
 # sitemap uchun ro'yxat
-print("\n".join([BASE] + [BASE + i["slug"] + ".html" for i in ISHLAR if i["turi"] == "yopiq"]))
+print("\n".join([YB, BASE] +[BASE + i["slug"] + ".html" for i in ISHLAR if i["turi"] == "yopiq"]))
