@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Test markazi – Hakimov B.M.</title>
-<meta name="description" content="Test markazi: Maʼlumotlar bazasi, IT asoslari (MTA), Kiberxavfsizlik, Elektronika va sxemotexnika fanlari boʻyicha mashq va imtihon testlari. Muallif: Hakimov Bahtiyorjon Muzaffar oʻgʻli.">
+<title data-i18n="tst.title">Test markazi – Hakimov B.M.</title>
+<meta name="description" data-i18n-attr="content:tst.desc" content="Test markazi: Maʼlumotlar bazasi, IT asoslari (MTA), Kiberxavfsizlik, Elektronika va sxemotexnika fanlari boʻyicha mashq va imtihon testlari. Muallif: Hakimov Bahtiyorjon Muzaffar oʻgʻli.">
 <meta name="author" content="Hakimov Bahtiyorjon Muzaffar o'g'li">
 <link rel="canonical" href="https://eduhakimov.github.io/testlar/">
 <meta name="color-scheme" content="light dark">
@@ -37,6 +37,10 @@ header.site{border-bottom:1px solid var(--line)}
 header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap}
 header.site a{text-decoration:none;font-size:.95rem}
 header.site a:hover{text-decoration:underline}
+.hdr-r{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+header.site .i18n-sw{margin:0}
+.qlang:empty{display:none}
+.intro p.qlang{border:1px solid var(--line);border-left:3px solid var(--warn);border-radius:8px;padding:8px 12px;background:var(--card);font-size:.9rem;margin-top:10px}
 .brand{font-family:var(--serif);font-size:1.05rem;color:var(--muted)}
 main{padding:28px 0 40px}
 footer{border-top:1px solid var(--line);color:var(--muted);font-size:.875rem;padding:18px 0 28px}
@@ -151,8 +155,8 @@ dialog p{margin:0 0 16px}
 <body>
 <header class="site">
   <div class="wrap">
-    <a href="https://eduhakimov.github.io/">← Bosh sahifa</a>
-    <span class="brand">Hakimov B.M.</span>
+    <a href="https://eduhakimov.github.io/" data-i18n="nav.home">← Bosh sahifa</a>
+    <div class="hdr-r"><span class="brand">Hakimov B.M.</span><div data-i18n-sw></div></div>
   </div>
 </header>
 
@@ -160,18 +164,19 @@ dialog p{margin:0 0 16px}
   <!-- HOME -->
   <section id="home" aria-labelledby="home-h">
     <div class="intro">
-      <h1 id="home-h" tabindex="-1">Test markazi</h1>
-      <p>Muallif: Hakimov Bahtiyorjon Muzaffar oʻgʻli, Andijon davlat universiteti</p>
-      <p>Fanni tanlang, rejimni belgilang va bilimingizni sinab koʻring.</p>
+      <h1 id="home-h" tabindex="-1" data-i18n="tst.h1">Test markazi</h1>
+      <p data-i18n="tst.author">Muallif: Hakimov Bahtiyorjon Muzaffar oʻgʻli, Andijon davlat universiteti</p>
+      <p data-i18n="tst.lead">Fanni tanlang, rejimni belgilang va bilimingizni sinab koʻring.</p>
+      <p class="qlang" data-i18n="tst.qlang"></p>
     </div>
     <div class="grid" id="cards"></div>
     <div class="howto">
-      <h3>Qanday ishlaydi?</h3>
+      <h3 data-i18n="tst.howto.h">Qanday ishlaydi?</h3>
       <ul>
-        <li><b>Mashq</b> rejimida har bir javobdan soʻng toʻgʻri javob va izoh darhol koʻrsatiladi.</li>
-        <li><b>Imtihon</b> rejimida natija faqat oxirida chiqadi; xohlasangiz vaqt cheklovini qoʻying.</li>
-        <li>Savollar va javob variantlari har safar aralashtiriladi.</li>
-        <li>Klaviatura: <kbd>1</kbd>–<kbd>4</kbd> yoki <kbd>A</kbd>–<kbd>D</kbd> — javob, <kbd>Enter</kbd> — keyingi savol, <kbd>←</kbd>/<kbd>→</kbd> — oldingi/keyingi.</li>
+        <li data-i18n="tst.howto.1"><b>Mashq</b> rejimida har bir javobdan soʻng toʻgʻri javob va izoh darhol koʻrsatiladi.</li>
+        <li data-i18n="tst.howto.2"><b>Imtihon</b> rejimida natija faqat oxirida chiqadi; xohlasangiz vaqt cheklovini qoʻying.</li>
+        <li data-i18n="tst.howto.3">Savollar va javob variantlari har safar aralashtiriladi.</li>
+        <li data-i18n="tst.howto.4">Klaviatura: <kbd>1</kbd>–<kbd>4</kbd> yoki <kbd>A</kbd>–<kbd>D</kbd> — javob, <kbd>Enter</kbd> — keyingi savol, <kbd>←</kbd>/<kbd>→</kbd> — oldingi/keyingi.</li>
       </ul>
     </div>
   </section>
@@ -179,37 +184,37 @@ dialog p{margin:0 0 16px}
   <!-- SETUP -->
   <section id="setup" class="hidden" aria-labelledby="setup-h">
     <div class="row between" style="margin-bottom:12px">
-      <button type="button" class="btn ghost" id="setup-back">← Fanlar</button>
+      <button type="button" class="btn ghost" id="setup-back" data-i18n="tst.setup.back">← Fanlar</button>
     </div>
     <div class="panel">
       <h2 id="setup-h" tabindex="-1">Fan</h2>
       <p class="muted" id="setup-sub"></p>
       <form id="setup-form" novalidate>
         <fieldset>
-          <legend>Rejim</legend>
+          <legend data-i18n="tst.setup.mode">Rejim</legend>
           <label class="choice"><input type="radio" name="mode" value="practice" checked>
-            <span>Mashq<small>Har bir javobdan keyin toʻgʻri javob va izoh koʻrsatiladi.</small></span></label>
+            <span data-i18n="tst.setup.practice">Mashq<small>Har bir javobdan keyin toʻgʻri javob va izoh koʻrsatiladi.</small></span></label>
           <label class="choice"><input type="radio" name="mode" value="exam">
-            <span>Imtihon<small>Natija va izohlar faqat test yakunlangach koʻrsatiladi.</small></span></label>
+            <span data-i18n="tst.setup.exam">Imtihon<small>Natija va izohlar faqat test yakunlangach koʻrsatiladi.</small></span></label>
         </fieldset>
         <fieldset>
-          <legend>Savollar soni</legend>
+          <legend data-i18n="tst.setup.count">Savollar soni</legend>
           <div class="inline-choices" id="count-choices"></div>
         </fieldset>
         <fieldset id="timer-fs">
-          <legend>Vaqt cheklovi (faqat Imtihon)</legend>
-          <label for="timer-sel" class="sr">Vaqt cheklovi</label>
+          <legend data-i18n="tst.setup.timer">Vaqt cheklovi (faqat Imtihon)</legend>
+          <label for="timer-sel" class="sr" data-i18n="tst.setup.timer_sr">Vaqt cheklovi</label>
           <select id="timer-sel" disabled>
-            <option value="0">Cheklovsiz</option>
-            <option value="10">10 daqiqa</option>
-            <option value="20">20 daqiqa</option>
-            <option value="30">30 daqiqa</option>
-            <option value="45">45 daqiqa</option>
+            <option value="0" data-i18n="tst.min.0">Cheklovsiz</option>
+            <option value="10" data-i18n="tst.min.10">10 daqiqa</option>
+            <option value="20" data-i18n="tst.min.20">20 daqiqa</option>
+            <option value="30" data-i18n="tst.min.30">30 daqiqa</option>
+            <option value="45" data-i18n="tst.min.45">45 daqiqa</option>
           </select>
-          <p class="note">Vaqt tugaganda test avtomatik yakunlanadi.</p>
+          <p class="note" data-i18n="tst.setup.timer_note">Vaqt tugaganda test avtomatik yakunlanadi.</p>
         </fieldset>
         <div class="row end">
-          <button type="submit" class="btn primary">Testni boshlash</button>
+          <button type="submit" class="btn primary" data-i18n="tst.setup.start">Testni boshlash</button>
         </div>
       </form>
     </div>
@@ -223,28 +228,28 @@ dialog p{margin:0 0 16px}
         <div class="info" id="quiz-info"></div>
       </div>
       <div class="row">
-        <span class="timer hidden" id="timer" role="timer" aria-label="Qolgan vaqt"></span>
-        <button type="button" class="btn ghost" id="quiz-exit">Chiqish</button>
+        <span class="timer hidden" id="timer" role="timer" aria-label="Qolgan vaqt" data-i18n-attr="aria-label:tst.quiz.timer_aria"></span>
+        <button type="button" class="btn ghost" id="quiz-exit" data-i18n="tst.quiz.exit">Chiqish</button>
       </div>
     </div>
-    <div class="bar" role="progressbar" id="progress" aria-label="Javob berilgan savollar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
+    <div class="bar" role="progressbar" id="progress" aria-label="Javob berilgan savollar" data-i18n-attr="aria-label:tst.quiz.progress_aria" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
     <div class="panel">
       <p class="muted" id="q-num" style="margin:0 0 6px;font-size:.9rem"></p>
       <p class="qtext" id="q-text"></p>
       <div class="opts" id="opts" role="group" aria-labelledby="q-text"></div>
       <div class="feedback" id="feedback" aria-live="polite"></div>
       <div class="row between nav">
-        <button type="button" class="btn" id="prev-btn">← Oldingi</button>
+        <button type="button" class="btn" id="prev-btn" data-i18n="tst.quiz.prev">← Oldingi</button>
         <div class="row nav">
-          <button type="button" class="btn" id="finish-btn">Yakunlash</button>
+          <button type="button" class="btn" id="finish-btn" data-i18n="tst.quiz.finish">Yakunlash</button>
           <button type="button" class="btn primary" id="next-btn">Keyingi →</button>
         </div>
       </div>
       <div class="navq">
-        <h3 id="nav-h">Savollar</h3>
+        <h3 id="nav-h" data-i18n="tst.quiz.nav">Savollar</h3>
         <div class="dots" id="dots" role="group" aria-labelledby="nav-h"></div>
       </div>
-      <p class="kbd">Klaviatura: <kbd>1</kbd>–<kbd>4</kbd> / <kbd>A</kbd>–<kbd>D</kbd> javob, <kbd>Enter</kbd> keyingi, <kbd>←</kbd> <kbd>→</kbd> harakat.</p>
+      <p class="kbd" data-i18n="tst.quiz.kbd">Klaviatura: <kbd>1</kbd>–<kbd>4</kbd> / <kbd>A</kbd>–<kbd>D</kbd> javob, <kbd>Enter</kbd> keyingi, <kbd>←</kbd> <kbd>→</kbd> harakat.</p>
     </div>
   </section>
 
@@ -263,13 +268,13 @@ dialog p{margin:0 0 16px}
 <dialog id="dlg" aria-labelledby="dlg-msg">
   <p id="dlg-msg"></p>
   <div class="row end">
-    <button type="button" class="btn" id="dlg-no">Bekor qilish</button>
+    <button type="button" class="btn" id="dlg-no" data-i18n="tst.dlg.no">Bekor qilish</button>
     <button type="button" class="btn primary" id="dlg-yes">Ha</button>
   </div>
 </dialog>
 
 <footer>
-  <div class="wrap">© 2026 Hakimov Bahtiyorjon Muzaffar oʻgʻli. Barcha huquqlar himoyalangan.</div>
+  <div class="wrap" data-i18n="tst.foot">© 2026 Hakimov Bahtiyorjon Muzaffar oʻgʻli. Barcha huquqlar himoyalangan.</div>
 </footer>
 
 <!--
@@ -481,6 +486,8 @@ dialog p{margin:0 0 16px}
 ]}
 </script>
 
+<script src="../i18n/testlar.js"></script>
+<script src="../i18n.js"></script>
 <script>
 (function () {
   'use strict';
@@ -489,6 +496,10 @@ dialog p{margin:0 0 16px}
   var SUBJECTS = DATA.subjects;
   var STORE_KEY = 'testlar.best.v1';
   var LETTERS = ['A', 'B', 'C', 'D'];
+
+  /* ---------- i18n (../i18n.js) ---------- */
+  function T(k, v, def) { return window.I18N ? window.I18N.t('tst.' + k, v, def) : (def != null ? def : k); }
+  function sT(s, f) { return T('subj.' + s.id + '.' + f, null, s[f]); }
 
   /* ---------- storage ---------- */
   function loadBest() {
@@ -530,10 +541,8 @@ dialog p{margin:0 0 16px}
     return null;
   }
   function gradeOf(pct) {
-    if (pct >= 86) return { n: 5, t: 'Aʼlo' };
-    if (pct >= 71) return { n: 4, t: 'Yaxshi' };
-    if (pct >= 56) return { n: 3, t: 'Qoniqarli' };
-    return { n: 2, t: 'Qoniqarsiz' };
+    var n = pct >= 86 ? 5 : pct >= 71 ? 4 : pct >= 56 ? 3 : 2;
+    return { n: n, t: T('js.g' + n) };
   }
   function fmtTime(s) {
     var m = Math.floor(s / 60), r = s % 60;
@@ -556,7 +565,7 @@ dialog p{margin:0 0 16px}
       return;
     }
     $('dlg-msg').textContent = msg;
-    $('dlg-yes').textContent = yesLabel || 'Ha';
+    $('dlg-yes').textContent = yesLabel || T('js.yes');
     dlgCb = cb;
     dlg.showModal();
     $('dlg-no').focus();
@@ -574,13 +583,13 @@ dialog p{margin:0 0 16px}
     SUBJECTS.forEach(function (s) {
       var b = el('button', 'card');
       b.type = 'button';
-      var bestTxt = (typeof best[s.id] === 'number') ? ('Eng yaxshi natija: ' + best[s.id] + '%') : 'Hali topshirilmagan';
-      b.setAttribute('aria-label', s.title + '. ' + s.questions.length + ' ta savol. ' + bestTxt);
-      b.appendChild(el('span', 'tag', s.tag));
-      b.appendChild(el('h3', null, s.title));
-      b.appendChild(el('p', null, s.desc));
+      var bestTxt = (typeof best[s.id] === 'number') ? T('js.best', { pct: best[s.id] }) : T('js.notyet');
+      b.setAttribute('aria-label', sT(s, 'title') + '. ' + T('js.nq', { n: s.questions.length }) + '. ' + bestTxt);
+      b.appendChild(el('span', 'tag', sT(s, 'tag')));
+      b.appendChild(el('h3', null, sT(s, 'title')));
+      b.appendChild(el('p', null, sT(s, 'desc')));
       var meta = el('span', 'meta');
-      meta.appendChild(el('span', null, s.questions.length + ' ta savol'));
+      meta.appendChild(el('span', null, T('js.nq', { n: s.questions.length })));
       meta.appendChild(el('span', 'muted', bestTxt));
       b.appendChild(meta);
       b.addEventListener('click', function () { openSetup(s.id); });
@@ -593,23 +602,29 @@ dialog p{margin:0 0 16px}
   function openSetup(id) {
     var s = subjectById(id);
     setupSubject = s;
-    $('setup-h').textContent = s.title;
-    $('setup-sub').textContent = 'Savollar bazasida ' + s.questions.length + ' ta savol bor.';
+    $('count-choices').textContent = '';
+    renderSetupText(s);
+    show('setup');
+  }
+  function renderSetupText(s) {
+    $('setup-h').textContent = sT(s, 'title');
+    $('setup-sub').textContent = T('js.bank', { n: s.questions.length });
     var cc = $('count-choices');
+    var prev = cc.querySelector('input:checked');
+    var prevVal = prev ? prev.value : null;
     cc.textContent = '';
     [10, 20, 0].forEach(function (n, i) {
       if (n && n >= s.questions.length) return;
       var lab = el('label', 'choice');
       var inp = document.createElement('input');
       inp.type = 'radio'; inp.name = 'count'; inp.value = String(n);
-      if (i === 0) inp.checked = true;
+      if (prevVal != null ? inp.value === prevVal : i === 0) inp.checked = true;
       lab.appendChild(inp);
-      lab.appendChild(el('span', null, n ? (n + ' ta') : ('Hammasi (' + s.questions.length + ')')));
+      lab.appendChild(el('span', null, n ? T('js.count_n', { n: n }) : T('js.count_all', { n: s.questions.length })));
       cc.appendChild(lab);
     });
     if (!cc.querySelector('input:checked')) cc.querySelector('input').checked = true;
     syncTimer();
-    show('setup');
   }
   function syncTimer() {
     var exam = document.querySelector('input[name="mode"]:checked').value === 'exam';
@@ -643,8 +658,7 @@ dialog p{margin:0 0 16px}
       subj: subj, mode: mode, items: items, idx: 0, minutes: minutes,
       timeLeft: minutes * 60, timer: null, started: Date.now(), isRetry: isRetry, done: false
     };
-    $('quiz-h').textContent = subj.title + (isRetry ? ' — xatolar ustida ishlash' : '');
-    $('quiz-info').textContent = (mode === 'exam' ? 'Imtihon rejimi' : 'Mashq rejimi') + ' · ' + items.length + ' ta savol';
+    renderQuizHead();
     var tEl = $('timer');
     if (minutes) {
       tEl.classList.remove('hidden', 'low');
@@ -655,6 +669,11 @@ dialog p{margin:0 0 16px}
     }
     renderQuestion();
     show('quiz', 'q-text');
+  }
+
+  function renderQuizHead() {
+    $('quiz-h').textContent = sT(S.subj, 'title') + (S.isRetry ? T('js.retry_title') : '');
+    $('quiz-info').textContent = T(S.mode === 'exam' ? 'js.mode_exam' : 'js.mode_practice') + ' · ' + T('js.nq', { n: S.items.length });
   }
 
   function tick() {
@@ -683,7 +702,7 @@ dialog p{margin:0 0 16px}
     var practice = S.mode === 'practice';
     var locked = practice && it.chosen >= 0;
 
-    $('q-num').textContent = 'Savol ' + (S.idx + 1) + ' / ' + total;
+    $('q-num').textContent = T('js.qnum', { i: S.idx + 1, n: total });
     $('q-text').textContent = it.q.q;
     var qt = $('q-text'); qt.setAttribute('tabindex', '-1');
 
@@ -692,7 +711,7 @@ dialog p{margin:0 0 16px}
     var bar = $('progress');
     bar.firstElementChild.style.width = pct + '%';
     bar.setAttribute('aria-valuenow', String(pct));
-    bar.setAttribute('aria-valuetext', ans + ' / ' + total + ' savolga javob berilgan');
+    bar.setAttribute('aria-valuetext', T('js.answered', { a: ans, n: total }));
 
     var box = $('opts');
     box.textContent = '';
@@ -703,11 +722,11 @@ dialog p{margin:0 0 16px}
       var k = el('span', 'k', LETTERS[i]); k.setAttribute('aria-hidden', 'true');
       b.appendChild(k);
       b.appendChild(el('span', 't', o.t));
-      var label = LETTERS[i] + ' variant: ' + o.t;
+      var label = T('js.variant', { l: LETTERS[i], t: o.t });
       if (locked) {
         b.setAttribute('aria-disabled', 'true');
-        if (o.c) { b.classList.add('right'); label += '. Toʻgʻri javob'; }
-        else if (i === it.chosen) { b.classList.add('wrong'); label += '. Sizning javobingiz, notoʻgʻri'; }
+        if (o.c) { b.classList.add('right'); label += T('js.lbl_right'); }
+        else if (i === it.chosen) { b.classList.add('wrong'); label += T('js.lbl_wrong'); }
       } else {
         b.setAttribute('aria-pressed', i === it.chosen ? 'true' : 'false');
         if (i === it.chosen) b.classList.add('sel');
@@ -723,18 +742,18 @@ dialog p{margin:0 0 16px}
     if (locked) {
       var right = it.opts[it.chosen].c;
       fb.classList.add(right ? 'ok' : 'bad');
-      var head = el('b', null, right ? 'Toʻgʻri!' : 'Notoʻgʻri.');
+      var head = el('b', null, T(right ? 'js.fb_right' : 'js.fb_wrong'));
       fb.appendChild(head);
       if (!right) {
         var corr = it.opts.filter(function (o) { return o.c; })[0];
-        fb.appendChild(el('span', null, 'Toʻgʻri javob: ' + corr.t + '. '));
+        fb.appendChild(el('span', null, T('js.correct_is', { t: corr.t })));
       }
       fb.appendChild(el('span', null, it.q.e));
     }
 
     $('prev-btn').disabled = S.idx === 0;
     var last = S.idx === total - 1;
-    $('next-btn').textContent = last ? 'Yakunlash' : 'Keyingi →';
+    $('next-btn').textContent = T(last ? 'js.finish' : 'js.next');
 
     renderDots();
   }
@@ -745,19 +764,19 @@ dialog p{margin:0 0 16px}
     S.items.forEach(function (it, i) {
       var d = el('button', 'dot', String(i + 1));
       d.type = 'button';
-      var state = 'javob berilmagan';
+      var state = T('js.st_none');
       if (it.chosen >= 0) {
         if (S.mode === 'practice') {
           var ok = it.opts[it.chosen].c;
           d.classList.add(ok ? 'r' : 'w');
-          state = ok ? 'toʻgʻri' : 'notoʻgʻri';
+          state = T(ok ? 'js.st_right' : 'js.st_wrong');
         } else {
           d.classList.add('ans');
-          state = 'javob berilgan';
+          state = T('js.st_ans');
         }
       }
       if (i === S.idx) { d.classList.add('cur'); d.setAttribute('aria-current', 'step'); }
-      d.setAttribute('aria-label', (i + 1) + '-savol, ' + state);
+      d.setAttribute('aria-label', T('js.dot', { i: i + 1, s: state }));
       d.addEventListener('click', function () { go(i); });
       box.appendChild(d);
     });
@@ -789,15 +808,15 @@ dialog p{margin:0 0 16px}
 
   function askFinish() {
     var left = S.items.length - answeredCount();
-    var msg = 'Testni yakunlaysizmi?' + (left ? (' Javob berilmagan savollar: ' + left + ' ta.') : ' Barcha savollarga javob berdingiz.');
-    ask(msg, 'Ha, yakunlash', function () { finish(false); });
+    var msg = T('js.ask_finish') + (left ? T('js.left', { n: left }) : T('js.all_answered'));
+    ask(msg, T('js.yes_finish'), function () { finish(false); });
   }
 
   $('prev-btn').addEventListener('click', function () { go(S.idx - 1); });
   $('next-btn').addEventListener('click', next);
   $('finish-btn').addEventListener('click', askFinish);
   $('quiz-exit').addEventListener('click', function () {
-    ask('Testdan chiqasizmi? Joriy natijalar saqlanmaydi.', 'Ha, chiqish', function () {
+    ask(T('js.ask_exit'), T('js.yes_exit'), function () {
       stopTimer(); S = null; renderHome(); show('home');
     });
   });
@@ -835,15 +854,25 @@ dialog p{margin:0 0 16px}
       else wrong.push(it);
     });
     var pct = Math.round(correct / total * 100);
-    var g = gradeOf(pct);
     var record = false;
     if (!S.isRetry) record = saveBest(S.subj.id, pct);
     var spent = Math.round((Date.now() - S.started) / 1000);
+    R = { subj: S.subj, mode: S.mode, isRetry: S.isRetry, timeUp: timeUp,
+          total: total, correct: correct, pct: pct, record: record, spent: spent, wrong: wrong };
+    S = null;
+    renderResult();
+    show('result');
+  }
 
-    $('result-h').textContent = 'Natija: ' + S.subj.title;
-    $('result-sub').textContent = (timeUp ? 'Vaqt tugadi — test avtomatik yakunlandi. ' : '') +
-      (S.mode === 'exam' ? 'Imtihon rejimi' : 'Mashq rejimi') +
-      (S.isRetry ? ' · xatolar ustida ishlash' : '') + ' · sarflangan vaqt ' + fmtTime(spent);
+  var R = null;
+  function renderResult() {
+    if (!R) return;
+    var total = R.total, correct = R.correct, pct = R.pct, record = R.record, wrong = R.wrong;
+    var g = gradeOf(pct);
+    $('result-h').textContent = T('js.res_h', { t: sT(R.subj, 'title') });
+    $('result-sub').textContent = (R.timeUp ? T('js.timeup') : '') +
+      T(R.mode === 'exam' ? 'js.mode_exam' : 'js.mode_practice') +
+      (R.isRetry ? T('js.retry_tag') : '') + T('js.spent', { t: fmtTime(R.spent) });
 
     var sc = $('score');
     sc.textContent = '';
@@ -855,51 +884,58 @@ dialog p{margin:0 0 16px}
       sc.appendChild(d);
       return vv;
     }
-    stat(correct + ' / ' + total, 'Toʻgʻri javoblar');
-    stat(pct + '%', 'Foiz');
-    var gv = stat(g.t, 'Baho (' + g.n + ')', 'grade-' + g.n);
-    if (record) { var bd = el('span', 'badge', 'Yangi rekord!'); gv.appendChild(bd); }
+    stat(correct + ' / ' + total, T('js.s_correct'));
+    stat(pct + '%', T('js.s_pct'));
+    var gv = stat(g.t, T('js.s_grade', { n: g.n }), 'grade-' + g.n);
+    if (record) { var bd = el('span', 'badge', T('js.record')); gv.appendChild(bd); }
 
     var acts = $('result-actions');
     acts.textContent = '';
-    var subj = S.subj, mode = S.mode, minutes = S.minutes;
+    var subj = R.subj, mode = R.mode;
     if (wrong.length) {
-      var rb = el('button', 'btn primary', 'Xatolarni qayta ishlash (' + wrong.length + ')');
+      var rb = el('button', 'btn primary', T('js.redo', { n: wrong.length }));
       rb.type = 'button';
       var pool = wrong.map(function (it) { return it.q; });
-      rb.addEventListener('click', function () { startQuiz(subj, mode, pool, 0, 0, true); });
+      rb.addEventListener('click', function () { R = null; startQuiz(subj, mode, pool, 0, 0, true); });
       acts.appendChild(rb);
     }
-    var again = el('button', 'btn', 'Yangi test');
+    var again = el('button', 'btn', T('js.new'));
     again.type = 'button';
-    again.addEventListener('click', function () { openSetup(subj.id); });
+    again.addEventListener('click', function () { R = null; openSetup(subj.id); });
     acts.appendChild(again);
-    var home = el('button', 'btn ghost', 'Fanlar roʻyxati');
+    var home = el('button', 'btn ghost', T('js.subjects'));
     home.type = 'button';
-    home.addEventListener('click', function () { renderHome(); show('home'); });
+    home.addEventListener('click', function () { R = null; renderHome(); show('home'); });
     acts.appendChild(home);
 
     var rw = $('review-wrap');
     rw.textContent = '';
     if (!wrong.length) {
-      rw.appendChild(el('p', null, 'Barcha javoblar toʻgʻri — ajoyib natija!'));
+      rw.appendChild(el('p', null, T('js.allright')));
     } else {
-      rw.appendChild(el('h3', null, 'Xatolar va toʻgʻri javoblar (' + wrong.length + ')'));
+      rw.appendChild(el('h3', null, T('js.review_h', { n: wrong.length })));
       var ul = el('ol', 'review');
       wrong.forEach(function (it) {
         var li = el('li');
         li.appendChild(el('div', 'rq', it.q.q));
-        var yours = it.chosen >= 0 ? it.opts[it.chosen].t : 'Javob berilmagan';
-        li.appendChild(el('p', 'yours', 'Sizning javobingiz: ' + yours));
-        li.appendChild(el('p', 'corr', 'Toʻgʻri javob: ' + it.q.o[0]));
+        var yours = it.chosen >= 0 ? it.opts[it.chosen].t : T('js.no_answer');
+        li.appendChild(el('p', 'yours', T('js.yours', { t: yours })));
+        li.appendChild(el('p', 'corr', T('js.corr', { t: it.q.o[0] })));
         li.appendChild(el('p', 'ex', it.q.e));
         ul.appendChild(li);
       });
       rw.appendChild(ul);
     }
-    S = null;
-    show('result');
   }
+
+  /* til almashganda ochiq ekranni qayta chizish */
+  if (window.I18N) window.I18N.on(function () {
+    if (!$('home').classList.contains('hidden')) renderHome();
+    if (!$('setup').classList.contains('hidden') && setupSubject) renderSetupText(setupSubject);
+    if (!$('quiz').classList.contains('hidden') && S) { renderQuizHead(); renderQuestion(); }
+    if (!$('result').classList.contains('hidden')) renderResult();
+    if (dlg && dlg.open) { dlgCb = null; dlg.close(); }
+  });
 
   renderHome();
 })();

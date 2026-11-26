@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """eduhakimov.github.io/ishlar/ sahifalarini yasaydi."""
-import html, json, os, sys
+import html, json, os, re, sys
 
 OUT = sys.argv[1]  # .../eduhakimov.github.io/ishlar
 BASE = "https://eduhakimov.github.io/ishlar/"
@@ -281,73 +281,178 @@ ul{padding-left:22px}li{margin:0 0 8px}dl dt{font-weight:600;margin-top:12px}dl 
 .box{border:1px solid var(--line);border-left:3px solid var(--lk);border-radius:8px;padding:12px 16px;background:var(--card);font:14px/1.55 system-ui,sans-serif;color:var(--mut);margin:24px 0}
 a{color:var(--acc)}footer{margin-top:40px;color:var(--mut);font:13px system-ui,sans-serif}"""
 
-def bosh(title, desc, url, extra=""):
+# ---------- tillar (i18n): o'zbekcha - asl HTML, en/ru/zh - tarjima_*.py; ../i18n.js almashtiradi
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import tarjima_en, tarjima_ru, tarjima_zh  # noqa: E402
+TR = {"en": tarjima_en, "ru": tarjima_ru, "zh": tarjima_zh}
+TL = list(TR)
+
+
+def tr_all(fn):
+    """{til: fn(tarjima_moduli)}"""
+    return {l: fn(TR[l]) for l in TL}
+
+
+def S(key, **kw):
+    """SAHIFA matni har bir tilda, o'rinlari to'ldirilgan."""
+    return {l: TR[l].SAHIFA[key].format(**kw) for l in TL}
+
+
+def kalit(x):
+    return re.sub(r"[^a-z0-9]+", "-", x.lower()).strip("-")
+
+
+class Lugat:
+    """Bitta sahifa lug'ati: {uz: {...}, en: {...}, ru: {...}, zh: {...}}. Qiymatlar tayyor HTML."""
+    def __init__(self):
+        self.d = {"uz": {}}
+        self.d.update({l: {} for l in TL})
+
+    def add(self, key, uz, tr):
+        assert set(tr) == set(TL), key
+        if key in self.d["uz"]:
+            assert self.d["uz"][key] == uz and all(self.d[l][key] == tr[l] for l in TL), "kalit to'qnashuvi: " + key
+        self.d["uz"][key] = uz
+        for l in TL:
+            self.d[l][key] = tr[l]
+
+    def el(self, tag, key, uz, tr, attrs="", raw=False):
+        """<tag attrs data-i18n="key">uz</tag>; raw=False bo'lsa matnlar escape qilinadi."""
+        f = (lambda x: x) if raw else e
+        self.add(key, f(uz), {l: f(tr[l]) for l in TL})
+        return f'<{tag}{attrs} data-i18n="{key}">{f(uz)}</{tag}>'
+
+    def script(self):
+        body = json.dumps(self.d, ensure_ascii=False, sort_keys=True).replace("</", "<\\/")
+        return ('<script>(window.I18N_D=window.I18N_D||[]).push(' + body + ');</script>\n'
+                '<script src="../i18n.js"></script>\n')
+
+
+def bosh(L, tkey, title, ttr, dkey, desc, dtr, url, extra=""):
+    L.add(tkey, e(title), {l: e(ttr[l]) for l in TL})
+    L.add(dkey, desc, dtr)  # atribut qiymati: xom matn
     return f"""<!doctype html><html lang="uz"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{e(title)}</title><meta name="description" content="{e(desc)}"><meta name="author" content="{e(MUALLIF)}">
+<title data-i18n="{tkey}">{e(title)}</title><meta name="description" data-i18n-attr="content:{dkey}" content="{e(desc)}"><meta name="author" content="{e(MUALLIF)}">
 <link rel="canonical" href="{url}"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:url" content="{url}"><meta property="og:image" content="https://eduhakimov.github.io/photo.jpg">
 {extra}<style>{CSS}</style></head><body><div class="w">
+<div data-i18n-sw></div>
 """
 
-FOOT = f'<footer>© 2026 {e(MUALLIF)}. Barcha huquqlar himoyalangan.</footer>\n</div></body></html>\n'
 
-def teglar(t):
-    return '<div class="t">' + "".join(f"<span>{e(x)}</span>" for x in t) + "</div>"
+def foot(L):
+    return (f'<footer data-i18n="foot.rights">© 2026 {e(MUALLIF)}. Barcha huquqlar himoyalangan.</footer>\n</div>\n'
+            + L.script() + '</body></html>\n')
 
-def karta(i):
+
+def teglar(t, L):
+    out = []
+    for x in t:
+        if x in tarjima_en.TEG:
+            out.append(L.el("span", "teg." + kalit(x), x, tr_all(lambda m: m.TEG[x])))
+        else:
+            out.append(f"<span>{e(x)}</span>")
+    return '<div class="t">' + "".join(out) + "</div>"
+
+
+def karta(i, L):
+    s = i["slug"]
     if i["turi"] == "ochiq":
-        href, badge, go = i["havola"], '<span class="b o">Ochiq</span>', "Ochish ↗"
+        href = i["havola"]
+        badge = '<span class="b o" data-i18n="badge.open">Ochiq</span>'
+        go = '<span class="go" data-i18n="go.open">Ochish ↗</span>'
     else:
-        href, badge, go = i["slug"] + ".html", '<span class="b y">Yopiq · tavsif</span>', "Batafsil →"
-    return (f'<a class="c" href="{e(href)}">{badge}<b>{e(i["nom"])}</b><p>{e(i["qisqa"])}</p>'
-            f'{teglar(i["teg"])}<span class="go">{go}</span></a>')
+        href = s + ".html"
+        badge = '<span class="b y" data-i18n="badge.closed">Yopiq · tavsif</span>'
+        go = '<span class="go" data-i18n="go.more">Batafsil →</span>'
+    return (f'<a class="c" href="{e(href)}">{badge}'
+            + L.el("b", f"c.{s}.nom", i["nom"], tr_all(lambda m: m.ISHLAR[s]["nom"]))
+            + L.el("p", f"c.{s}.qisqa", i["qisqa"], tr_all(lambda m: m.ISHLAR[s]["qisqa"]))
+            + f'{teglar(i["teg"], L)}{go}</a>')
+
 
 os.makedirs(OUT, exist_ok=True)
 
 # ---------- ro'yxat sahifasi
 ochiq = sum(1 for i in ISHLAR if i["turi"] == "ochiq")
 yopiq = len(ISHLAR) - ochiq
+n = len(ISHLAR)
+L = Lugat()
 ld = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Hakimov B.M. – loyihalar va ishlar",
       "url": BASE, "author": {"@type": "Person", "name": "Bahtiyorjon Hakimov", "url": "https://eduhakimov.github.io/"},
       "hasPart": [{"@type": "CreativeWork", "name": i["nom"], "url": i["havola"] if i["turi"] == "ochiq" else BASE + i["slug"] + ".html"} for i in ISHLAR]}
-s = bosh("Ishlarim – Hakimov Bahtiyorjon | loyihalar, platformalar, o'yinlar",
-         f"Hakimov Bahtiyorjon Muzaffar o'g'lining {len(ISHLAR)} ta loyihasi: ta'lim platformalari, After Effects animatsiya moduli, 3D modellar, o'yinlar va dasturlar.",
-         BASE, f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n')
-s += '<nav><a href="../">← Ilmiy ishlar</a><a href="https://www.youtube.com/@Bahtiyor_Studio">YouTube</a><a href="' + TG + '">Telegram</a><a href="https://github.com/eduhakimov">GitHub</a></nav>\n'
-s += f'<h1>Ishlarim</h1><p class="sub">{e(MUALLIF)} · {len(ISHLAR)} ta loyiha: {ochiq} tasi ochiq (havola orqali ochiladi), {yopiq} tasi yopiq (manba kodi va materiallari tarqatilmaydi, bu yerda nima ekanligi va asosiy tushunchalari yozilgan).</p>\n'
+s = bosh(L, "ish.title", "Ishlarim – Hakimov Bahtiyorjon | loyihalar, platformalar, o'yinlar", S("ish.title"),
+         "ish.desc", f"Hakimov Bahtiyorjon Muzaffar o'g'lining {n} ta loyihasi: ta'lim platformalari, After Effects animatsiya moduli, 3D modellar, o'yinlar va dasturlar.",
+         S("ish.desc", n=n), BASE, f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n')
+s += ('<nav><a href="../" data-i18n="nav.sci">← Ilmiy ishlar</a><a href="https://www.youtube.com/@Bahtiyor_Studio">YouTube</a>'
+      '<a href="' + TG + '">Telegram</a><a href="https://github.com/eduhakimov">GitHub</a></nav>\n')
+s += (L.el("h1", "ish.h1", "Ishlarim", S("ish.h1"))
+      + L.el("p", "ish.sub", f"{MUALLIF} · {n} ta loyiha: {ochiq} tasi ochiq (havola orqali ochiladi), {yopiq} tasi yopiq (manba kodi va materiallari tarqatilmaydi, bu yerda nima ekanligi va asosiy tushunchalari yozilgan).",
+             S("ish.sub", author=MUALLIF, n=n, o=ochiq, y=yopiq), attrs=' class="sub"') + "\n")
 for kod, sarlavha in BOLIMLAR:
-    s += f'<h2>{e(sarlavha)}</h2><div class="g">' + "".join(karta(i) for i in ISHLAR if i["bolim"] == kod) + "</div>\n"
-s += ('<h2>Ilmiy ishlar</h2><div class="g">'
-      '<a class="c" href="../"><span class="b o">Ochiq</span><b>47 ta ilmiy maqola va tezis</b><p>2024–2026 yillar: kompyuter grafikasi, After Effects animatsiyasi, UI/UX, SUMO GUI. Ko\'pchiligi DOI bilan.</p><span class="go">Ro\'yxat →</span></a>'
-      '<a class="c" href="../"><span class="b o">Ochiq</span><b>"Kompyuter grafikasi" o\'quv qo\'llanmasi</b><p>Djuraboyev M.K. bilan hammualliflikda, 2024, 162 bet, grif № 571-11.</p><span class="go">Batafsil →</span></a>'
-      '<a class="c" href="../"><span class="b o">Ochiq</span><b>6 ta DGU/BGU guvohnomasi</b><p>Adliya vazirligida ro\'yxatdan o\'tgan dasturlar va ma\'lumotlar bazalari: Smart traffic, Smart switch, davomat botlari.</p><span class="go">Ro\'yxat →</span></a>'
-      '</div>\n')
-s += '<h2 id="yutuqlar">Yutuqlar va sertifikatlar</h2><ul>' + "".join(f'<li><b>{e(a)}</b><br><span class="t">{e(b)}</span></li>' for a, b in YUTUQLAR) + '</ul>\n'
-s += '<p class="t">Onlayn kurs sertifikatlari: ' + " · ".join(e(x) for x in SERTIFIKATLAR) + '.</p>\n'
-s += '<p><a class="go" href="../yutuqlar/">Barcha yutuqlar va 45 ta xalqaro sertifikat ro\'yxati →</a></p>\n'
-s += FOOT
+    s += (L.el("h2", "bolim." + kod, sarlavha, tr_all(lambda m: m.BOLIMLAR[kod]))
+          + '<div class="g">' + "".join(karta(i, L) for i in ISHLAR if i["bolim"] == kod) + "</div>\n")
+OCH = '<a class="c" href="../"><span class="b o" data-i18n="badge.open">Ochiq</span>'
+s += (L.el("h2", "ish.h.sci", "Ilmiy ishlar", S("ish.h.sci")) + '<div class="g">'
+      + OCH + L.el("b", "ish.sci1.b", "47 ta ilmiy maqola va tezis", S("ish.sci1.b", p=47))
+      + L.el("p", "ish.sci1.p", "2024–2026 yillar: kompyuter grafikasi, After Effects animatsiyasi, UI/UX, SUMO GUI. Ko'pchiligi DOI bilan.", S("ish.sci1.p"))
+      + '<span class="go" data-i18n="go.list">Ro\'yxat →</span></a>'
+      + OCH + L.el("b", "ish.sci2.b", "\"Kompyuter grafikasi\" o'quv qo'llanmasi", S("ish.sci2.b"))
+      + L.el("p", "ish.sci2.p", "Djuraboyev M.K. bilan hammualliflikda, 2024, 162 bet, grif № 571-11.", S("ish.sci2.p"))
+      + '<span class="go" data-i18n="go.more">Batafsil →</span></a>'
+      + OCH + L.el("b", "ish.sci3.b", "6 ta DGU/BGU guvohnomasi", S("ish.sci3.b"))
+      + L.el("p", "ish.sci3.p", "Adliya vazirligida ro'yxatdan o'tgan dasturlar va ma'lumotlar bazalari: Smart traffic, Smart switch, davomat botlari.", S("ish.sci3.p"))
+      + '<span class="go" data-i18n="go.list">Ro\'yxat →</span></a>'
+      + '</div>\n')
+s += L.el("h2", "ish.h.yutuq", "Yutuqlar va sertifikatlar", S("ish.h.yutuq"), attrs=' id="yutuqlar"') + '<ul>'
+for k, (a, b) in enumerate(YUTUQLAR):
+    s += ('<li>' + L.el("b", f"ish.y.{k}.a", a, tr_all(lambda m: m.YUTUQLAR[k][0])) + '<br>'
+          + L.el("span", f"ish.y.{k}.b", b, tr_all(lambda m: m.YUTUQLAR[k][1]), attrs=' class="t"') + '</li>')
+s += '</ul>\n'
+s += L.el("p", "ish.sert", "Onlayn kurs sertifikatlari: " + " · ".join(SERTIFIKATLAR) + ".",
+          tr_all(lambda m: m.SAHIFA["ish.sert"] + " · ".join(m.SERT.get(x, x) for x in SERTIFIKATLAR) + "."), attrs=' class="t"') + '\n'
+s += '<p>' + L.el("a", "ish.all", "Barcha yutuqlar va 45 ta xalqaro sertifikat ro'yxati →", S("ish.all", j=45), attrs=' class="go" href="../yutuqlar/"') + '</p>\n'
+s += foot(L)
 open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(s)
 
 # ---------- yopiq ishlar sahifalari
 for i in ISHLAR:
     if i["turi"] != "yopiq":
         continue
-    url = BASE + i["slug"] + ".html"
-    ld = {"@context": "https://schema.org", "@type": "SoftwareApplication" if i["bolim"] != "grafika" or "ziyoanim" in i["slug"] else "CreativeWork",
+    sl = i["slug"]
+    tt = {l: TR[l].ISHLAR[sl] for l in TL}
+    L = Lugat()
+    url = BASE + sl + ".html"
+    ld = {"@context": "https://schema.org", "@type": "SoftwareApplication" if i["bolim"] != "grafika" or "ziyoanim" in sl else "CreativeWork",
           "name": i["nom"], "description": i["qisqa"], "url": url, "inLanguage": "uz",
           "author": {"@type": "Person", "name": "Bahtiyorjon Hakimov", "url": "https://eduhakimov.github.io/"},
           "keywords": ", ".join(i["teg"])}
-    s = bosh(f'{i["nom"]} – Hakimov B.M.', i["qisqa"], url, f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n')
-    s += '<nav><a href="./">← Barcha ishlar</a><a href="../">Ilmiy ishlar</a><a href="' + TG + '">Telegram</a></nav>\n'
-    s += f'<span class="b y">Yopiq loyiha</span><h1>{e(i["nom"])}</h1><p class="sub">{e(i["qisqa"])}</p>{teglar(i["teg"])}\n'
-    s += f'<h2>Bu nima</h2><p>{e(i["nima"])}</p>\n'
-    s += '<h2>Imkoniyatlari</h2><ul>' + "".join(f"<li>{e(x)}</li>" for x in i["imkon"]) + "</ul>\n"
-    s += '<h2>Asosiy tushunchalar</h2><dl>' + "".join(f"<dt>{e(a)}</dt><dd>{e(b)}</dd>" for a, b in i["tushuncha"]) + "</dl>\n"
-    s += f'<h2>Holati</h2><p>{e(i["holat"])}</p>\n'
-    s += (f'<div class="box">Bu loyihaning manba kodi va materiallari ochiq e\'lon qilinmagan ({e(i["sabab"])}). '
-          f'Sahifada faqat uning nima ekanligi va asosiy g\'oyalari yozilgan. Hamkorlik yoki namoyish uchun '
-          f'<a href="{TG}">Telegram</a> orqali bog\'laning.</div>\n')
-    s += FOOT
-    open(os.path.join(OUT, i["slug"] + ".html"), "w", encoding="utf-8").write(s)
+    s = bosh(L, "p.title", f'{i["nom"]} – Hakimov B.M.', {l: tt[l]["nom"] + " – Hakimov B.M." for l in TL},
+             "p.desc", i["qisqa"], {l: tt[l]["qisqa"] for l in TL}, url,
+             f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n')
+    s += ('<nav><a href="./" data-i18n="nav.works_back">← Barcha ishlar</a><a href="../" data-i18n="nav.sci_plain">Ilmiy ishlar</a>'
+          '<a href="' + TG + '">Telegram</a></nav>\n')
+    s += ('<span class="b y" data-i18n="badge.closedproj">Yopiq loyiha</span>'
+          + L.el("h1", "p.nom", i["nom"], {l: tt[l]["nom"] for l in TL})
+          + L.el("p", "p.qisqa", i["qisqa"], {l: tt[l]["qisqa"] for l in TL}, attrs=' class="sub"')
+          + teglar(i["teg"], L) + "\n")
+    s += L.el("h2", "p.h.nima", "Bu nima", S("p.h.nima")) + L.el("p", "p.nima", i["nima"], {l: tt[l]["nima"] for l in TL}) + "\n"
+    assert all(len(tt[l]["imkon"]) == len(i["imkon"]) and len(tt[l]["tushuncha"]) == len(i["tushuncha"]) for l in TL), sl
+    s += (L.el("h2", "p.h.imkon", "Imkoniyatlari", S("p.h.imkon")) + '<ul>'
+          + "".join(L.el("li", f"p.imkon.{k}", x, {l: tt[l]["imkon"][k] for l in TL}) for k, x in enumerate(i["imkon"]))
+          + "</ul>\n")
+    s += (L.el("h2", "p.h.tush", "Asosiy tushunchalar", S("p.h.tush")) + '<dl>'
+          + "".join(L.el("dt", f"p.t.{k}.a", a, {l: tt[l]["tushuncha"][k][0] for l in TL})
+                    + L.el("dd", f"p.t.{k}.b", b, {l: tt[l]["tushuncha"][k][1] for l in TL})
+                    for k, (a, b) in enumerate(i["tushuncha"]))
+          + "</dl>\n")
+    s += L.el("h2", "p.h.holat", "Holati", S("p.h.holat")) + L.el("p", "p.holat", i["holat"], {l: tt[l]["holat"] for l in TL}) + "\n"
+    box_uz = (f'Bu loyihaning manba kodi va materiallari ochiq e\'lon qilinmagan ({e(i["sabab"])}). '
+              f'Sahifada faqat uning nima ekanligi va asosiy g\'oyalari yozilgan. Hamkorlik yoki namoyish uchun '
+              f'<a href="{TG}">Telegram</a> orqali bog\'laning.')
+    s += L.el("div", "p.box", box_uz, {l: TR[l].SAHIFA["p.box"].format(sabab=e(tt[l]["sabab"]), tg=TG) for l in TL},
+              attrs=' class="box"', raw=True) + "\n"
+    s += foot(L)
+    open(os.path.join(OUT, sl + ".html"), "w", encoding="utf-8").write(s)
 
 # YUTUQ_SAHIFA
 # ---------- yutuqlar sahifasi (../yutuqlar/)
@@ -439,27 +544,52 @@ ld = {"@context": "https://schema.org", "@type": "ProfilePage", "url": YB,
                                              "recognizedBy": {"@type": "Organization", "name": t}},
                                             **({"url": CV + c} if c else {}))
                                        for _, ks in XALQARO for k, t, d, c in ks]}}
-s = bosh("Yutuqlar va sertifikatlar – Hakimov Bahtiyorjon",
-         f"Hakimov Bahtiyorjon Muzaffar o'g'lining davlat mukofotlari, tanlovlardagi natijalari va {JAMI} ta xalqaro sertifikati: Google, IBM, Adobe, Cisco, Coursera.",
-         YB, f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n')
-s += '<nav><a href="../">← Ilmiy ishlar</a><a href="../ishlar/">Barcha ishlar</a><a href="../galereya/">Galereya</a><a href="' + TG + '">Telegram</a></nav>\n'
-s += (f'<h1>Yutuqlar va sertifikatlar</h1><p class="sub">{e(MUALLIF)} · davlat mukofotlari, tanlovlar va {JAMI} ta xalqaro sertifikat. '
-      "Ma'lumotlar asl hujjatlar asosida yozilgan; Coursera sertifikatlarini havola orqali tekshirish mumkin.</p>\n")
-li = lambda a, b: f'<li><b>{e(a)}</b><br><span class="t">{e(b)}</span></li>'
-s += "<h2>Davlat mukofotlari va rasmiy e'tirof</h2><ul>" + "".join(li(a, b) for a, b in DAVLAT) + '</ul>\n'
-s += '<h2>Tanlovlar va tashakkurnomalar</h2><ul>' + "".join(li(a, b) for a, b in TANLOV) + '</ul>\n'
-s += f'<h2>Xalqaro sertifikatlar ({JAMI} ta)</h2>\n'
-for plat, ks in XALQARO:
-    s += f'<h3 style="font-size:17px;margin:22px 0 8px">{e(plat)} <span class="t">· {len(ks)} ta</span></h3><ul>'
-    for k, t, d, c in ks:
+assert JAMI == 45, JAMI  # ishlar/index.html va index.html dagi "45" bilan bir xil bo'lsin
+L = Lugat()
+s = bosh(L, "yt.title", "Yutuqlar va sertifikatlar – Hakimov Bahtiyorjon", S("yt.title"),
+         "yt.desc", f"Hakimov Bahtiyorjon Muzaffar o'g'lining davlat mukofotlari, tanlovlardagi natijalari va {JAMI} ta xalqaro sertifikati: Google, IBM, Adobe, Cisco, Coursera.",
+         S("yt.desc", j=JAMI), YB, f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n')
+s += ('<nav><a href="../" data-i18n="nav.sci">← Ilmiy ishlar</a><a href="../ishlar/" data-i18n="nav.works">Barcha ishlar</a>'
+      '<a href="../galereya/" data-i18n="nav.gallery">Galereya</a><a href="' + TG + '">Telegram</a></nav>\n')
+s += (L.el("h1", "yt.h1", "Yutuqlar va sertifikatlar", S("yt.h1"))
+      + L.el("p", "yt.sub", f"{MUALLIF} · davlat mukofotlari, tanlovlar va {JAMI} ta xalqaro sertifikat. "
+                            "Ma'lumotlar asl hujjatlar asosida yozilgan; Coursera sertifikatlarini havola orqali tekshirish mumkin.",
+             S("yt.sub", author=MUALLIF, j=JAMI), attrs=' class="sub"') + "\n")
+
+
+def li2(key, a, b, tra, trb):
+    return ('<li>' + L.el("b", key + ".a", a, tra) + '<br>'
+            + L.el("span", key + ".b", b, trb, attrs=' class="t"') + '</li>')
+
+
+s += (L.el("h2", "yt.h.davlat", "Davlat mukofotlari va rasmiy e'tirof", S("yt.h.davlat")) + "<ul>"
+      + "".join(li2(f"yt.d.{k}", a, b, tr_all(lambda m: m.DAVLAT[k][0]), tr_all(lambda m: m.DAVLAT[k][1]))
+                for k, (a, b) in enumerate(DAVLAT)) + '</ul>\n')
+s += (L.el("h2", "yt.h.tanlov", "Tanlovlar va tashakkurnomalar", S("yt.h.tanlov")) + "<ul>"
+      + "".join(li2(f"yt.t.{k}", a, b, tr_all(lambda m: m.TANLOV[k][0]), tr_all(lambda m: m.TANLOV[k][1]))
+                for k, (a, b) in enumerate(TANLOV)) + '</ul>\n')
+s += L.el("h2", "yt.h.xalqaro", f"Xalqaro sertifikatlar ({JAMI} ta)", S("yt.h.xalqaro", j=JAMI)) + "\n"
+for pi, (plat, ks) in enumerate(XALQARO):
+    h3_uz = f'{e(plat)} <span class="t">· {len(ks)} ta</span>'
+    h3_tr = tr_all(lambda m: e(m.PLATFORMA.get(plat, plat)) + ' <span class="t">' + e(m.SAHIFA["yt.cnt"].format(n=len(ks))) + '</span>')
+    s += L.el("h3", f"yt.pl.{pi}", h3_uz, h3_tr, attrs=' style="font-size:17px;margin:22px 0 8px"', raw=True) + '<ul>'
+    for ki, (k, t, d, c) in enumerate(ks):
+        b = (L.el("b", f"yt.k.{pi}.{ki}", k, tr_all(lambda m: m.KURS[k])) if k in tarjima_en.KURS else f"<b>{e(k)}</b>")
         izoh = " · ".join(x for x in (t, d) if x)
-        tek = f' · <a href="{CV}{c}">tekshirish ↗</a>' if c else ""
-        s += f'<li><b>{e(k)}</b><br><span class="t">{e(izoh)}{tek}</span></li>'
+        if t in tarjima_en.TASHKILOT:
+            izoh_h = L.el("span", f"yt.o.{pi}.{ki}", izoh, tr_all(lambda m: " · ".join(x for x in (m.TASHKILOT[t], d) if x)))
+        else:
+            izoh_h = e(izoh)
+        tek = f' · <a href="{CV}{c}" data-i18n="verify">tekshirish ↗</a>' if c else ""
+        s += f'<li>{b}<br><span class="t">{izoh_h}{tek}</span></li>'
     s += '</ul>\n'
-s += '<h2>Til sertifikatlari</h2><ul>' + "".join(li(a, b) for a, b in TIL) + '</ul>\n'
-s += ("<div class=\"box\">Sertifikatlarning asl nusxalari muallifda saqlanadi. Hujjatlarni ko'rish yoki tekshirish uchun "
-      f'<a href="{TG}">Telegram</a> orqali bog\'laning.</div>\n')
-s += FOOT
+s += (L.el("h2", "yt.h.til", "Til sertifikatlari", S("yt.h.til")) + "<ul>"
+      + "".join(li2(f"yt.l.{k}", a, b, tr_all(lambda m: m.TIL[k][0]), tr_all(lambda m: m.TIL[k][1]))
+                for k, (a, b) in enumerate(TIL)) + '</ul>\n')
+box_uz = ("Sertifikatlarning asl nusxalari muallifda saqlanadi. Hujjatlarni ko'rish yoki tekshirish uchun "
+          f'<a href="{TG}">Telegram</a> orqali bog\'laning.')
+s += L.el("div", "yt.box", box_uz, S("yt.box", tg=TG), attrs=' class="box"', raw=True) + "\n"
+s += foot(L)
 open(os.path.join(YO, "index.html"), "w", encoding="utf-8").write(s)
 
 # sitemap uchun ro'yxat
