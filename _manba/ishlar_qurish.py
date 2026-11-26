@@ -71,6 +71,10 @@ ISHLAR = [
       teg=["TypeScript", "React", "Gemini"]),
 
  # ---------------- Animatsiya, grafika, 3D
+ dict(bolim="grafika", slug="galereya", nom="Grafik dizayn galereyasi", turi="ochiq",
+      havola="https://eduhakimov.github.io/galereya/", repo=GH+"eduhakimov.github.io",
+      qisqa="Fan posterlari seriyasi, tabriknomalar, brosyura, poster va sertifikat dizaynlaridan tanlangan ishlar.",
+      teg=["Illustrator", "Photoshop", "Poster"]),
  dict(bolim="grafika", slug="ziyoanim-ik", nom="ZiyoAnim IK: After Effects uchun animatsiya moduli", turi="yopiq",
       qisqa="Adobe After Effects uchun o'zbek tilidagi personaj animatsiyasi moduli: IK, FK, overlap, yuz ifodalari, yurish generatori va bake bitta panelda.",
       teg=["ExtendScript", "After Effects", "Animatsiya", "IK"],
