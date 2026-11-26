@@ -323,7 +323,7 @@ s += ('<h2>Ilmiy ishlar</h2><div class="g">'
       '</div>\n')
 s += '<h2 id="yutuqlar">Yutuqlar va sertifikatlar</h2><ul>' + "".join(f'<li><b>{e(a)}</b><br><span class="t">{e(b)}</span></li>' for a, b in YUTUQLAR) + '</ul>\n'
 s += '<p class="t">Onlayn kurs sertifikatlari: ' + " · ".join(e(x) for x in SERTIFIKATLAR) + '.</p>\n'
-s += '<p><a class="go" href="../yutuqlar/">Barcha yutuqlar va 43 ta xalqaro sertifikat ro\'yxati →</a></p>\n'
+s += '<p><a class="go" href="../yutuqlar/">Barcha yutuqlar va 45 ta xalqaro sertifikat ro\'yxati →</a></p>\n'
 s += FOOT
 open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(s)
 
@@ -370,6 +370,8 @@ TANLOV = [
 # (platforma, [(kurs, tashkilot, sana, coursera_tekshirish_kodi)])
 XALQARO = [
     ("Coursera", [
+        ("Adobe Marketing Specialist (Professional Certificate)", "Adobe", "03.2026", "professional-cert/Q49HB9P9ELV9"),
+        ("Security Operations Center (SOC)", "Cisco Learning and Certifications", "03.2024", "2PC5R5YKJEDT"),
         ("Foundations of User Experience (UX) Design", "Google", "17.12.2023", "ZN89LEP24TFK"),
         ("Fundamentals of Graphic Design", "California Institute of the Arts", "17.12.2023", "NBKGP66Y9ZCF"),
         ("Introduction to Cybersecurity Tools & Cyber Attacks", "IBM", "15.12.2023", "EEKNY5GU86KK"),
