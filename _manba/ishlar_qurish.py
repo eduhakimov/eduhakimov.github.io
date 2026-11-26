@@ -29,7 +29,7 @@ ISHLAR = [
                  ("Uch darajali ta'lim", "Bitta mavzu boshlovchi, o'rta va ilg'or o'quvchi uchun alohida chuqurlikda yoritiladi.")],
       holat="7.38 versiya. Darslarda ishlatilmoqda.", sabab="o'quv materiali"),
  dict(bolim="talim", slug="grammatika-metro", nom="Grammatika Metro", turi="ochiq",
-      havola=GH+"grammatika-metro", repo=GH+"grammatika-metro",
+      havola="https://eduhakimov.github.io/grammatika-metro/", repo=GH+"grammatika-metro",
       qisqa="Ingliz tili grammatikasini o'zbek tilida bekatma-bekat o'rgatadigan platforma: 14 yo'nalish, 43 dars, 231 mashq.",
       teg=["HTML", "JavaScript", "Ingliz tili"]),
  dict(bolim="talim", slug="lingvix", nom="Lingvix: test va lug'at platformasi", turi="yopiq",
