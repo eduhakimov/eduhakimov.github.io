@@ -459,7 +459,7 @@ for i in ISHLAR:
 CV = "https://www.coursera.org/verify/"
 DAVLAT = [
     ("Beruniy nomidagi davlat stipendiyasi sohibi", "O'zbekiston Respublikasi Oliy ta'lim, fan va innovatsiyalar vazirligi, 2024/2025 o'quv yili. Guvohnoma: 11.12.2024, № 4/4-1."),
-    ("Bakalavriat imtiyozli diplom bilan", "GPA 4.94 (99 ball). Magistraturaga 2025-yilda qo'shimcha davlat granti asosida qabul qilingan."),
+    ("Bakalavriat imtiyozli diplom bilan", "GPA 4.92. Magistraturaga 2025-yilda qo'shimcha davlat granti asosida qabul qilingan."),
     ("Prezident davlat stipendiyasiga nomzod", "2026/2027 o'quv yili, universitet rektori tavsiyanomasi: 20.07.2026, № 01-3066."),
     ("6 ta dasturiy mahsulot va ma'lumotlar bazasi guvohnomasi (DGU/BGU)", "O'zbekiston Respublikasi Adliya vazirligi, 2024: Smart traffic, Smart switch, elektr ta'minotini boshqaruvchi aqlli tizim va 3 ta davomat telegram boti."),
     ("\"Kompyuter grafikasi\" o'quv qo'llanmasi (hammuallif)", "162 bet, ADU nashr ruxsatnomasi 09.07.2024 (buyruq № 0102571). Antiplagiat: originallik 98.15%."),

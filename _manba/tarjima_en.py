@@ -514,7 +514,7 @@ SERT = {
 # yutuqlar/index.html (DAVLAT, TANLOV tartibida)
 DAVLAT = [
     ("Holder of the Beruniy State Scholarship", "Ministry of Higher Education, Science and Innovation of the Republic of Uzbekistan, 2024/2025 academic year. Certificate: 11.12.2024, No. 4/4-1."),
-    ("Bachelor's diploma with honours", "GPA 4.94 (99 points). Admitted to the master's programme in 2025 on an additional state grant."),
+    ("Bachelor's diploma with honours", "GPA 4.92. Admitted to the master's programme in 2025 on an additional state grant."),
     ("Nominee for the Presidential State Scholarship", "2026/2027 academic year, recommendation letter from the university rector: 20.07.2026, No. 01-3066."),
     ("6 software and database registration certificates (DGU/BGU)", "Ministry of Justice of the Republic of Uzbekistan, 2024: Smart traffic, Smart switch, a smart power-supply control system and 3 attendance Telegram bots."),
     ("Study guide \"Kompyuter grafikasi\" (Computer Graphics), co-author", "162 pages, ASU publication approval 09.07.2024 (order No. 0102571). Anti-plagiarism check: 98.15% originality."),
