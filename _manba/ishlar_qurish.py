@@ -263,23 +263,37 @@ SERTIFIKATLAR = ["Fundamentals of Graphic Design", "Foundations of User Experien
     "Digital Marketing", "Introduction to Cyber Attacks",
     "Windows Basics", "macOS Basics", "Kompyuter animatsiyasi (kurs sertifikati)", "3D modellashtirish (kurs sertifikati)"]
 
-CSS = """:root{--bg:#fbfaf7;--fg:#1d1d1f;--mut:#5f6368;--acc:#1f5fa8;--line:#e3e1dc;--card:#fff;--ok:#1e7a46;--lk:#8a5a00}
-@media (prefers-color-scheme:dark){:root{--bg:#141517;--fg:#e8e8e6;--mut:#a0a3a8;--acc:#7fb2f0;--line:#2c2e33;--card:#1b1c1f;--ok:#6fcf97;--lk:#e0b45c}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 Georgia,"Times New Roman",serif}
-.w{max-width:860px;margin:0 auto;padding:40px 16px 64px}
-h1{font-size:30px;margin:0 0 6px}.sub{color:var(--mut);margin:0 0 18px;font:15px/1.5 system-ui,sans-serif}
-nav a{display:inline-block;margin:0 8px 8px 0;padding:6px 12px;border:1px solid var(--line);border-radius:999px;color:var(--acc);text-decoration:none;font:14px system-ui,sans-serif;background:var(--card)}
-h2{font-size:21px;margin:36px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
-.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
-.c{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--card);color:var(--fg);text-decoration:none}
-.c:hover{border-color:var(--acc)}.c b{font-size:17px;line-height:1.3;margin:6px 0}.c p{margin:0 0 10px;font:14px/1.5 system-ui,sans-serif;color:var(--mut);flex:1}
-.b{align-self:flex-start;font:600 11px system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1px solid}
+# Ranglar va umumiy elementlar ../dizayn.css da (yorug'/qorong'i rejim); bu yerda faqat shu sahifalar joylashuvi.
+CSS = """:root{--ok:#1e7a46;--lk:#b45309}
+:root[data-theme="dark"]{--ok:#6fcf97;--lk:#f0b35c}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ok:#6fcf97;--lk:#f0b35c}}
+.w{max-width:1040px;margin:0 auto;padding:44px 20px 64px}
+h1{margin:0 0 10px;font:800 clamp(30px,4.6vw,52px)/1.02 var(--fd);letter-spacing:-.03em}
+.sub{color:var(--mut);margin:0 0 22px;font-size:15.5px;line-height:1.6;max-width:760px}
+nav a{display:inline-block;margin:0 8px 8px 0;padding:8px 15px;border:1px solid var(--line2);border-radius:999px;color:var(--fg);text-decoration:none;font:600 13.5px/1.2 var(--fb);background:var(--card);transition:.2s}
+nav a:hover{border-color:var(--acc);color:var(--acct)}
+h2{margin:48px 0 16px;font:700 clamp(20px,2.4vw,28px)/1.15 var(--fd);letter-spacing:-.02em}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.c{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;background:var(--card);color:var(--fg);text-decoration:none;box-shadow:var(--shadow);transition:transform .25s,border-color .25s}
+.c:hover{border-color:color-mix(in srgb,var(--acc) 55%,var(--line));transform:translateY(-3px)}.c b{font:700 16.5px/1.3 var(--fd);margin:8px 0;letter-spacing:-.01em}.c p{margin:0 0 12px;font-size:14px;line-height:1.55;color:var(--mut);flex:1}
+.b{align-self:flex-start;font:700 10.5px/1 var(--fb);letter-spacing:.08em;text-transform:uppercase;padding:5px 9px;border-radius:999px;border:1px solid}
 .b.o{color:var(--ok)}.b.y{color:var(--lk)}
-.t{font:12px system-ui,sans-serif;color:var(--mut)}.t span{display:inline-block;margin:0 6px 4px 0;padding:1px 7px;border:1px solid var(--line);border-radius:6px}
-.go{font:13px system-ui,sans-serif;color:var(--acc);margin-top:6px}
-ul{padding-left:22px}li{margin:0 0 8px}dl dt{font-weight:600;margin-top:12px}dl dd{margin:2px 0 0 0;color:var(--fg)}
-.box{border:1px solid var(--line);border-left:3px solid var(--lk);border-radius:8px;padding:12px 16px;background:var(--card);font:14px/1.55 system-ui,sans-serif;color:var(--mut);margin:24px 0}
-a{color:var(--acc)}footer{margin-top:40px;color:var(--mut);font:13px system-ui,sans-serif}"""
+.t{font-size:12px;color:var(--mut)}.t span{display:inline-block;margin:0 6px 4px 0;padding:2px 8px;border:1px solid var(--line);border-radius:999px}
+.go{font:700 13px var(--fb);color:var(--acct);margin-top:6px}
+ul{padding-left:22px}li{margin:0 0 8px}dl dt{font-weight:700;margin-top:14px}dl dd{margin:3px 0 0 0;color:var(--fg)}
+.box{border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:var(--r2);padding:14px 18px;background:var(--card);font-size:14px;line-height:1.6;color:var(--mut);margin:24px 0}
+img{max-width:100%}footer{margin-top:48px;padding-top:22px;border-top:1px solid var(--line);color:var(--mut);font-size:13px}"""
+
+# Yuqori panel (logotip, til, rejim) va dizayn ulanishi — bosh sahifa bilan bir xil
+TEMA_HEAD = ("<script>try{var t=localStorage.getItem('eduhakimov.theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>\n"
+             '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+             '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&display=swap">'
+             '<link rel="stylesheet" href="../dizayn.css">\n')
+TOP = ('<header class="top"><div class="wrap"><a class="logo" href="../"><i>BH</i><span>Bahtiyorjon Hakimov</span></a>'
+       '<div class="tr"><div data-i18n-sw></div><button class="tema" type="button" data-tema aria-label="Qorong\'i rejim">'
+       '<svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>'
+       '<svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>'
+       '</button></div></div></header>\n')
 
 # ---------- tillar (i18n): o'zbekcha - asl HTML, en/ru/zh - tarjima_*.py; ../i18n.js almashtiradi
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -325,7 +339,7 @@ class Lugat:
     def script(self):
         body = json.dumps(self.d, ensure_ascii=False, sort_keys=True).replace("</", "<\\/")
         return ('<script>(window.I18N_D=window.I18N_D||[]).push(' + body + ');</script>\n'
-                '<script src="../i18n.js"></script>\n')
+                '<script src="../i18n.js"></script>\n<script src="../mavzu.js"></script>\n')
 
 
 def bosh(L, tkey, title, ttr, dkey, desc, dtr, url, extra=""):
@@ -334,8 +348,8 @@ def bosh(L, tkey, title, ttr, dkey, desc, dtr, url, extra=""):
     return f"""<!doctype html><html lang="uz"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title data-i18n="{tkey}">{e(title)}</title><meta name="description" data-i18n-attr="content:{dkey}" content="{e(desc)}"><meta name="author" content="{e(MUALLIF)}">
 <link rel="canonical" href="{url}"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:url" content="{url}"><meta property="og:image" content="https://eduhakimov.github.io/photo.jpg">
-{extra}<style>{CSS}</style></head><body><div class="w">
-<div data-i18n-sw></div>
+{TEMA_HEAD}{extra}<style>{CSS}</style></head><body>
+{TOP}<div class="w">
 """
 
 

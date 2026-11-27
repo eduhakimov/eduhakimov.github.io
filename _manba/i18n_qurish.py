@@ -77,7 +77,7 @@ def main():
         src = io.open(os.path.join(ROOT, fayl), encoding="utf-8").read()
         matn, attr = ochilgan_teglar(src)
         d = {l: {} for l in LANGS}
-        uz_js = tarjima_uz.TESTLAR_JS if nom == "TESTLAR" else {}
+        uz_js = getattr(tarjima_uz, nom + "_JS", {})
         kalitlar = set()
         for key, vals in list(matn.items()) + list(attr.items()):
             if key in tarjima_uz.COMMON:

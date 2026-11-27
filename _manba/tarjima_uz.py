@@ -4,6 +4,8 @@ Qolgan o'zbekcha matnlar HTML sahifalarning o'zidan olinadi (i18n_qurish.py)."""
 LANG = "uz"
 
 COMMON = {
+    "tema.light": "Yorug' rejim",
+    "tema.dark": "Qorong'i rejim",
     "sw.label": "Til",
     "nav.sci": "← Ilmiy ishlar",
     "nav.sci_plain": "Ilmiy ishlar",
@@ -88,3 +90,4 @@ TESTLAR_JS = {
     "js.g2": "Qoniqarsiz",
     "js.yes": "Ha",
 }
+

@@ -4,6 +4,8 @@ LANG = "zh"
 
 # ---------------------------------------------------------------- umumiy (i18n.js)
 COMMON = {
+    "tema.light": "浅色模式",
+    "tema.dark": "深色模式",
     "sw.label": "语言",
     "nav.sci": "← 学术成果",
     "nav.sci_plain": "学术成果",
@@ -24,6 +26,33 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "c.soon": "即将推出",
+    "c.soon.d": "数据库、Web 编程、计算机网络、操作系统等课程正在制作中。",
+    "tn.courses": "课程",
+    "tn.works": "作品",
+    "tn.awards": "成就",
+    "tn.papers": "论文",
+    "tn.contact": "联系",
+    "hero.eyebrow": "计算机图形学讲师 · 安集延国立大学",
+    "btn.courses": "互动课程",
+    "btn.works": "全部作品",
+    "st.papers": "篇论文与摘要",
+    "st.courses": "门互动课程",
+    "st.projects": "个项目与 40 个工具",
+    "st.certs": "项国际证书",
+    "k.courses": "学习平台",
+    "k.tools": "工具",
+    "h.tools": "我使用的软件",
+    "k.links": "主页",
+    "h.links": "学术主页与社交网络",
+    "k.papers": "出版物",
+    "h.papers": "科研成果",
+    "papers.sub": "47 篇论文、1 本教材和 6 项软件登记证书。点击标题展开列表。",
+    "k.about": "关于我",
+    "h.about": "简介",
+    "cta.title": "一起创造",
+    "cta.text": "欢迎在互动课程、动画或设计项目上合作。",
+    "cta.btn": "在 Telegram 联系",
     "title": "Bahtiyorjon Hakimov (Hakimov Bahtiyorjon Muzaffar o'g'li) – 学术成果 | 安集延国立大学",
     "desc": "Hakimov Bahtiyorjon Muzaffar o'g'li（Hakimov B.M.，安集延国立大学）的学术论文：计算机图形学、After Effects 动画、UI/UX 设计、SUMO GUI。",
     "sub": "以查希鲁丁·穆罕默德·巴布尔命名的安集延国立大学 · 计算机系统及其软件（硕士研究生）<br>\n"

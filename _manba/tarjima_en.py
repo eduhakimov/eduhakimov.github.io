@@ -9,6 +9,8 @@ LANG = "en"
 
 # ---------------------------------------------------------------- umumiy (i18n.js)
 COMMON = {
+    "tema.light": "Light mode",
+    "tema.dark": "Dark mode",
     "sw.label": "Language",
     "nav.sci": "← Publications",
     "nav.sci_plain": "Publications",
@@ -29,6 +31,33 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "c.soon": "Coming soon",
+    "c.soon.d": "Databases, Web programming, Computer networks, Operating systems and more courses are in progress.",
+    "tn.courses": "Courses",
+    "tn.works": "Works",
+    "tn.awards": "Awards",
+    "tn.papers": "Papers",
+    "tn.contact": "Contact",
+    "hero.eyebrow": "Computer graphics lecturer · ASU",
+    "btn.courses": "Interactive courses",
+    "btn.works": "All my works",
+    "st.papers": "Papers and theses",
+    "st.courses": "Interactive courses",
+    "st.projects": "Projects and 40 tools",
+    "st.certs": "International certificates",
+    "k.courses": "Learning platform",
+    "k.tools": "Toolkit",
+    "h.tools": "Software I work with",
+    "k.links": "Profiles",
+    "h.links": "Research profiles and networks",
+    "k.papers": "Publications",
+    "h.papers": "Research",
+    "papers.sub": "47 papers, a textbook and 6 software registration certificates. Click a heading to open the list.",
+    "k.about": "About me",
+    "h.about": "In brief",
+    "cta.title": "Let's create together",
+    "cta.text": "Open to collaboration on interactive courses, animation or design projects.",
+    "cta.btn": "Message on Telegram",
     "title": "Bahtiyorjon Hakimov (Hakimov Bahtiyorjon Muzaffar o'g'li) – publications | Andijan State University",
     "desc": "Scientific papers by Hakimov Bahtiyorjon Muzaffar o'g'li (Hakimov B.M., Andijan State University): computer graphics, After Effects animation, UI/UX design, SUMO GUI.",
     "sub": "Andijan State University named after Zahiriddin Muhammad Babur · Computer Systems and Their Software (master's programme)<br>\n"
