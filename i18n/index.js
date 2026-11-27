@@ -13,6 +13,8 @@
 "idx.nav.adu": "ASU faculty page",
 "idx.nav.awards": "Achievements · 45 international certificates",
 "idx.nav.course": "Computer literacy course · 72 interactive lessons",
+"idx.nav.grafika": "Computer graphics · 36 interactive lessons",
+"idx.nav.anim": "Computer animation · 36 interactive lessons",
 "idx.nav.works": "All my projects · 25 projects and 40 applications",
 "idx.sub": "Andijan State University named after Zahiriddin Muhammad Babur · Computer Systems and Their Software (master's programme)<br>\nComputer graphics · Automation of 2D character animation (After Effects) · UI/UX design · SUMO GUI traffic simulation",
 "idx.title": "Bahtiyorjon Hakimov (Hakimov Bahtiyorjon Muzaffar o'g'li) – publications | Andijan State University"
@@ -30,6 +32,8 @@
 "idx.nav.adu": "Страница в АГУ",
 "idx.nav.awards": "Достижения · 45 международных сертификатов",
 "idx.nav.course": "Курс компьютерной грамотности · 72 интерактивных урока",
+"idx.nav.grafika": "Компьютерная графика · 36 интерактивных уроков",
+"idx.nav.anim": "Компьютерная анимация · 36 интерактивных уроков",
 "idx.nav.works": "Все мои проекты · 25 проектов и 40 программ",
 "idx.sub": "Андижанский государственный университет имени Захириддина Мухаммада Бабура · Компьютерные системы и их программное обеспечение (магистратура)<br>\nКомпьютерная графика · Автоматизация 2D-анимации персонажей (After Effects) · UI/UX-дизайн · Моделирование транспорта в SUMO GUI",
 "idx.title": "Бахтиёржон Хакимов (Hakimov Bahtiyorjon Muzaffar o'g'li) – научные работы | Андижанский государственный университет"
@@ -47,6 +51,8 @@
 "idx.nav.adu": "ADU sahifasi",
 "idx.nav.awards": "Yutuqlar · 45 ta xalqaro sertifikat",
 "idx.nav.course": "Kompyuter savodxonligi kursi · 72 interaktiv dars",
+"idx.nav.grafika": "Kompyuter grafikasi · 36 interaktiv dars",
+"idx.nav.anim": "Kompyuter animatsiyasi · 36 interaktiv dars",
 "idx.nav.works": "Barcha ishlarim · 25 ta loyiha va 40 ta dastur",
 "idx.sub": "Zahiriddin Muhammad Bobur nomidagi Andijon davlat universiteti · Kompyuter tizimlari va ularning dasturiy ta'minoti (magistratura)<br>\nKompyuter grafikasi · 2D personaj animatsiyasini avtomatlashtirish (After Effects) · UI/UX dizayn · SUMO GUI transport simulyatsiyasi",
 "idx.title": "Bahtiyorjon Hakimov (Hakimov Bahtiyorjon Muzaffar o'g'li) – ilmiy ishlar | Andijon davlat universiteti"
@@ -64,6 +70,8 @@
 "idx.nav.adu": "安集延国立大学教师主页",
 "idx.nav.awards": "荣誉 · 45 项国际证书",
 "idx.nav.course": "计算机基础课程 · 72 节互动课",
+"idx.nav.grafika": "计算机图形学 · 36 节互动课",
+"idx.nav.anim": "计算机动画 · 36 节互动课",
 "idx.nav.works": "我的全部项目 · 25 个项目和 40 款软件",
 "idx.sub": "以查希鲁丁·穆罕默德·巴布尔命名的安集延国立大学 · 计算机系统及其软件（硕士研究生）<br>\n计算机图形学 · 二维角色动画自动化（After Effects） · UI/UX 设计 · SUMO GUI 交通仿真",
 "idx.title": "Bahtiyorjon Hakimov (Hakimov Bahtiyorjon Muzaffar o'g'li) – 学术成果 | 安集延国立大学"
