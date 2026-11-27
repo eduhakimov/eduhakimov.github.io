@@ -260,3 +260,11 @@ a{color:var(--acct)}
 .all-tg .ch{width:18px;height:18px;color:var(--acct);transition:transform .3s}.all-tg.ochiq .ch{transform:rotate(180deg)}
 .all-tg .cnt,.bn-all .cnt{display:inline-grid;place-items:center;min-width:26px;height:22px;padding:0 7px;border-radius:999px;background:var(--acc);color:#fff;font:800 11.5px/1 var(--fb)}
 .bn-all .cnt{background:#ff8a3d;color:#1a0b04}
+
+/* banner: "Barcha ilmiy ishlar" asosiy, ko'zga tashlanadigan; "Maqolani ochish" ikkinchi darajali */
+.bn-open{background:transparent;border:1px solid rgba(255,178,122,.45);color:#ffd6b3}
+.bn-open:hover{background:rgba(255,138,61,.14);border-color:#ff8a3d;color:#fff}
+.bn-all{padding:12px 20px;gap:10px;background:linear-gradient(135deg,#ff5b1f,#ff9a4d);border:0;color:#fff;font-size:14px;box-shadow:0 10px 28px -8px rgba(255,91,31,.75);animation:bnNur 2.8s ease-in-out infinite}
+.bn-all:hover{transform:translateY(-2px);box-shadow:0 16px 36px -10px rgba(255,91,31,.9);background:linear-gradient(135deg,#ff6a2b,#ffad66)}
+.bn-all .cnt{background:#fff;color:#c2410c}.bn-all svg{width:15px;height:15px}
+@keyframes bnNur{0%,100%{box-shadow:0 10px 28px -8px rgba(255,91,31,.7)}50%{box-shadow:0 10px 34px -4px rgba(255,91,31,.95)}}

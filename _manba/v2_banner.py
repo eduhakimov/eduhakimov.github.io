@@ -33,7 +33,7 @@ for k, (t, a, jr, href, doi, yil) in enumerate(slides):
         '<div class="bn-yil">%s</div>'
         '<div class="bn-m"><span class="bn-k"><span data-i18n="idx.bn.art">Ilmiy maqola</span> · %02d/%02d</span>'
         '<h3>%s</h3><p class="bn-a">%s</p><p class="bn-j">%s</p>'
-        '<div class="bn-f">%s<a class="btn btn-p" href="%s"><span data-i18n="idx.bn.open">Maqolani ochish</span>%s</a></div></div>'
+        '<div class="bn-f">%s<a class="btn bn-open" href="%s"><span data-i18n="idx.bn.open">Maqolani ochish</span>%s</a></div></div>'
         '</article>' % (" on" if k == 0 else "", k + 1, n, yil, k + 1, n, t, a, jr,
                          ('<span class="bn-doi">DOI: %s</span>' % doi) if doi else "", href, OQ))
 BANNER = ('<!--BANNER_BOSHI--><div class="bn" id="bn" aria-roledescription="carousel" tabindex="0">'
