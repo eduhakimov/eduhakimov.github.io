@@ -33,7 +33,6 @@ INDEX = {
     "desc": "Scientific papers by Hakimov Bahtiyorjon Muzaffar o'g'li (Hakimov B.M., Andijan State University): computer graphics, After Effects animation, UI/UX design, SUMO GUI.",
     "sub": "Andijan State University named after Zahiriddin Muhammad Babur · Computer Systems and Their Software (master's programme)<br>\n"
            "Computer graphics · Automation of 2D character animation (After Effects) · UI/UX design · SUMO GUI traffic simulation",
-    "nav.course": "Computer literacy course · 72 interactive lessons",
     "nav.works": "All my projects · 25 projects and 40 applications",
     "nav.awards": "Achievements · 45 international certificates",
     "nav.adu": "ASU faculty page",
@@ -45,6 +44,20 @@ INDEX = {
     "h.cert": "Software and database registration certificates",
     "certpre": "Certificate of the Ministry of Justice of the Republic of Uzbekistan",
     "foot": "The list is compiled from ORCID and journal pages. Last updated: 26.11.2026.",
+    "h.courses": "Interactive textbooks",
+    "courses.sub": "Every lesson is an interactive page with experiments, tests and tasks. The languages of each course are shown on its card: Uzbek, English, Russian and Chinese.",
+    "c.sav": "Computer literacy",
+    "c.sav.m": "Club course · 72 lessons · 12 modules",
+    "c.sav.d": "From scratch: Windows, files, Word, Excel, PowerPoint, the internet and digital safety.",
+    "c.gra": "Computer graphics",
+    "c.gra.m": "University course · 15 lectures · 21 practical classes",
+    "c.gra.d": "Photoshop, Illustrator, CorelDRAW and InDesign: poster, logo, brand book and layout design.",
+    "c.ani": "Computer animation",
+    "c.ani.m": "University course · 15 lectures · 21 lab works",
+    "c.ani.d": "After Effects and 3D basics: keyframes, rigging, physics, particles, camera and rendering.",
+    "c.das": "Programming fundamentals",
+    "c.das.m": "University course · 12 lectures · 21 practical classes",
+    "c.das.d": "Python from scratch: code runs in the browser, automatic tests check your tasks and a visualizer shows the program step by step.",
 }
 
 # ---------------------------------------------------------------- galereya/index.html

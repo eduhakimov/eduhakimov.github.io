@@ -28,7 +28,6 @@ INDEX = {
     "desc": "Hakimov Bahtiyorjon Muzaffar o'g'li（Hakimov B.M.，安集延国立大学）的学术论文：计算机图形学、After Effects 动画、UI/UX 设计、SUMO GUI。",
     "sub": "以查希鲁丁·穆罕默德·巴布尔命名的安集延国立大学 · 计算机系统及其软件（硕士研究生）<br>\n"
            "计算机图形学 · 二维角色动画自动化（After Effects） · UI/UX 设计 · SUMO GUI 交通仿真",
-    "nav.course": "计算机基础课程 · 72 节互动课",
     "nav.works": "我的全部项目 · 25 个项目和 40 款软件",
     "nav.awards": "荣誉 · 45 项国际证书",
     "nav.adu": "安集延国立大学教师主页",
@@ -40,6 +39,20 @@ INDEX = {
     "h.cert": "软件产品与数据库登记证书",
     "certpre": "乌兹别克斯坦共和国司法部证书",
     "foot": "本列表依据 ORCID 及期刊页面整理。最后更新：26.11.2026。",
+    "h.courses": "互动教材",
+    "courses.sub": "每节课都是一个带有实验、测试和作业的互动页面。每门课程的语言见其卡片：乌兹别克语、英语、俄语和中文。",
+    "c.sav": "计算机基础",
+    "c.sav.m": "兴趣小组 · 72节课 · 12个模块",
+    "c.sav.d": "从零开始：Windows、文件、Word、Excel、PowerPoint、互联网与数字安全。",
+    "c.gra": "计算机图形学",
+    "c.gra.m": "大学课程 · 15次讲座 · 21次实践课",
+    "c.gra.d": "Photoshop、Illustrator、CorelDRAW 和 InDesign：海报、标志、品牌手册与版式设计。",
+    "c.ani": "计算机动画",
+    "c.ani.m": "大学课程 · 15次讲座 · 21次实验课",
+    "c.ani.d": "After Effects 与 3D 基础：关键帧、骨骼绑定、物理、粒子、摄像机与渲染。",
+    "c.das": "编程基础",
+    "c.das.m": "大学课程 · 12次讲座 · 21次实践课",
+    "c.das.d": "从零学 Python：代码在浏览器中运行，作业由自动测试检查，可视化工具逐步展示程序运行。",
 }
 
 # ---------------------------------------------------------------- galereya/index.html
