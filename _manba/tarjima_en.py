@@ -31,6 +31,7 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "kn.mail": "Email",
     "c.soon": "Coming soon",
     "c.soon.d": "Databases, Web programming, Computer networks, Operating systems and more courses are in progress.",
     "tn.courses": "Courses",

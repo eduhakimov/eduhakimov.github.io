@@ -354,7 +354,9 @@ def bosh(L, tkey, title, ttr, dkey, desc, dtr, url, extra=""):
 
 
 def foot(L):
-    return (f'<footer data-i18n="foot.rights">© 2026 {e(MUALLIF)}. Barcha huquqlar himoyalangan.</footer>\n</div>\n'
+    import v2_ikonlar  # aloqa belgilari (pochta, Telegram, Discord, YouTube, ORCID ...)
+    return (v2_ikonlar.SOC.replace('<div class="soc">', '<div class="soc" style="margin-top:48px">', 1) +
+            f'<footer data-i18n="foot.rights">© 2026 {e(MUALLIF)}. Barcha huquqlar himoyalangan.</footer>\n</div>\n'
             + L.script() + '</body></html>\n')
 
 
