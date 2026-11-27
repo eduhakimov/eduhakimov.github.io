@@ -31,6 +31,9 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "c.tzv": "Modern technical devices and their use",
+    "c.tzv.m": "University course · 15 lectures · 21 lab works",
+    "c.tzv.d": "Modern gadgets, peripherals and multimedia devices: choosing, setting up and testing them in simulators.",
     "c.dm": "Data warehousing and data mining",
     "c.dm.m": "Master's course · 15 lectures · 21 practical classes",
     "c.dm.d": "Data warehouses, OLAP, clustering, classification and association rules with interactive algorithm simulators.",
