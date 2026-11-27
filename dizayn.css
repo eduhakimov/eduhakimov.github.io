@@ -75,9 +75,8 @@ a{color:var(--acct)}
 .ph img{position:absolute;inset:14%;width:72%;height:72%;object-fit:cover;border-radius:50%;border:4px solid var(--bg);filter:grayscale(.15) contrast(1.05)}
 .chip{position:absolute;z-index:2;display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:14px;background:color-mix(in srgb,var(--card) 82%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line2);box-shadow:var(--shadow);font:700 12px/1 var(--fb);animation:suz 6s ease-in-out infinite}
 .chip i{display:grid;place-items:center;width:24px;height:24px;font-style:normal}.chip i svg{width:22px;height:22px;fill:var(--b)}
-.chip.c1{top:6%;left:-4%}.chip.c2{top:46%;right:-3%;animation-delay:-2s}.chip.c3{bottom:4%;left:4%;animation-delay:-4s}
 @keyframes aylan{to{transform:rotate(360deg)}}
-@keyframes suz{50%{transform:translateY(-8px)}}
+@keyframes suz{0%,100%{transform:translate(-50%,-50%)}50%{transform:translate(-50%,calc(-50% - 7px))}}
 
 /* ---------- statistika ---------- */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:var(--r);background:var(--card);box-shadow:var(--shadow);overflow:hidden}
@@ -177,16 +176,19 @@ a{color:var(--acct)}
 @media (max-width:1000px){.tn{display:none}.kurslar{grid-template-columns:repeat(2,1fr)}.pr{grid-template-columns:repeat(2,1fr)}.kont{grid-template-columns:repeat(2,1fr)}.about{grid-template-columns:1fr}}
 @media (max-width:760px){
   .hero{grid-template-columns:1fr;padding-top:28px;gap:22px}.ph{order:-1;width:min(230px,62vw)}
-  .chip{padding:6px 9px;font-size:11px;gap:6px}.chip i{width:22px;height:22px;font-size:10px}.chip.c1{left:-12%}.chip.c2{right:-14%}
+  .chip{padding:6px 9px;font-size:11px;gap:6px}.chip i{width:20px;height:20px}.chip i svg{width:18px;height:18px}
   .stats{grid-template-columns:repeat(2,1fr)}.stats div:nth-child(3){border-left:0}.stats div:nth-child(n+3){border-top:1px solid var(--line)}
   .kurslar{grid-template-columns:1fr}.tools{grid-template-columns:repeat(3,1fr)}.pr{grid-template-columns:1fr}.kont{grid-template-columns:1fr}
   .cta{grid-template-columns:1fr;padding:32px 24px}.pr a.big{grid-column:auto}
-  .sec{padding-top:56px}.logo span{display:none}.chip.c2{right:-2%}
+  .sec{padding-top:56px}.logo span{display:none}
   .pub ol{padding:0 16px 8px}.pub>summary{padding:18px 16px}.pub li{padding-left:40px}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 @media print{.top,.tema,.cta,body::before{display:none!important}.pub>ol{display:block}}
 
-/* rasm atrofidagi 4 ta belgi joylashuvi */
-.chip.c1{top:4%;left:-8%}.chip.c2{top:30%}.chip.c4{bottom:20%;right:-8%;animation-delay:-3s}.chip.c3{bottom:2%;left:6%}
-@media (max-width:760px){.chip.c4{right:-10%}}
+/* rasm atrofidagi 4 ta belgi: doira chizig'idagi diagonal nuqtalarda, markazi shu nuqtada */
+.chip{transform:translate(-50%,-50%);white-space:nowrap;animation:suz 6s ease-in-out infinite}
+.chip.c1{top:15%;left:15%;animation-delay:0s}
+.chip.c2{top:15%;left:85%;animation-delay:-1.5s}
+.chip.c4{top:85%;left:85%;animation-delay:-3s}
+.chip.c3{top:85%;left:15%;animation-delay:-4.5s}
