@@ -31,6 +31,15 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "drs.more": "Show all courses",
+    "drs.less": "Collapse",
+    "papers.sub2": "Research on computer graphics, automation of 2D animation, UI/UX and image processing.",
+    "pb.26": "articles and abstracts · 2026 (master's)",
+    "pb.24": "articles · 2024 (bachelor's)",
+    "pb.bk": "textbook · «Computer Graphics»",
+    "pb.dgu": "software registration certificates",
+    "pb.new": "Latest articles",
+    "pb.all": "All research works",
     "e.lst.m": "Listening · Pre-A1 to B2 · 253 tests",
     "e.lst.d": "Listening comprehension practice with audio, questions, answer checking and audio scripts.",
     "c.kte": "Computer organization",
@@ -75,7 +84,6 @@ INDEX = {
     "h.links": "Research profiles and networks",
     "k.papers": "Publications",
     "h.papers": "Research",
-    "papers.sub": "47 papers, a textbook and 6 software registration certificates. Click a heading to open the list.",
     "k.about": "About me",
     "h.about": "In brief",
     "cta.title": "Let's create together",
@@ -89,12 +97,6 @@ INDEX = {
     "nav.awards": "Achievements · 45 international certificates",
     "nav.adu": "ASU faculty page",
     "altnames": "Other spellings of the name in publications: Hakimov / Xakimov / Khakimov Baxtiyor (Bahtiyor, Bakhtiyor) Muzaffar o'g'li; Hakimov B.M.",
-    "h.2026": "Articles and conference abstracts: 2026 (master's studies) – 13",
-    "h.2024": "Articles: 2024 (bachelor's studies) – 34",
-    "h.book": "Study guide",
-    "book.j": "Andijan State University, 2024. 162 pp. Publication approval (grif) No. 571-11",
-    "h.cert": "Software and database registration certificates",
-    "certpre": "Certificate of the Ministry of Justice of the Republic of Uzbekistan",
     "foot": "The list is compiled from ORCID and journal pages. Last updated: 26.11.2026.",
     "h.courses": "Interactive textbooks",
     "courses.sub": "Every lesson is an interactive page with experiments, tests and tasks. The languages of each course are shown on its card: Uzbek, English, Russian and Chinese.",
@@ -617,3 +619,18 @@ TIL = [
     ("English, B2", "Ibrat Academy · Youth Affairs Agency, 27.08.2024"),
     ("Russian, B2", "Ibrat Academy · Youth Affairs Agency, 27.08.2024"),
 ]
+
+# ilmiy-ishlar/index.html
+ILMIY = {
+    "title": "Research works – Hakimov Bahtiyorjon Muzaffar o'g'li | Andijan State University",
+    "desc": "Full list of research works by Hakimov B.M.: 47 articles and abstracts, a textbook and software registration certificates.",
+    "h1": "Research works",
+    "sub": "47 research articles and abstracts, a textbook and 6 software registration certificates. The list is compiled from ORCID and journal pages.",
+    "h.2026": "Articles and conference abstracts: 2026 (master's studies) – 13",
+    "h.2024": "Articles: 2024 (bachelor's studies) – 34",
+    "h.book": "Study guide",
+    "book.j": "Andijan State University, 2024. 162 pp. Publication approval (grif) No. 571-11",
+    "h.cert": "Software and database registration certificates",
+    "certpre": "Certificate of the Ministry of Justice of the Republic of Uzbekistan",
+    "foot": "The list is compiled from ORCID and journal pages. Last updated: 26.11.2026.",
+}

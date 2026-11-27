@@ -24,6 +24,7 @@ SAHIFALAR = [
     ("index.html", "idx.", "INDEX", "i18n/index.js"),
     ("galereya/index.html", "gal.", "GALEREYA", "i18n/galereya.js"),
     ("testlar/index.html", "tst.", "TESTLAR", "i18n/testlar.js"),
+    ("ilmiy-ishlar/index.html", "ilm.", "ILMIY", "i18n/ilmiy.js"),
 ]
 
 TAG_RE = re.compile(r"<([a-zA-Z][a-zA-Z0-9]*)\b([^>]*)>")
