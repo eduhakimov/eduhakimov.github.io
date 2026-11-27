@@ -16,6 +16,13 @@ from dasturlar import DASTURLAR, KATEGORIYA
 
 GH = "https://github.com/eduhakimov/"
 RAW = "https://raw.githubusercontent.com/eduhakimov/"
+
+
+def _rasm(slug, yol, ochiq):
+    """Ochiq dastur rasmi GitHub reposidan, yopiq (private) dasturniki sayt ichidan olinadi."""
+    if ochiq:
+        return RAW + slug + "/main/" + yol
+    return "dasturlar/" + slug + "/" + yol.split("/")[-1]
 LANGS = ("en", "ru", "zh")
 
 # Interfeys yozuvlari (uz, en, ru, zh)
@@ -179,7 +186,7 @@ def sahifalar(OUT, g):
         if d.get("rasmlar"):
             html += (_el(L, "h2", "dst.h.rasm") + '<div class="shots">'
                      + "".join('<a href="%s"><img loading="lazy" src="%s" alt="%s"></a>'
-                               % (e(RAW + s + "/main/" + r), e(RAW + s + "/main/" + r), e(d["nom"]["uz"]))
+                               % (e(_rasm(s, r, op)), e(_rasm(s, r, op)), e(d["nom"]["uz"]))
                                for r in d["rasmlar"]) + "</div>\n")
         if op:
             docs = GH + s + "/blob/main/docs/materiallar/"
