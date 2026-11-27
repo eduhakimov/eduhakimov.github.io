@@ -31,18 +31,6 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
-    "ai.kick": "My main tool",
-    "ai.d": "Most of my work is made in Illustrator: logos, brand books, posters, icon sets and vector illustrations. It is also the program I teach students in depth.",
-    "ai.b1": "My Illustrator works",
-    "ai.b2": "Design gallery",
-    "ai.les": "Illustrator lessons · Computer Graphics",
-    "ai.l1": "Lecture 8. Introduction to Adobe Illustrator and Its Interface",
-    "ai.l2": "Lecture 9. The Toolbar and working with tools in Adobe Illustrator",
-    "ai.l3": "Lecture 10. Brand Book and Export Types in Adobe Illustrator",
-    "ai.l4": "Practical 4. Introduction to Adobe Illustrator. Setting up the interface and workspace",
-    "ai.l5": "Practical 5. Advanced Techniques for Working with the Illustrator Toolbar and Geometric Shapes",
-    "ai.l6": "Practical 6. Creating Vector Illustrations and an Icon Set with Adobe Illustrator",
-    "ai.l7": "Practical 7. Brand Book elements, visual identity and export formats (AI, EPS, SVG) in Adobe Illustrator",
     "c.tar": "Computer networks",
     "c.tar.m": "University course · 15 lectures · 21 practical classes",
     "c.tar.d": "Network simulators, a Cisco-style console and in-browser Python: IP addressing, routing and services.",

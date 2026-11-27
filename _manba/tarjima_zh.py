@@ -26,18 +26,6 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
-    "ai.kick": "我的主要工具",
-    "ai.d": "我的大部分作品都用 Illustrator 完成：标志、品牌手册、海报、图标集和矢量插画。我也向学生深入讲授这款软件。",
-    "ai.b1": "我的 Illustrator 作品",
-    "ai.b2": "设计作品集",
-    "ai.les": "Illustrator 课程 · 计算机图形学",
-    "ai.l1": "第8讲：Adobe Illustrator 入门及其界面",
-    "ai.l2": "第9讲：Adobe Illustrator 的工具栏及其使用",
-    "ai.l3": "第10讲：Adobe Illustrator 中的 Brand Book 与导出类型",
-    "ai.l4": "实践课4：Adobe Illustrator 入门：界面与工作区设置",
-    "ai.l5": "实践课5：Illustrator 工具面板与几何图形的高级操作技巧",
-    "ai.l6": "实践课6：使用 Adobe Illustrator 创建矢量插画和图标集",
-    "ai.l7": "实践课7：Adobe Illustrator 中的 Brand Book 元素、视觉识别与导出格式（AI、EPS、SVG）",
     "c.tar": "计算机网络",
     "c.tar.m": "大学课程 · 15次讲座 · 21次实践课",
     "c.tar.d": "网络模拟器、Cisco 风格控制台和浏览器中的 Python：IP 地址、路由与网络服务。",
