@@ -15,7 +15,7 @@ for k in json.load(io.open(sys.argv[1], encoding="utf-8")):
     n, m, d = k["uz"]
     card = ('<a class="kc" href="%s"><span class="ki"></span><b data-i18n="idx.c.%s">%s</b><span class="km" data-i18n="idx.c.%s.m">%s</span>'
             '<span class="kd" data-i18n="idx.c.%s.d">%s</span><span class="kt">%s</span></a>\n') % (url, k["key"], n, k["key"], m, k["key"], d, k.get("til", "UZ"))
-    if "--boshiga" in sys.argv:
+    if "--boshiga" in sys.argv or k.get("boshiga"):
         s = re.sub(r'(<section class="sec" id="darsliklar">.*?<div class="kurslar[^"]*">\n)', lambda m: m.group(1) + card, s, count=1, flags=re.S)
     else:
         s = s.replace("<!--KURSLAR_OXIRI-->", card + "<!--KURSLAR_OXIRI-->", 1)

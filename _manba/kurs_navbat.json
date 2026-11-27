@@ -1,0 +1,200 @@
+[
+ {
+  "slug": "sunniy-intellekt",
+  "key": "ai",
+  "boshiga": true,
+  "til": "UZ",
+  "readme": [
+   "Artificial Intelligence: Using Modern AI Tools",
+   "12 lectures + 12 practicals: tokens, prompt engineering, Claude, ChatGPT, Gemini, Copilot, DeepSeek"
+  ],
+  "uz": [
+   "Sun’iy intellekt: zamonaviy AI vositalaridan foydalanish",
+   "Mualliflik kursi · 12 ma'ruza · 12 amaliy mashg'ulot",
+   "AI nima, token va prompt injiniring: Claude, ChatGPT, Gemini, Copilot va DeepSeek'dan to'g'ri va xavfsiz foydalanish tokenizator, prompt quruvchi va simulyatorlar bilan."
+  ],
+  "en": [
+   "Artificial intelligence: using modern AI tools",
+   "Author's course · 12 lectures · 12 practical classes",
+   "What AI is, tokens and prompt engineering: using Claude, ChatGPT, Gemini, Copilot and DeepSeek correctly and safely, with a tokenizer, prompt builder and simulators."
+  ],
+  "ru": [
+   "Искусственный интеллект: использование современных AI-инструментов",
+   "Авторский курс · 12 лекций · 12 практических занятий",
+   "Что такое ИИ, токены и промпт-инжиниринг: правильная и безопасная работа с Claude, ChatGPT, Gemini, Copilot и DeepSeek с токенизатором, конструктором промптов и симуляторами."
+  ],
+  "zh": [
+   "人工智能：现代 AI 工具的使用",
+   "作者课程 · 12次讲座 · 12次实践课",
+   "什么是 AI、token 与提示工程：借助分词器、提示构建器和模拟器，正确安全地使用 Claude、ChatGPT、Gemini、Copilot 与 DeepSeek。"
+  ]
+ },
+ {
+  "slug": "tarmoq-boshqaruvi",
+  "key": "tmb",
+  "readme": [
+   "Computer Network Administration",
+   "15 lectures + 21 practicals: services, monitoring, security and automation"
+  ],
+  "uz": [
+   "Kompyuter tarmoqlarini ma'muriy boshqarish",
+   "Magistratura fani · 15 ma'ruza · 21 amaliy mashg'ulot",
+   "Tarmoq xizmatlari, monitoring, xavfsizlik va avtomatlashtirish: administrator konsoli simulyatorlarida amaliy topshiriqlar."
+  ],
+  "en": [
+   "Computer network administration",
+   "Master's course · 15 lectures · 21 practical classes",
+   "Network services, monitoring, security and automation: hands-on tasks in admin console simulators."
+  ],
+  "ru": [
+   "Администрирование компьютерных сетей",
+   "Магистерский курс · 15 лекций · 21 практическое занятие",
+   "Сетевые службы, мониторинг, безопасность и автоматизация: практические задания в симуляторах консоли администратора."
+  ],
+  "zh": [
+   "计算机网络管理",
+   "硕士课程 · 15次讲座 · 21次实践课",
+   "网络服务、监控、安全与自动化：在管理员控制台模拟器中完成实践任务。"
+  ]
+ },
+ {
+  "slug": "data-mining",
+  "key": "dm",
+  "readme": [
+   "Data Warehousing and Data Mining",
+   "15 lectures + 21 practicals: data warehouses, OLAP and mining algorithms"
+  ],
+  "uz": [
+   "Data warehousing and data mining",
+   "Magistratura fani · 15 ma'ruza · 21 amaliy mashg'ulot",
+   "Ma'lumotlar omborlari, OLAP, klasterlash, tasniflash va assotsiativ qoidalar: interaktiv algoritm simulyatorlari bilan."
+  ],
+  "en": [
+   "Data warehousing and data mining",
+   "Master's course · 15 lectures · 21 practical classes",
+   "Data warehouses, OLAP, clustering, classification and association rules with interactive algorithm simulators."
+  ],
+  "ru": [
+   "Хранилища данных и интеллектуальный анализ",
+   "Магистерский курс · 15 лекций · 21 практическое занятие",
+   "Хранилища данных, OLAP, кластеризация, классификация и ассоциативные правила с интерактивными симуляторами алгоритмов."
+  ],
+  "zh": [
+   "数据仓库与数据挖掘",
+   "硕士课程 · 15次讲座 · 21次实践课",
+   "数据仓库、OLAP、聚类、分类与关联规则，配有交互式算法模拟器。"
+  ]
+ },
+ {
+  "slug": "texnik-vositalar",
+  "key": "tzv",
+  "readme": [
+   "Modern Technical Devices and Their Use",
+   "15 lectures + 21 lab works: gadgets, peripherals and multimedia devices"
+  ],
+  "uz": [
+   "Zamonaviy texnik vositalar va ulardan foydalanish",
+   "Universitet fani · 15 ma'ruza · 21 laboratoriya ishi",
+   "Zamonaviy gadjetlar, periferiya va multimedia qurilmalari: tanlash, sozlash va sinovdan o'tkazish simulyatorlarda."
+  ],
+  "en": [
+   "Modern technical devices and their use",
+   "University course · 15 lectures · 21 lab works",
+   "Modern gadgets, peripherals and multimedia devices: choosing, setting up and testing them in simulators."
+  ],
+  "ru": [
+   "Современные технические средства и их использование",
+   "Университетский курс · 15 лекций · 21 лабораторная работа",
+   "Современные гаджеты, периферия и мультимедийные устройства: выбор, настройка и тестирование в симуляторах."
+  ],
+  "zh": [
+   "现代技术设备及其使用",
+   "大学课程 · 15次讲座 · 21次实验",
+   "现代电子设备、外设与多媒体设备：在模拟器中选择、设置与测试。"
+  ]
+ },
+ {
+  "slug": "texnik-xizmat",
+  "key": "txk",
+  "readme": [
+   "Computer Maintenance and Repair",
+   "15 lectures + 21 lab works: diagnostics, assembly and repair simulators"
+  ],
+  "uz": [
+   "Kompyuterlarga texnik xizmat ko'rsatish",
+   "Universitet fani · 15 ma'ruza · 21 laboratoriya ishi",
+   "Kompyuterni yig'ish, diagnostika, nosozliklarni aniqlash va ta'mirlash: virtual servis ustaxonasida amaliy ishlar."
+  ],
+  "en": [
+   "Computer maintenance and repair",
+   "University course · 15 lectures · 21 lab works",
+   "Assembling, diagnosing, troubleshooting and repairing computers in a virtual service workshop."
+  ],
+  "ru": [
+   "Техническое обслуживание компьютеров",
+   "Университетский курс · 15 лекций · 21 лабораторная работа",
+   "Сборка, диагностика, поиск неисправностей и ремонт компьютеров в виртуальной сервисной мастерской."
+  ],
+  "zh": [
+   "计算机维护与维修",
+   "大学课程 · 15次讲座 · 21次实验",
+   "在虚拟维修工作室中组装、诊断、排查故障并维修计算机。"
+  ]
+ },
+ {
+  "slug": "innovatsiya-loyiha",
+  "key": "ilb",
+  "readme": [
+   "Innovation and Project Management",
+   "9 lectures + 15 practicals: innovation, project planning and risk management"
+  ],
+  "uz": [
+   "Innovatsiya va loyihalarni boshqarish",
+   "Magistratura fani · 9 ma'ruza · 15 amaliy mashg'ulot",
+   "Innovatsion jarayonlar, loyihani rejalashtirish, resurslar, risklar va jamoani boshqarish: interaktiv rejalashtiruvchilar bilan."
+  ],
+  "en": [
+   "Innovation and project management",
+   "Master's course · 9 lectures · 15 practical classes",
+   "Innovation processes, project planning, resources, risks and team management with interactive planners."
+  ],
+  "ru": [
+   "Инновации и управление проектами",
+   "Магистерский курс · 9 лекций · 15 практических занятий",
+   "Инновационные процессы, планирование проектов, ресурсы, риски и управление командой с интерактивными планировщиками."
+  ],
+  "zh": [
+   "创新与项目管理",
+   "硕士课程 · 9次讲座 · 15次实践课",
+   "创新流程、项目规划、资源、风险与团队管理，配有交互式规划工具。"
+  ]
+ },
+ {
+  "slug": "texnik-tizimlarda-at",
+  "key": "tta",
+  "readme": [
+   "Information Technologies in Technical Systems",
+   "12 lectures + 12 practicals + 12 lab works, with food-production examples"
+  ],
+  "uz": [
+   "Texnik tizimlarda axborot texnologiyalari",
+   "Universitet fani · 12 ma'ruza · 12 amaliy · 12 laboratoriya",
+   "Oziq-ovqat ishlab chiqarishi misolida texnik tizimlarda axborot texnologiyalari: datchiklar, boshqaruv pulti va ma'lumotlarni qayta ishlash."
+  ],
+  "en": [
+   "Information technologies in technical systems",
+   "University course · 12 lectures · 12 practicals · 12 labs",
+   "IT in technical systems through food-production examples: sensors, control panels and data processing."
+  ],
+  "ru": [
+   "Информационные технологии в технических системах",
+   "Университетский курс · 12 лекций · 12 практик · 12 лабораторных",
+   "ИТ в технических системах на примерах пищевого производства: датчики, пульт управления и обработка данных."
+  ],
+  "zh": [
+   "技术系统中的信息技术",
+   "大学课程 · 12次讲座 · 12次实践 · 12次实验",
+   "以食品生产为例的技术系统信息技术：传感器、控制台与数据处理。"
+  ]
+ }
+]
