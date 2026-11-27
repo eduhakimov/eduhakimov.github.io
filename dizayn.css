@@ -69,7 +69,7 @@ a{color:var(--acct)}
 .btn-g{border-color:var(--line2);color:var(--fg);background:var(--card)}
 .btn-g:hover{border-color:var(--acc);color:var(--acct)}
 
-.ph{position:relative;justify-self:center;width:min(380px,100%);aspect-ratio:1}
+.ph{position:relative;justify-self:center;width:min(380px,calc(100% - 50px));aspect-ratio:1}
 .ph::before{content:"";position:absolute;inset:8%;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--acc2),var(--acc) 55%,#7a1d00);filter:saturate(1.1);box-shadow:0 30px 80px -20px var(--acc)}
 .ph::after{content:"";position:absolute;inset:0;border-radius:50%;border:1px dashed var(--line2);animation:aylan 40s linear infinite}
 .ph img{position:absolute;inset:14%;width:72%;height:72%;object-fit:cover;border-radius:50%;border:4px solid var(--bg);filter:grayscale(.15) contrast(1.05)}
@@ -186,9 +186,16 @@ a{color:var(--acct)}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 @media print{.top,.tema,.cta,body::before{display:none!important}.pub>ol{display:block}}
 
-/* rasm atrofidagi 4 ta belgi: doira chizig'idagi diagonal nuqtalarda, markazi shu nuqtada */
-.chip{transform:translate(-50%,-50%);white-space:nowrap;animation:suz 6s ease-in-out infinite}
-.chip.c1{top:15%;left:15%;animation-delay:0s}
-.chip.c2{top:15%;left:85%;animation-delay:-1.5s}
-.chip.c4{top:85%;left:85%;animation-delay:-3s}
-.chip.c3{top:85%;left:15%;animation-delay:-4.5s}
+/* rasm atrofidagi belgilar: doira bo'ylab teng burchaklarda (_manba/v2_chiplar.py yozadi) */
+.chip{transform:translate(-50%,-50%);white-space:nowrap;animation:suz 6s ease-in-out infinite;padding:9px;border-radius:50%}
+.chip i{width:28px;height:28px}.chip i svg{width:26px;height:26px}
+.chip .cn{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.chip:hover{z-index:5}.chip:hover .cn{width:auto;height:auto;clip:auto;left:50%;top:calc(100% + 6px);transform:translateX(-50%);padding:4px 8px;border-radius:8px;background:var(--card);border:1px solid var(--line2);font:600 11px/1 var(--fb)}
+@media (max-width:760px){.chip{padding:7px}.chip i{width:22px;height:22px}.chip i svg{width:20px;height:20px}}
+.chip.ch1{left:50.0%;top:0.0%;animation-delay:0.0s}
+.chip.ch2{left:89.1%;top:18.8%;animation-delay:-0.9s}
+.chip.ch3{left:98.7%;top:61.1%;animation-delay:-1.7s}
+.chip.ch4{left:71.7%;top:95.0%;animation-delay:-2.6s}
+.chip.ch5{left:28.3%;top:95.0%;animation-delay:-3.4s}
+.chip.ch6{left:1.3%;top:61.1%;animation-delay:-4.3s}
+.chip.ch7{left:10.9%;top:18.8%;animation-delay:-5.1s}
