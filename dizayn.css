@@ -253,3 +253,10 @@ a{color:var(--acct)}
 .bn-ic{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);transition:.2s}
 .bn-ic svg{width:18px;height:18px;fill:var(--b)}.bn-ic:hover{border-color:var(--b);background:rgba(255,255,255,.14)}
 @media (max-width:760px){.bn-ft{padding:12px 16px 16px}.bn-o{bottom:auto;top:16px}}
+
+/* 'Barchasi' tugmalari: yagona uslub */
+.all-tg{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:12px;padding:14px 18px;border:1.5px dashed color-mix(in srgb,var(--acc) 45%,var(--line2));border-radius:var(--r2);background:color-mix(in srgb,var(--acc) 6%,transparent);color:var(--fg);font:700 14px/1 var(--fb);cursor:pointer;transition:.25s}
+.all-tg:hover{border-style:solid;border-color:var(--acc);background:color-mix(in srgb,var(--acc) 12%,transparent)}
+.all-tg .ch{width:18px;height:18px;color:var(--acct);transition:transform .3s}.all-tg.ochiq .ch{transform:rotate(180deg)}
+.all-tg .cnt,.bn-all .cnt{display:inline-grid;place-items:center;min-width:26px;height:22px;padding:0 7px;border-radius:999px;background:var(--acc);color:#fff;font:800 11.5px/1 var(--fb)}
+.bn-all .cnt{background:#ff8a3d;color:#1a0b04}

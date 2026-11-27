@@ -41,7 +41,7 @@ BANNER = ('<!--BANNER_BOSHI--><div class="bn" id="bn" aria-roledescription="caro
           '<button type="button" class="bn-o bn-l" aria-label="Oldingi">' + CH + '</button>'
           '<button type="button" class="bn-o bn-r" aria-label="Keyingi">' + CR + '</button>'
           '<div class="bn-ft"><span class="bn-st" data-i18n="idx.bn.st">47 ta maqola va tezis · 1 ta o\'quv qo\'llanma · 6 ta guvohnoma</span>'
-          '<span class="bn-ln"><a class="bn-all" href="ilmiy-ishlar/"><span data-i18n="idx.pb.all">Barcha ilmiy ishlar</span>' + OQ + '</a>'
+          '<span class="bn-ln"><a class="bn-all" href="ilmiy-ishlar/"><span data-i18n="idx.pb.all">Barcha ilmiy ishlar</span><b class="cnt">54</b>' + OQ + '</a>'
           '<a class="bn-ic" href="https://orcid.org/0009-0001-7222-3508" title="ORCID" style="--b:#A6CE39">' + ik.svg("orcid") + '</a>'
           '<a class="bn-ic" href="https://scholar.google.com/citations?user=kTUbDqIAAAAJ" title="Google Scholar" style="--b:#4285F4">' + ik.svg("googlescholar") + '</a></span></div>'
           '<div class="bn-bar"><i></i></div></div>'
