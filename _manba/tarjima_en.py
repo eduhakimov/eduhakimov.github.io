@@ -31,6 +31,18 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "ai.kick": "My main tool",
+    "ai.d": "Most of my work is made in Illustrator: logos, brand books, posters, icon sets and vector illustrations. It is also the program I teach students in depth.",
+    "ai.b1": "My Illustrator works",
+    "ai.b2": "Design gallery",
+    "ai.les": "Illustrator lessons · Computer Graphics",
+    "ai.l1": "Lecture 8. Introduction to Adobe Illustrator and Its Interface",
+    "ai.l2": "Lecture 9. The Toolbar and working with tools in Adobe Illustrator",
+    "ai.l3": "Lecture 10. Brand Book and Export Types in Adobe Illustrator",
+    "ai.l4": "Practical 4. Introduction to Adobe Illustrator. Setting up the interface and workspace",
+    "ai.l5": "Practical 5. Advanced Techniques for Working with the Illustrator Toolbar and Geometric Shapes",
+    "ai.l6": "Practical 6. Creating Vector Illustrations and an Icon Set with Adobe Illustrator",
+    "ai.l7": "Practical 7. Brand Book elements, visual identity and export formats (AI, EPS, SVG) in Adobe Illustrator",
     "c.tar": "Computer networks",
     "c.tar.m": "University course · 15 lectures · 21 practical classes",
     "c.tar.d": "Network simulators, a Cisco-style console and in-browser Python: IP addressing, routing and services.",
@@ -352,7 +364,7 @@ ISHLAR = {
     qisqa="A platform that teaches English grammar in Uzbek, station by station: 14 lines, 43 lessons, 231 exercises."),
  "lingvix": dict(
     nom="Lingvix: testing and vocabulary platform",
-    qisqa="A platform for learning English words: a 22-day course and word lists with Uzbek translations, transcription, pronunciation and a personal word library.",
+    qisqa="An English testing and vocabulary platform: a 22-day course, over 2,200 tests based on grammar and vocabulary books, a placement test, transcription and pronunciation.",
     nima="A web platform for teaching English in groups. Students register, the teacher approves them and assigns tasks to groups. Students work in preparation and submission modes, while the teacher keeps track of results and attendance.",
     imkon=["Three roles: super admin, teacher, student. Permissions are granted separately.",
            "Preparation and submission modes, with a locked test screen.",
@@ -366,7 +378,7 @@ ISHLAR = {
     sabab="protection of teaching materials and test questions"),
  "lingvix-listening": dict(
     nom="Lingvix Listening",
-    qisqa="English listening comprehension apps for levels from Pre-A1 to B2.",
+    qisqa="253 English listening tests from Pre-A1 to B2: audio, questions, answer checking and audioscripts.",
     nima="A set of offline apps for practising English listening comprehension. Each level (Pre-A1, A1, A2, B1, B2) is a separate app with the audio and tasks built in.",
     imkon=["Separate apps by level: Starters, A1, A2, B1, B2.",
            "Audio recordings and the tasks linked to them in a single file.",
