@@ -31,6 +31,8 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "e.lst.m": "Listening · Pre-A1 to B2 · 253 tests",
+    "e.lst.d": "Listening comprehension practice with audio, questions, answer checking and audio scripts.",
     "c.kte": "Computer organization",
     "c.kte.m": "University course · 15 lectures · 21 practical classes",
     "c.kte.d": "CPU, memory, I/O and interrupts in simulators: a learning processor, CPU-Z and HWiNFO replicas and a pipeline model.",
@@ -38,7 +40,7 @@ INDEX = {
     "c.tar.m": "University course · 15 lectures · 21 practical classes",
     "c.tar.d": "Network simulators, a Cisco-style console and in-browser Python: IP addressing, routing and services.",
     "e.lvx.m": "Testing and vocabulary platform",
-    "e.lvx.d": "English tests, vocabulary practice and a daily study plan, with practice and exam modes.",
+    "e.lvx.d": "English testing and vocabulary platform: a 22-day course, 2,200+ tests, placement test, transcription and pronunciation.",
     "k.eng": "English",
     "h.eng": "Let's learn English!",
     "eng.sub": "Interactive apps for grammar, tests and listening. All free and in the browser.",
