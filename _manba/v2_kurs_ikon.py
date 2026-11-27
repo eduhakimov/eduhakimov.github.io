@@ -35,6 +35,8 @@ if __name__ == "__main__":
             raise SystemExit("belgi yo'q: %s" % k)
         return re.sub(r'<span class="ki">.*?</span>', '<span class="ki">%s</span>' % (S % KURS[k]), a, count=1)
 
-    s = re.sub(r'<(?:a|div) class="kc[^"]*".*?<span class="ki">.*?</span>', kart, s, flags=re.S)
+    # faqat "Interaktiv darsliklar" bo'limi (Ingliz tili bo'limidagi kartochkalarning o'z belgilari bor)
+    i = s.index('<section class="sec" id="darsliklar">'); j = s.index("</section>", i)
+    s = s[:i] + re.sub(r'<(?:a|div) class="kc[^"]*".*?<span class="ki">.*?</span>', kart, s[i:j], flags=re.S) + s[j:]
     io.open(P, "w", encoding="utf-8", newline="\n").write(s)
     print("ok")

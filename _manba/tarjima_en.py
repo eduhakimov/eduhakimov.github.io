@@ -31,6 +31,9 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "c.tar": "Computer networks",
+    "c.tar.m": "University course · 15 lectures · 21 practical classes",
+    "c.tar.d": "Network simulators, a Cisco-style console and in-browser Python: IP addressing, routing and services.",
     "e.lvx.m": "Testing and vocabulary platform",
     "e.lvx.d": "English tests, vocabulary practice and a daily study plan, with practice and exam modes.",
     "k.eng": "English",
@@ -49,7 +52,7 @@ INDEX = {
     "c.mb": "Databases",
     "kn.mail": "Email",
     "c.soon": "Coming soon",
-    "c.soon.d": "Computer networks, Operating systems, Cloud computing, Data mining, Microcontrollers and more courses are in progress.",
+    "c.soon.d": "Operating systems, Cloud computing, Data mining, Microcontrollers and more courses are in progress.",
     "tn.courses": "Courses",
     "tn.works": "Works",
     "tn.awards": "Awards",
@@ -351,7 +354,7 @@ ISHLAR = {
     qisqa="A platform that teaches English grammar in Uzbek, station by station: 14 lines, 43 lessons, 231 exercises."),
  "lingvix": dict(
     nom="Lingvix: testing and vocabulary platform",
-    qisqa="An English-language testing and vocabulary platform with student, teacher and admin roles. Answers are stored only on the server.",
+    qisqa="A platform for learning English words: a 22-day course and word lists with Uzbek translations, transcription, pronunciation and a personal word library.",
     nima="A web platform for teaching English in groups. Students register, the teacher approves them and assigns tasks to groups. Students work in preparation and submission modes, while the teacher keeps track of results and attendance.",
     imkon=["Three roles: super admin, teacher, student. Permissions are granted separately.",
            "Preparation and submission modes, with a locked test screen.",
