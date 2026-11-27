@@ -31,6 +31,9 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "c.tmb": "Computer network administration",
+    "c.tmb.m": "Master's course · 15 lectures · 21 practical classes",
+    "c.tmb.d": "Network services, monitoring, security and automation: hands-on tasks in admin console simulators.",
     "st.exp": "years of experience · since 2017",
     "bn.st": "47 articles and abstracts · 1 textbook · 6 certificates",
     "bn.art": "Research article",

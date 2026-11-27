@@ -196,5 +196,61 @@
    "大学课程 · 12次讲座 · 12次实践 · 12次实验",
    "以食品生产为例的技术系统信息技术：传感器、控制台与数据处理。"
   ]
+ },
+ {
+  "slug": "cms-tizimlari",
+  "key": "cms",
+  "readme": [
+   "CMS Systems",
+   "15 lectures + 21 lab works: WordPress-style site building, themes, plugins and content management"
+  ],
+  "uz": [
+   "CMS tizimlari",
+   "Universitet fani · 15 ma'ruza · 21 laboratoriya ishi",
+   "Kontentni boshqarish tizimlari: sayt yaratish, mavzular, plaginlar, foydalanuvchilar va kontent bilan ishlash simulyatorlarda."
+  ],
+  "en": [
+   "CMS systems",
+   "University course · 15 lectures · 21 lab works",
+   "Content management systems: building sites, themes, plugins, users and content work in simulators."
+  ],
+  "ru": [
+   "CMS-системы",
+   "Университетский курс · 15 лекций · 21 лабораторная работа",
+   "Системы управления контентом: создание сайтов, темы, плагины, пользователи и работа с контентом в симуляторах."
+  ],
+  "zh": [
+   "CMS 内容管理系统",
+   "大学课程 · 15次讲座 · 21次实验",
+   "内容管理系统：在模拟器中建站、使用主题与插件、管理用户和内容。"
+  ]
+ },
+ {
+  "slug": "operatsion-tizimlar",
+  "key": "ot",
+  "readme": [
+   "Operating Systems",
+   "14 lectures + 21 lab works: Windows and Linux, processes, memory, file systems and a bash terminal"
+  ],
+  "uz": [
+   "Operatsion tizimlar",
+   "Universitet fani · 14 ma'ruza · 21 laboratoriya ishi",
+   "Windows va Linux, jarayonlar, xotira, fayl tizimlari va virtuallashtirish: Windows 11 o'rnatuvchisi va bash terminali simulyatorlarida."
+  ],
+  "en": [
+   "Operating systems",
+   "University course · 14 lectures · 21 lab works",
+   "Windows and Linux, processes, memory, file systems and virtualization, with a Windows 11 installer and a bash terminal simulator."
+  ],
+  "ru": [
+   "Операционные системы",
+   "Университетский курс · 14 лекций · 21 лабораторная работа",
+   "Windows и Linux, процессы, память, файловые системы и виртуализация в симуляторах установщика Windows 11 и терминала bash."
+  ],
+  "zh": [
+   "操作系统",
+   "大学课程 · 14次讲座 · 21次实验",
+   "Windows 与 Linux、进程、内存、文件系统与虚拟化，配有 Windows 11 安装程序和 bash 终端模拟器。"
+  ]
  }
 ]
