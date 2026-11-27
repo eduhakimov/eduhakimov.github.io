@@ -31,17 +31,15 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "bn.st": "47 articles and abstracts · 1 textbook · 6 certificates",
+    "bn.art": "Research article",
+    "bn.open": "Open article",
     "c.biz": "Business process design and programming",
     "c.biz.m": "University course · 15 lectures · 21 lab works",
     "c.biz.d": "Modelling (BPMN), automating and programming business processes: process maps, workflows and practical cases.",
     "drs.more": "Show all courses",
     "drs.less": "Collapse",
     "papers.sub2": "Research on computer graphics, automation of 2D animation, UI/UX and image processing.",
-    "pb.26": "articles and abstracts · 2026 (master's)",
-    "pb.24": "articles · 2024 (bachelor's)",
-    "pb.bk": "textbook · «Computer Graphics»",
-    "pb.dgu": "software registration certificates",
-    "pb.new": "Latest articles",
     "pb.all": "All research works",
     "e.lst.m": "Listening · Pre-A1 to B2 · 253 tests",
     "e.lst.d": "Listening comprehension practice with audio, questions, answer checking and audio scripts.",

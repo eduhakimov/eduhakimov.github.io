@@ -26,3 +26,24 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
+
+/* Tashqi havolalar (boshqa saytga olib boradiganlar) yangi oynada ochiladi */
+(function () {
+  'use strict';
+  function tashqi(a) {
+    var h = a.getAttribute('href') || '';
+    if (!/^https?:\/\//i.test(h)) { return; }
+    try { if (new URL(h).host === location.host) { return; } } catch (e) { return; }
+    a.target = '_blank';
+    var r = (a.getAttribute('rel') || '').split(/\s+/);
+    if (r.indexOf('noopener') < 0) { r.push('noopener'); }
+    a.setAttribute('rel', r.join(' ').trim());
+  }
+  function hammasi(root) { [].forEach.call((root || document).querySelectorAll('a[href]'), tashqi); }
+  function ishga() {
+    hammasi(document);
+    new MutationObserver(function (ms) { ms.forEach(function (m) { [].forEach.call(m.addedNodes, function (n) { if (n.nodeType === 1) { if (n.tagName === 'A') { tashqi(n); } hammasi(n); } }); }); })
+      .observe(document.body, { childList: true, subtree: true });
+  }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', ishga); } else { ishga(); }
+})();
