@@ -31,6 +31,14 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "k.eng": "English",
+    "h.eng": "Let's learn English!",
+    "eng.sub": "Interactive apps for grammar, vocabulary and listening. All free and in the browser.",
+    "e.metro.m": "Grammar · 14 lines · 43 lessons · 231 exercises",
+    "e.metro.d": "Learn English grammar station by station along a metro map.",
+    "e.vocab.m": "Vocabulary · learning through tests",
+    "e.vocab.d": "An app for memorising English words by repeating them in tests.",
+    "tn.eng": "English",
     "c.veb.d": "HTML, CSS, JavaScript and PHP in live editors: page structure, design, interactivity and the server side.",
     "c.veb.m": "University course · 15 lectures · 21 lab works",
     "c.veb": "Introduction to web programming",
