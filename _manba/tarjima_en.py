@@ -31,9 +31,15 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "c.veb.d": "HTML, CSS, JavaScript and PHP in live editors: page structure, design, interactivity and the server side.",
+    "c.veb.m": "University course · 15 lectures · 21 lab works",
+    "c.veb": "Introduction to web programming",
+    "c.mb.d": "SQL in in-browser SQLite: tables, queries, joins, normalization and real-life cases.",
+    "c.mb.m": "University course · 15 lectures · 21 practical classes",
+    "c.mb": "Databases",
     "kn.mail": "Email",
     "c.soon": "Coming soon",
-    "c.soon.d": "Databases, Web programming, Computer networks, Operating systems and more courses are in progress.",
+    "c.soon.d": "Computer networks, Operating systems, Cloud computing, Data mining, Microcontrollers and more courses are in progress.",
     "tn.courses": "Courses",
     "tn.works": "Works",
     "tn.awards": "Awards",
