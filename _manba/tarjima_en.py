@@ -31,6 +31,8 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "e.lvx.m": "Testing and vocabulary platform",
+    "e.lvx.d": "English tests, vocabulary practice and a daily study plan, with practice and exam modes.",
     "k.eng": "English",
     "h.eng": "Let's learn English!",
     "eng.sub": "Interactive apps for grammar, vocabulary and listening. All free and in the browser.",
