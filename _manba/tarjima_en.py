@@ -58,6 +58,15 @@ INDEX = {
     "c.das": "Programming fundamentals",
     "c.das.m": "University course · 12 lectures · 21 practical classes",
     "c.das.d": "Python from scratch: code runs in the browser, automatic tests check your tasks and a visualizer shows the program step by step.",
+    "c.rat": "Digital information technologies",
+    "c.rat.m": "University course · 18 lectures · 18 practical classes",
+    "c.rat.d": "Digital tools for sociological research: online surveys, Word and Excel, statistical analysis, visualization, research ethics and AI.",
+    "c.alg": "Theory of algorithms",
+    "c.alg.m": "University course · 15 lectures · 21 lab works",
+    "c.alg.d": "Algorithm complexity, lists, stacks, trees and graphs, searching and sorting, hashing, string and computational linguistics algorithms.",
+    "c.iqt": "Information and communication technologies and systems in economics",
+    "c.iqt.m": "University course · 14 lectures · 14 practical classes",
+    "c.iqt.d": "Spreadsheets and databases for economic tasks, cloud services, e-business, information security and AI fundamentals.",
 }
 
 # ---------------------------------------------------------------- galereya/index.html
