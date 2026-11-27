@@ -31,6 +31,9 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "c.kte": "Computer organization",
+    "c.kte.m": "University course · 15 lectures · 21 practical classes",
+    "c.kte.d": "CPU, memory, I/O and interrupts in simulators: a learning processor, CPU-Z and HWiNFO replicas and a pipeline model.",
     "c.tar": "Computer networks",
     "c.tar.m": "University course · 15 lectures · 21 practical classes",
     "c.tar.d": "Network simulators, a Cisco-style console and in-browser Python: IP addressing, routing and services.",
