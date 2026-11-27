@@ -35,11 +35,28 @@ ILOVALAR = [
          uchinchi=[THREE,
                    "3D character models (Adventurers & Skeletons) by Kay Lousberg (kaylousberg.com) - CC0 1.0 (public domain).",
                    FONTS]),
+    # Muallif qarori (2026-11-28): kitob mashqlari bilan, ta'lim maqsadida, manbalari ko'rsatilib ochiq.
+    dict(slug="test-master", nom="Test Master",
+         manba=os.path.join(MAT, "Boshqa", "Test Master.html"),
+         tavsif="Ingliz tili bo'yicha test topshirish va natijani darhol ko'rish uchun test platformasi: "
+                "grammatika va lug'at testlari, mashq va imtihon rejimlari. Bepul, notijorat, ta'lim maqsadida.",
+         manba_yozuv="Manbalar: Destination B1 (Macmillan), Test Your Vocabulary (Penguin), Test Master Book 1-4",
+         uchinchi=["Test items are based on: Destination B1 (Malcolm Mann, Steve Taylore-Knowles; Macmillan Education); "
+                   "Test Your Vocabulary 1-3 (Peter Watcyn-Jones; Penguin / Pearson Longman); Test Master Book 1-4 "
+                   "test collections - copyright of their respective authors and publishers; used for free, "
+                   "non-commercial education.", FONTS]),
 ]
 
 
-# Test Master bu yerga kiritilmagan: savollar bazasida "Destination B1" (Macmillan) va
-# "Test Your Vocabulary" (Penguin) kitoblaridan olingan mashqlar bor (begona mualliflik).
+def manba_kodi(matn):
+    """Pastki o'ng burchakda kichik manbalar yozuvi (begona materialga havola/izoh)."""
+    import json
+    return ('\n<!-- eh-manba -->\n<style>.eh-manba{position:fixed;right:8px;bottom:6px;z-index:2147483000;'
+            'font:11px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;color:#fff;background:rgba(20,22,26,.55);'
+            'padding:3px 8px;border-radius:999px;opacity:.7;max-width:60vw;white-space:nowrap;overflow:hidden;'
+            'text-overflow:ellipsis}.eh-manba:hover{opacity:1}</style>\n<script>document.addEventListener("DOMContentLoaded",'
+            'function(){var d=document.createElement("div");d.className="eh-manba";d.textContent=%s;d.title=%s;'
+            'document.body.appendChild(d);});</script>\n') % (json.dumps(matn), json.dumps(matn + ". Bepul, notijorat, ta'lim maqsadida."))
 
 
 def himoya_kodi(nom, url, joy="left"):
@@ -55,7 +72,7 @@ def himoya_kodi(nom, url, joy="left"):
 .eh-mualliflik{position:fixed;%(joy)s:8px;bottom:6px;z-index:2147483000;font:11px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;
   color:#fff;background:rgba(20,22,26,.55);padding:3px 8px;border-radius:999px;text-decoration:none;opacity:.7;
   -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
-.eh-mualliflik:hover{opacity:1}
+.eh-mualliflik:hover,.eh-mualliflik:focus{opacity:1;text-decoration:underline}
 .eh-ogoh{position:fixed;inset:0;z-index:2147483646;background:#141517;color:#e8e8e6;display:flex;align-items:center;
   justify-content:center;text-align:center;padding:24px;font:16px/1.6 system-ui,sans-serif}
 .eh-ogoh a{color:#7fb2f0}
@@ -91,11 +108,34 @@ def himoya_kodi(nom, url, joy="left"):
     var a = document.createElement("a");
     a.className = "eh-mualliflik";
     a.href = "https://eduhakimov.github.io/";
-    a.target = "_blank";
-    a.rel = "noopener";
-    a.title = "Muallif: " + MUALLIF + ". Barcha huquqlar himoyalangan.";
-    a.textContent = "\u00a9 2026 Hakimov B.M.";
+    a.title = "Muallif: " + MUALLIF + ". Barcha huquqlar himoyalangan. Bosh sahifaga qaytish: eduhakimov.github.io";
+    a.textContent = "\u00a9 2026 Hakimov B.M. \u00b7 Bosh sahifa";
     document.body.appendChild(a);
+    kot();
+    window.addEventListener("resize", kot);
+    setInterval(kot, 1500);
+  }
+  // pastda qotirilgan menyu bo'lsa, yozuvlar uning ustiga ko'tariladi (tugmalarni to'smasin)
+  function kot() {
+    var h = 0, H = window.innerHeight;
+    [[0.2, 3], [0.5, 3], [0.8, 3], [0.2, 24], [0.5, 24], [0.8, 24], [0.5, 44]].forEach(function (f) {
+      var els = document.elementsFromPoint ? document.elementsFromPoint(window.innerWidth * f[0], H - f[1]) : [];
+      for (var i = 0; i < els.length; i++) {
+        var n = els[i];
+        if (/eh-mualliflik|eh-manba|lsn-manba/.test(n.getAttribute("class") || "")) { continue; }
+        while (n && n !== document.body && n !== document.documentElement) {
+          var p = getComputedStyle(n).position;
+          if (p === "fixed" || p === "sticky") {
+            var r = n.getBoundingClientRect();
+            if (r.height < H * 0.4 && r.bottom >= H - 60) { h = Math.max(h, H - r.top); }
+            break;
+          }
+          n = n.parentElement;
+        }
+      }
+    });
+    var b = document.querySelectorAll(".eh-mualliflik,.eh-manba,.lsn-manba");
+    for (var j = 0; j < b.length; j++) { b[j].style.bottom = (h + 6) + "px"; }
   }
   if (document.body) { qur(); } else { document.addEventListener("DOMContentLoaded", qur); }
 })();
@@ -213,7 +253,11 @@ def qur(i):
     os.makedirs(papka, exist_ok=True)
     with open(i["manba"], encoding="utf-8") as f:
         html = f.read()
-    yoz(os.path.join(papka, "index.html"), himoyala(html, i["nom"], url, i.get("joy", "left")))
+    html = himoyala(html, i["nom"], url, i.get("joy", "left"))
+    if i.get("manba_yozuv") and "<!-- eh-manba -->" not in html:
+        k = html.lower().rfind("</body>")
+        html = html[:k] + manba_kodi(i["manba_yozuv"]) + html[k:]
+    yoz(os.path.join(papka, "index.html"), html)
     yoz(os.path.join(papka, "LICENSE.txt"), litsenziya(i["nom"], url, i["uchinchi"]))
     yoz(os.path.join(papka, "README.md"), readme(i["nom"], url, i["tavsif"]))
     yoz(os.path.join(papka, "robots.txt"), "User-agent: *\nAllow: /\n")

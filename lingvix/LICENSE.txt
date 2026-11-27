@@ -1,0 +1,59 @@
+Lingvix
+Copyright (c) 2026 Bahtiyorjon Hakimov (Hakimov Bahtiyorjon Muzaffar o'g'li)
+
+All rights reserved.
+Barcha huquqlar himoyalangan.
+Все права защищены.
+
+--------------------------------------------------------------------------
+O'ZBEKCHA (qisqacha)
+Ushbu ilova va uning barcha materiallari (dastur kodi, matnlar, rasmlar,
+dizayn, interaktiv mashqlar, testlar va boshqalar) muallifning mulki bo'lib,
+O'zbekiston Respublikasining mualliflik huquqi to'g'risidagi qonunlari va
+xalqaro shartnomalar bilan himoyalangan. Ilovadan https://eduhakimov.github.io/lingvix/
+manzilida shaxsiy o'rganish uchun bepul foydalanish mumkin. Muallifning
+yozma ruxsatisiz nusxa ko'chirish, boshqa joyga qayta joylash, o'zgartirish,
+tarqatish va tijorat maqsadida foydalanish taqiqlanadi.
+
+РУССКИЙ (кратко)
+Это приложение и все его материалы (программный код, тексты, изображения,
+дизайн, интерактивные упражнения, тесты и прочее) являются собственностью
+автора и охраняются законодательством Республики Узбекистан об авторском
+праве и международными договорами. Пользоваться приложением по адресу
+https://eduhakimov.github.io/lingvix/ для личного обучения можно бесплатно. Копирование,
+размещение в другом месте, изменение, распространение и коммерческое
+использование без письменного разрешения автора запрещены.
+--------------------------------------------------------------------------
+
+ENGLISH (governing text)
+
+1. Ownership. All contents of this repository, including source code,
+   text, images, audio, designs, interactive exercises, tests and
+   documentation, are the property of Bahtiyorjon Hakimov (Hakimov Bahtiyorjon Muzaffar o'g'li),
+   except for the third-party components listed in section 4.
+
+2. Legal protection. These materials are protected by the copyright laws
+   of the Republic of Uzbekistan (including the Law "On Copyright and
+   Related Rights") and by international treaties, including the Berne
+   Convention for the Protection of Literary and Artistic Works.
+
+3. Permitted and prohibited use. You may use the application free of
+   charge at https://eduhakimov.github.io/lingvix/ for personal study, and view the
+   contents of this repository. Without the prior written permission of
+   the copyright holder you may NOT copy, reproduce, re-host, modify,
+   translate, adapt, publish, distribute, sublicense, sell, or otherwise
+   use these materials, in whole or in part, for any purpose, including
+   commercial purposes. Short quotations are allowed only with clear
+   attribution to the author and a link to the original source.
+
+4. Third-party components. The following components are not owned by the
+   copyright holder and remain under their own licenses and copyrights:
+  - Exercise content based on: Destination A1+, B1, B2 (Malcolm Mann, Steve Taylore-Knowles; Macmillan Education); Test Your Vocabulary 1-3 (Peter Watcyn-Jones; Penguin / Pearson Longman); Enterprise Grammar 1-4 (Virginia Evans, Jenny Dooley; Express Publishing); 4000 Essential English Words (Paul Nation; Compass Publishing); IELTS vocabulary and reading vocabulary books; Test Master Book 1-4 test collections - copyright of their respective authors and publishers; used for free, non-commercial education.
+  - Google Fonts loaded from fonts.googleapis.com - SIL Open Font License 1.1, (c) their respective designers.
+   Nothing in this notice restricts any rights granted by those licenses.
+
+5. No warranty. The materials are provided "as is", without warranty of
+   any kind.
+
+Contact for permissions / Ruxsat uchun murojaat / Контакт для разрешений:
+https://t.me/IT_yangi_qadam · https://github.com/eduhakimov

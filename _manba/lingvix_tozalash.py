@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
-"""Lingvix ochiq nusxasini tayyorlaydi: nashriyot kitoblaridan olingan mashqlarni olib tashlaydi
-va mualliflik himoyasini qo'shadi.
+"""Lingvix ochiq nusxasini tayyorlaydi (to'liq versiya, mazmuni o'zgarmaydi).
 
-Qoladi: "Ustoz ro'yxatlari" (20+ kunlik kurs) va "Vocabulary Lists" (muallif tuzgan so'z ro'yxatlari,
-o'zbekcha tarjimalari bilan), shaxsiy lug'at (Lug'atim), talaffuz qo'llanmasi, o'z testlarini qo'shish.
-Olib tashlanadi: Destination A1+/B1/B2, Test Your Vocabulary 1-3, Enterprise Grammar 1-4,
-4000 Essential English Words, IELTS Vocabulary / IELTS Reading Vocabulary, Speaking Grammar,
-Word Formation, Test Master Book 1-4 mashqlari; ularga tayangan "Daraja" (placement) testi.
+Muallif qarori (2026-11-28): hamma materiallar, jumladan kitob mashqlari, ta'lim maqsadida,
+bepul va notijorat ochiq qo'yiladi; foydalanilgan kitoblar va nashriyotlar "Manbalar" bo'limida
+ko'rsatiladi.
+
+Qo'shiladi: mualliflik meta teglari, har sahifada (c) yozuvi va bosh saytga havola, himoya skripti,
+"O'rganish > Platforma" bo'limida "Manbalar" bandi, LICENSE.txt.
 
 Ishga tushirish (repo ildizidan):
-    python -X utf8 _manba/lingvix_tozalash.py <manba.html>
-Natija: lingvix/index.html va lingvix/LICENSE.txt
+    python -X utf8 _manba/lingvix_tozalash.py <asl_lingvix.html>
+Natija: lingvix/index.html va lingvix/LICENSE.txt  (lingvix/sw.js alohida fayl, qo'lda yoziladi)
 """
-import json, os, re, sys
+import os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from ilovalar_qurish import himoyala, litsenziya, FONTS  # noqa: E402
@@ -20,7 +20,23 @@ from ilovalar_qurish import himoyala, litsenziya, FONTS  # noqa: E402
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 URL = "https://eduhakimov.github.io/lingvix/"
 NOM = "Lingvix"
-QOLADI = {"Ustoz roʻyxatlari", "Vocabulary Lists"}
+
+MANBALAR = [
+    "Destination A1+, B1, B2 (Malcolm Mann, Steve Taylore-Knowles; Macmillan Education)",
+    "Test Your Vocabulary 1-3 (Peter Watcyn-Jones; Penguin / Pearson Longman)",
+    "Enterprise Grammar 1-4 (Virginia Evans, Jenny Dooley; Express Publishing)",
+    "4000 Essential English Words (Paul Nation; Compass Publishing)",
+    "IELTS vocabulary and reading vocabulary books",
+    "Test Master Book 1-4 test collections",
+]
+
+MANBA_UZ = ("Lingvix bepul va notijorat o'quv platformasi. Mashqlar quyidagi kitoblar asosida tuzilgan, "
+            "ularning mualliflik huquqi muallif va nashriyotlarga tegishli:\\n• " + "\\n• ".join(MANBALAR) +
+            "\\nUstoz ro'yxatlari, o'zbekcha tarjimalar, lug'at, transkripsiya va platforma kodi: "
+            "© 2026 Hakimov B.M.")
+MANBA_EN = ("Lingvix is a free, non-commercial learning platform. Exercises are based on these books; "
+            "their copyright belongs to the authors and publishers: " + "; ".join(MANBALAR) +
+            ". Teacher lists, Uzbek translations, dictionary, IPA and platform code: (c) 2026 Hakimov B.M.")
 
 
 def almashtir(s, eski, yangi):
@@ -29,40 +45,28 @@ def almashtir(s, eski, yangi):
     return s.replace(eski, yangi)
 
 
-def tozala(s):
-    # 1) savollar bazasi: faqat muallifning o'z bo'limlari qoladi
-    m = re.search(r'<script id="testdata" type="application/json">', s)
-    st = m.end()
-    e = s.find("</script>", st)
-    data = json.loads(s[st:e])
-    qoldi = [t for t in data if t.get("book") in QOLADI]
-    print(f"testlar: {len(data)} -> {len(qoldi)}")
-    s = s[:st] + json.dumps(qoldi, ensure_ascii=False, separators=(",", ":")) + s[e:]
-
-    # 2) kitob javonlari (Destination, IELTS, Test Master, TYV, Enterprise) bo'sh
-    i = s.find("const SHELVES = [")
-    j = s.find("];", i)
-    s = s[:i] + "const SHELVES = [" + s[j:]
-
-    # 3) "Daraja" testi butunlay kitoblarga tayangan: menyudan olinadi, eski havolalar bosh sahifaga
-    s = almashtir(s, """{id:'placement', icon:'target', label:L({uz:'Daraja',ru:'Уровень',en:'Level'}), action:"openPlacementIntro()"},""", "")
-    s = almashtir(s, "function openPlacementIntro(){ stopTimer(); state.screen='placement'; render(); }",
-                  "function openPlacementIntro(){ goHome(); }")
-
-    # 4) Listening bo'limi bo'sh (yashirin); begona sayt nomi olib tashlanadi
-    s = almashtir(s, '"title":"Practice Listening Tests for B1 · englishpracticetest.net"', '"title":"Listening"')
-    return s
+def qoshimchalar(s):
+    # "O'rganish > Platforma" ro'yxati oxiriga "Manbalar" bandi
+    i = s.find("const GUIDE = [")
+    j = s.find("\n];", i)
+    if i < 0 or j < 0:
+        raise SystemExit("GUIDE topilmadi")
+    band = ('\n  {t:{uz:"Manbalar",ru:"Источники",en:"Sources"}, p:{uz:"%s",en:"%s"}},' % (MANBA_UZ, MANBA_EN))
+    return s[:j] + band + s[j:]
 
 
 def main():
-    manba = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "lingvix", "index.html")
+    manba = sys.argv[1]
     with open(manba, encoding="utf-8") as f:
         s = f.read()
-    s = himoyala(tozala(s), NOM, URL)
+    s = himoyala(qoshimchalar(s), NOM, URL)
     with open(os.path.join(ROOT, "lingvix", "index.html"), "w", encoding="utf-8", newline="\n") as f:
         f.write(s)
+    uchinchi = ["Exercise content based on: " + "; ".join(MANBALAR) +
+                " - copyright of their respective authors and publishers; used for free, non-commercial education.",
+                FONTS]
     with open(os.path.join(ROOT, "lingvix", "LICENSE.txt"), "w", encoding="utf-8", newline="\n") as f:
-        f.write(litsenziya(NOM, URL, [FONTS]))
+        f.write(litsenziya(NOM, URL, uchinchi))
     print("tayyor:", len(s), "bayt")
 
 

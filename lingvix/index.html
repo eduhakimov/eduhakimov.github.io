@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="uz" data-theme="ocean" data-font="nunito">
 <head>
+<!-- eduhakimov-himoya -->
+<meta name="author" content="Hakimov Bahtiyorjon Muzaffar o'g'li">
+<meta name="copyright" content="(c) 2026 Hakimov Bahtiyorjon Muzaffar o'g'li. Barcha huquqlar himoyalangan. All rights reserved.">
+<meta name="rights" content="All rights reserved">
+<link rel="license" href="LICENSE.txt">
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -4198,6 +4204,7 @@ const GUIDE = [
   {t:{uz:"Xatolar va Lug'atim",en:'Mistakes and library'}, p:{uz:"Natija sahifasida xato topilgan so'zlar ro'yxati chiqadi: keraklilarini yoki yangi deb bilganlaringizni belgilab Lug'atimga qo'shasiz. Test paytida ☆ tugmasi ham so'zni Lug'atimga qo'shadi. Barcha xatolar «Xatolar tarixi»ga avtomatik yoziladi. Lug'atimdagi so'zlarni istalgan rejimda mashq qilasiz.",en:'Save mistakes to your library and practise them.'}},
   {t:{uz:"Word Formation",en:'Word Formation'}, p:{uz:"«Word Formation» kitobida so'z yasalishi alohida yig'ilgan: ustoz kunlari bo'yicha, Destination B2 va A1+ so'z oilalari (shakl tanlash va ma'nosi) hamda Enterprise mashqlari.",en:'Word formation has its own book.'}},
   {t:{uz:"IELTS Vocabulary",en:'IELTS Vocabulary'}, p:{uz:"«IELTS Vocabulary» kitobi ustoz bergan 5 ta IELTS lug'ati asosida tuzilgan: har bir qism — bitta kitob (odamlar va xarakter; ovqat va tibbiyot; ta'lim va ish; reklama va savdo; turizm va transport), har bir mavzu — alohida test. Barcha rejimlar (EN → UZ, UZ → EN, aralash, kartochka, sinonim, qo'lda yozish) ishlaydi, xatolar Lug'atimga tushadi.",en:'Five IELTS vocabulary books, one part each, one test per topic.'}},
+  {t:{uz:"Manbalar",ru:"Источники",en:"Sources"}, p:{uz:"Lingvix bepul va notijorat o'quv platformasi. Mashqlar quyidagi kitoblar asosida tuzilgan, ularning mualliflik huquqi muallif va nashriyotlarga tegishli:\n• Destination A1+, B1, B2 (Malcolm Mann, Steve Taylore-Knowles; Macmillan Education)\n• Test Your Vocabulary 1-3 (Peter Watcyn-Jones; Penguin / Pearson Longman)\n• Enterprise Grammar 1-4 (Virginia Evans, Jenny Dooley; Express Publishing)\n• 4000 Essential English Words (Paul Nation; Compass Publishing)\n• IELTS vocabulary and reading vocabulary books\n• Test Master Book 1-4 test collections\nUstoz ro'yxatlari, o'zbekcha tarjimalar, lug'at, transkripsiya va platforma kodi: © 2026 Hakimov B.M.",en:"Lingvix is a free, non-commercial learning platform. Exercises are based on these books; their copyright belongs to the authors and publishers: Destination A1+, B1, B2 (Malcolm Mann, Steve Taylore-Knowles; Macmillan Education); Test Your Vocabulary 1-3 (Peter Watcyn-Jones; Penguin / Pearson Longman); Enterprise Grammar 1-4 (Virginia Evans, Jenny Dooley; Express Publishing); 4000 Essential English Words (Paul Nation; Compass Publishing); IELTS vocabulary and reading vocabulary books; Test Master Book 1-4 test collections. Teacher lists, Uzbek translations, dictionary, IPA and platform code: (c) 2026 Hakimov B.M."}},
 ];
 function openLearn(sec){ stopTimer(); state.book=null; state.part=null; setBodyScroll(false); state.screen='learn'; state.learnSec = sec || state.learnSec || 'guide'; render(); }
 window.openLearn = openLearn;
@@ -5065,6 +5072,80 @@ const LSN = (function(){
 })();
 
 if(state.screen==='home' && !LX_LISTEN) render();
+</script>
+
+<!-- eduhakimov-himoya -->
+<style>
+.eh-mualliflik{position:fixed;left:8px;bottom:6px;z-index:2147483000;font:11px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:#fff;background:rgba(20,22,26,.55);padding:3px 8px;border-radius:999px;text-decoration:none;opacity:.7;
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.eh-mualliflik:hover,.eh-mualliflik:focus{opacity:1;text-decoration:underline}
+.eh-ogoh{position:fixed;inset:0;z-index:2147483646;background:#141517;color:#e8e8e6;display:flex;align-items:center;
+  justify-content:center;text-align:center;padding:24px;font:16px/1.6 system-ui,sans-serif}
+.eh-ogoh a{color:#7fb2f0}
+@media print{body>*{display:none!important}body:after{content:"Bu material mualliflik huquqi bilan himoyalangan. Chop etish taqiqlangan.";display:block;padding:40px;font:16px sans-serif}}
+</style>
+<script>
+(function () {
+  var NOM = "Lingvix", ASL = "https://eduhakimov.github.io/lingvix/", MUALLIF = "Hakimov Bahtiyorjon Muzaffar o'g'li";
+  var host = location.hostname;
+  var ruxsat = host === "eduhakimov.github.io" || host === "localhost" || host === "127.0.0.1";
+  try { if (window.top !== window.self) { window.top.location = window.self.location.href; } } catch (e) { }
+  function maydon(t) { return t && t.closest && t.closest("input,textarea,select,[contenteditable]"); }
+  document.addEventListener("contextmenu", function (e) { if (!maydon(e.target)) { e.preventDefault(); } });
+  ["copy", "cut"].forEach(function (ev) {
+    document.addEventListener(ev, function (e) { if (!maydon(e.target)) { e.preventDefault(); } });
+  });
+  document.addEventListener("keydown", function (e) {
+    var k = (e.key || "").toLowerCase(), c = e.ctrlKey || e.metaKey;
+    if ((c && (k === "s" || k === "u" || k === "p")) || (c && e.shiftKey && (k === "i" || k === "j"))) {
+      e.preventDefault();
+    }
+  }, true);
+  function qur() {
+    if (!ruxsat) {
+      var w = document.createElement("div");
+      w.className = "eh-ogoh";
+      w.innerHTML = "<div><b>Bu nusxa ruxsatsiz ko'chirilgan.</b><br>\u201c" + NOM +
+        "\u201d mualliflik huquqi bilan himoyalangan.<br>Muallif: " + MUALLIF +
+        "<br><br>Asl manba: <a href='" + ASL + "'>" + ASL + "</a></div>";
+      document.body.appendChild(w);
+      return;
+    }
+    var a = document.createElement("a");
+    a.className = "eh-mualliflik";
+    a.href = "https://eduhakimov.github.io/";
+    a.title = "Muallif: " + MUALLIF + ". Barcha huquqlar himoyalangan. Bosh sahifaga qaytish: eduhakimov.github.io";
+    a.textContent = "\u00a9 2026 Hakimov B.M. \u00b7 Bosh sahifa";
+    document.body.appendChild(a);
+    kot();
+    window.addEventListener("resize", kot);
+    setInterval(kot, 1500);
+  }
+  // pastda qotirilgan menyu bo'lsa, yozuvlar uning ustiga ko'tariladi (tugmalarni to'smasin)
+  function kot() {
+    var h = 0, H = window.innerHeight;
+    [[0.2, 3], [0.5, 3], [0.8, 3], [0.2, 24], [0.5, 24], [0.8, 24], [0.5, 44]].forEach(function (f) {
+      var els = document.elementsFromPoint ? document.elementsFromPoint(window.innerWidth * f[0], H - f[1]) : [];
+      for (var i = 0; i < els.length; i++) {
+        var n = els[i];
+        if (/eh-mualliflik|eh-manba|lsn-manba/.test(n.getAttribute("class") || "")) { continue; }
+        while (n && n !== document.body && n !== document.documentElement) {
+          var p = getComputedStyle(n).position;
+          if (p === "fixed" || p === "sticky") {
+            var r = n.getBoundingClientRect();
+            if (r.height < H * 0.4 && r.bottom >= H - 60) { h = Math.max(h, H - r.top); }
+            break;
+          }
+          n = n.parentElement;
+        }
+      }
+    });
+    var b = document.querySelectorAll(".eh-mualliflik,.eh-manba,.lsn-manba");
+    for (var j = 0; j < b.length; j++) { b[j].style.bottom = (h + 6) + "px"; }
+  }
+  if (document.body) { qur(); } else { document.addEventListener("DOMContentLoaded", qur); }
+})();
 </script>
 </body>
 </html>
