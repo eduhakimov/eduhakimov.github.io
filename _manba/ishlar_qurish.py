@@ -391,6 +391,8 @@ s += (L.el("h1", "ish.h1", "Ishlarim", S("ish.h1"))
 for kod, sarlavha in BOLIMLAR:
     s += (L.el("h2", "bolim." + kod, sarlavha, tr_all(lambda m: m.BOLIMLAR[kod]))
           + '<div class="g">' + "".join(karta(i, L) for i in ISHLAR if i["bolim"] == kod) + "</div>\n")
+import dasturlar_qurish as DQ  # noqa: E402  desktop dasturlar bo'limi (ma'lumotlar: dasturlar.py)
+s += DQ.bolim(L, globals())
 OCH = '<a class="c" href="../"><span class="b o" data-i18n="badge.open">Ochiq</span>'
 s += (L.el("h2", "ish.h.sci", "Ilmiy ishlar", S("ish.h.sci")) + '<div class="g">'
       + OCH + L.el("b", "ish.sci1.b", "47 ta ilmiy maqola va tezis", S("ish.sci1.b", p=47))
@@ -453,6 +455,8 @@ for i in ISHLAR:
               attrs=' class="box"', raw=True) + "\n"
     s += foot(L)
     open(os.path.join(OUT, sl + ".html"), "w", encoding="utf-8").write(s)
+
+DQ_URLS = DQ.sahifalar(OUT, globals())
 
 # YUTUQ_SAHIFA
 # ---------- yutuqlar sahifasi (../yutuqlar/)
@@ -593,4 +597,4 @@ s += foot(L)
 open(os.path.join(YO, "index.html"), "w", encoding="utf-8").write(s)
 
 # sitemap uchun ro'yxat
-print("\n".join([YB, BASE] +[BASE + i["slug"] + ".html" for i in ISHLAR if i["turi"] == "yopiq"]))
+print("\n".join([YB, BASE] + [BASE + i["slug"] + ".html" for i in ISHLAR if i["turi"] == "yopiq"] + DQ_URLS))

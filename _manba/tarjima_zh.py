@@ -29,7 +29,7 @@ INDEX = {
     "sub": "以查希鲁丁·穆罕默德·巴布尔命名的安集延国立大学 · 计算机系统及其软件（硕士研究生）<br>\n"
            "计算机图形学 · 二维角色动画自动化（After Effects） · UI/UX 设计 · SUMO GUI 交通仿真",
     "nav.course": "计算机基础课程 · 72 节互动课",
-    "nav.works": "我的全部项目 · 25 个项目",
+    "nav.works": "我的全部项目 · 25 个项目和 40 款软件",
     "nav.awards": "荣誉 · 45 项国际证书",
     "nav.adu": "安集延国立大学教师主页",
     "altnames": "出版物中姓名的其他拼写：Hakimov / Xakimov / Khakimov Baxtiyor (Bahtiyor, Bakhtiyor) Muzaffar o'g'li；Hakimov B.M.",

@@ -34,7 +34,7 @@ INDEX = {
     "sub": "Andijan State University named after Zahiriddin Muhammad Babur · Computer Systems and Their Software (master's programme)<br>\n"
            "Computer graphics · Automation of 2D character animation (After Effects) · UI/UX design · SUMO GUI traffic simulation",
     "nav.course": "Computer literacy course · 72 interactive lessons",
-    "nav.works": "All my projects · 25 projects",
+    "nav.works": "All my projects · 25 projects and 40 applications",
     "nav.awards": "Achievements · 45 international certificates",
     "nav.adu": "ASU faculty page",
     "altnames": "Other spellings of the name in publications: Hakimov / Xakimov / Khakimov Baxtiyor (Bahtiyor, Bakhtiyor) Muzaffar o'g'li; Hakimov B.M.",
