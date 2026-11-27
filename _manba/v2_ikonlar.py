@@ -11,7 +11,10 @@ GURUH = "https://t.me/GrafikDizayn_Hakimov"
 POCHTA = "eduhakimov@gmail.com"
 
 # Telegram guruhidagi mavzu (topic) havolalari: bo'sh bo'lsa guruhning o'ziga olib boradi
-MAVZU = {}
+MAVZU = {  # Telegram guruh mavzulari (topic id)
+    "ps": GURUH + "/5", "ai": GURUH + "/13", "ae": GURUH + "/15", "pr": GURUH + "/17", "cdr": GURUH + "/829",
+    "wd": GURUH + "/1963", "xl": GURUH + "/1789", "pp": GURUH + "/2477",
+}
 
 
 def yol(nom):
@@ -35,11 +38,15 @@ DASTUR = [  # (logo, nom, rang, telegram mavzu kaliti)
     ("adobeaftereffects", "After Effects", "#9999FF", "ae"), ("adobeindesign", "InDesign", "#FF3366", "id"),
     ("adobepremierepro", "Premiere Pro", "#EA77FF", "pr"), ("coreldraw", "CorelDRAW", "#44D88D", "cdr"),
     ("figma", "Figma", "#F24E1E", "fg"), ("blender", "Blender", "#E87D0D", "bl"), (None, "3ds Max", "#37A5CC", "max"),
+    ("microsoftword", "Word", "#2B579A", "wd"), ("microsoftexcel", "Excel", "#217346", "xl"), ("microsoftpowerpoint", "PowerPoint", "#D24726", "pp"),
 ]
 tools = []
 for logo, nom, rang, k in DASTUR:
-    href = MAVZU.get(k, GURUH)
-    tools.append('<a class="tool" href="%s" style="--b:%s"><i>%s</i>%s</a>' % (href, rang, svg(logo, None if logo else MAX3D), nom))
+    ik = svg(logo, None if logo else MAX3D)
+    if k in MAVZU:  # guruhda shu dastur ishlari mavzusi bor
+        tools.append('<a class="tool" href="%s" style="--b:%s" title="Telegram: %s"><i>%s</i>%s<em>Telegram</em></a>' % (MAVZU[k], rang, nom, ik, nom))
+    else:
+        tools.append('<div class="tool" style="--b:%s"><i>%s</i>%s</div>' % (rang, ik, nom))
 TOOLS = '<div class="tools">\n' + "\n".join(tools) + "\n</div>"
 
 PROFIL = [  # (href, logo yoki yo'l, rang, matn, i18n kaliti)

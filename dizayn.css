@@ -112,9 +112,10 @@ a{color:var(--acct)}
 .kc-tez::before,.kc-tez::after{display:none}.kc-tez:hover{transform:none;border-color:var(--line2)}
 
 /* asboblar: haqiqiy logolar, brend rangida (--b) */
-.tools{display:grid;grid-template-columns:repeat(9,1fr);gap:10px}
+.tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:10px}
 .tool{display:flex;flex-direction:column;align-items:center;gap:12px;padding:20px 8px 16px;border:1px solid var(--line);border-radius:var(--r2);background:var(--card);font:600 12px/1.2 var(--fb);color:var(--mut);text-align:center;text-decoration:none;transition:.25s}
 .tool:hover{border-color:var(--b);color:var(--fg);transform:translateY(-3px);box-shadow:0 14px 30px -18px var(--b)}
+.tool em{margin-top:-6px;font:600 10px/1 var(--fb);font-style:normal;letter-spacing:.06em;color:#26A5E4;opacity:.85}
 .tool i{display:grid;place-items:center;width:46px;height:46px}.tool i svg{width:42px;height:42px;fill:var(--b)}
 
 /* profillar va tarmoqlar: brend belgisi + rang */
@@ -173,7 +174,7 @@ a{color:var(--acct)}
 .foot p{margin:0}
 
 /* moslashuvchan */
-@media (max-width:1000px){.tn{display:none}.kurslar{grid-template-columns:repeat(2,1fr)}.tools{grid-template-columns:repeat(5,1fr)}.pr{grid-template-columns:repeat(2,1fr)}.kont{grid-template-columns:repeat(2,1fr)}.about{grid-template-columns:1fr}}
+@media (max-width:1000px){.tn{display:none}.kurslar{grid-template-columns:repeat(2,1fr)}.pr{grid-template-columns:repeat(2,1fr)}.kont{grid-template-columns:repeat(2,1fr)}.about{grid-template-columns:1fr}}
 @media (max-width:760px){
   .hero{grid-template-columns:1fr;padding-top:28px;gap:22px}.ph{order:-1;width:min(230px,62vw)}
   .chip{padding:6px 9px;font-size:11px;gap:6px}.chip i{width:22px;height:22px;font-size:10px}.chip.c1{left:-12%}.chip.c2{right:-14%}
