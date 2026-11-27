@@ -268,3 +268,7 @@ a{color:var(--acct)}
 .bn-all:hover{transform:translateY(-2px);box-shadow:0 16px 36px -10px rgba(255,91,31,.9);background:linear-gradient(135deg,#ff6a2b,#ffad66)}
 .bn-all .cnt{background:#fff;color:#c2410c}.bn-all svg{width:15px;height:15px}
 @keyframes bnNur{0%,100%{box-shadow:0 10px 28px -8px rgba(255,91,31,.7)}50%{box-shadow:0 10px 34px -4px rgba(255,91,31,.95)}}
+
+/* statistika: 5 ta ko'rsatkich (tajriba birinchi) */
+.stats{grid-template-columns:repeat(5,1fr)}
+@media (max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}.stats div:first-child{grid-column:1/-1;border-bottom:1px solid var(--line)}.stats div:nth-child(2),.stats div:nth-child(4){border-left:0}.stats div:nth-child(n+2){border-top:0}.stats div:nth-child(n+4){border-top:1px solid var(--line)}}

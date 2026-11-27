@@ -31,6 +31,7 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "st.exp": "years of experience · since 2017",
     "bn.st": "47 articles and abstracts · 1 textbook · 6 certificates",
     "bn.art": "Research article",
     "bn.open": "Open article",
