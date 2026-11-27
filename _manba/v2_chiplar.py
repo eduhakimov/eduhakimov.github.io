@@ -20,7 +20,7 @@ R = 50  # doira radiusi (% hisobida, rasm halqasi chizig'i)
 html, css = [], []
 n = len(CHIP)
 for i, (logo, nom, rang) in enumerate(CHIP):
-    a = -90 + i * 360 / n
+    a = -90 + (i + 0.5) * 360 / n  # tepada belgi bo'lmasin (yuqori panel bilan to'qnashmaydi)
     x = 50 + R * math.cos(math.radians(a)); y = 50 + R * math.sin(math.radians(a))
     html.append('<span class="chip ch%d" title="%s"><i style="--b:%s">%s</i><span class="cn">%s</span></span>' % (i + 1, nom, rang, ik.svg(logo), nom))
     css.append(".chip.ch%d{left:%.1f%%;top:%.1f%%;animation-delay:%.1fs}" % (i + 1, x, y, -i * 6.0 / n))
