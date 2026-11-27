@@ -31,6 +31,9 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "c.biz": "Business process design and programming",
+    "c.biz.m": "University course · 15 lectures · 21 lab works",
+    "c.biz.d": "Modelling (BPMN), automating and programming business processes: process maps, workflows and practical cases.",
     "drs.more": "Show all courses",
     "drs.less": "Collapse",
     "papers.sub2": "Research on computer graphics, automation of 2D animation, UI/UX and image processing.",
