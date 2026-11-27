@@ -31,6 +31,9 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "c.dm": "Data warehousing and data mining",
+    "c.dm.m": "Master's course · 15 lectures · 21 practical classes",
+    "c.dm.d": "Data warehouses, OLAP, clustering, classification and association rules with interactive algorithm simulators.",
     "c.ot": "Operating systems",
     "c.ot.m": "University course · 14 lectures · 21 lab works",
     "c.ot.d": "Windows and Linux, processes, memory, file systems and virtualization, with a Windows 11 installer and a bash terminal simulator.",
