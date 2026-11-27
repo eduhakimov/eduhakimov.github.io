@@ -3621,6 +3621,24 @@ const LSN = (function(){
 if(state.screen==='home' && !LX_LISTEN) render();
 </script>
 
+<!-- lsn-manba -->
+<style>
+.lsn-manba{position:fixed;right:8px;bottom:6px;z-index:2147483000;font:11px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:#fff;background:rgba(20,22,26,.55);padding:3px 8px;border-radius:999px;text-decoration:none;opacity:.7}
+.lsn-manba:hover,.lsn-manba:focus{opacity:1;text-decoration:underline}
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var a = document.createElement("a");
+  a.className = "lsn-manba";
+  a.href = "https://www.englishpracticetest.net/";
+  a.target = "_blank"; a.rel = "noopener";
+  a.title = "Testlar, matnlar va audio manbasi: englishpracticetest.net (bepul, notijorat, ta'lim maqsadida)";
+  a.textContent = "Testlar va audio: englishpracticetest.net";
+  document.body.appendChild(a);
+});
+</script>
+
 <!-- eduhakimov-himoya -->
 <style>
 .eh-mualliflik{position:fixed;left:8px;bottom:6px;z-index:2147483000;font:11px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -3647,6 +3665,18 @@ if(state.screen==='home' && !LX_LISTEN) render();
     var k = (e.key || "").toLowerCase(), c = e.ctrlKey || e.metaKey;
     if ((c && (k === "s" || k === "u" || k === "p")) || (c && e.shiftKey && (k === "i" || k === "j"))) {
       e.preventDefault();
+    }
+  }, true);
+  // saytdan tashqariga olib boradigan havolalar yangi oynada ochiladi (rel="noopener")
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a) { return; }
+    var u;
+    try { u = new URL(a.getAttribute("href"), location.href); } catch (x) { return; }
+    if ((u.protocol === "http:" || u.protocol === "https:") &&
+        u.hostname !== "eduhakimov.github.io" && u.hostname !== location.hostname) {
+      a.target = "_blank";
+      if (!/(^|\s)noopener(\s|$)/.test(a.rel || "")) { a.rel = ((a.rel || "") + " noopener").trim(); }
     }
   }, true);
   function qur() {
@@ -3693,24 +3723,6 @@ if(state.screen==='home' && !LX_LISTEN) render();
   }
   if (document.body) { qur(); } else { document.addEventListener("DOMContentLoaded", qur); }
 })();
-</script>
-
-<!-- lsn-manba -->
-<style>
-.lsn-manba{position:fixed;right:8px;bottom:6px;z-index:2147483000;font:11px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;
-  color:#fff;background:rgba(20,22,26,.55);padding:3px 8px;border-radius:999px;text-decoration:none;opacity:.7}
-.lsn-manba:hover,.lsn-manba:focus{opacity:1;text-decoration:underline}
-</style>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  var a = document.createElement("a");
-  a.className = "lsn-manba";
-  a.href = "https://www.englishpracticetest.net/";
-  a.target = "_blank"; a.rel = "noopener";
-  a.title = "Testlar, matnlar va audio manbasi: englishpracticetest.net (bepul, notijorat, ta'lim maqsadida)";
-  a.textContent = "Testlar va audio: englishpracticetest.net";
-  document.body.appendChild(a);
-});
 </script>
 </body>
 </html>

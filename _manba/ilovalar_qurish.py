@@ -95,6 +95,18 @@ def himoya_kodi(nom, url, joy="left"):
       e.preventDefault();
     }
   }, true);
+  // saytdan tashqariga olib boradigan havolalar yangi oynada ochiladi (rel="noopener")
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a) { return; }
+    var u;
+    try { u = new URL(a.getAttribute("href"), location.href); } catch (x) { return; }
+    if ((u.protocol === "http:" || u.protocol === "https:") &&
+        u.hostname !== "eduhakimov.github.io" && u.hostname !== location.hostname) {
+      a.target = "_blank";
+      if (!/(^|\s)noopener(\s|$)/.test(a.rel || "")) { a.rel = ((a.rel || "") + " noopener").trim(); }
+    }
+  }, true);
   function qur() {
     if (!ruxsat) {
       var w = document.createElement("div");
@@ -146,9 +158,24 @@ def himoya_kodi(nom, url, joy="left"):
     return meta, js
 
 
+def himoyasiz(html):
+    """Avval qo'shilgan himoya bloklarini (meta va skript) olib tashlaydi, yangisini qo'yish uchun."""
+    meta_bosh = "\n<!-- %s -->\n<meta" % BELGI
+    i = html.find(meta_bosh)
+    if i >= 0:
+        j = html.find('<link rel="license"', i)
+        j = html.find(">", j) + 2
+        html = html[:i] + html[j:]
+    js_bosh = "\n<!-- %s -->\n<style>" % BELGI
+    i = html.find(js_bosh)
+    if i >= 0:
+        j = html.find("})();\n</script>\n", i) + len("})();\n</script>\n")
+        html = html[:i] + html[j:]
+    return html
+
+
 def himoyala(html, nom, url, joy="left"):
-    if BELGI in html:
-        return html
+    html = himoyasiz(html)
     meta, js = himoya_kodi(nom, url, joy)
     m = re.search(r"<head[^>]*>", html, re.I)
     if not m:
