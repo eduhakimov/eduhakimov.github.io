@@ -31,6 +31,9 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "c.ot": "Operating systems",
+    "c.ot.m": "University course · 14 lectures · 21 lab works",
+    "c.ot.d": "Windows and Linux, processes, memory, file systems and virtualization, with a Windows 11 installer and a bash terminal simulator.",
     "c.tmb": "Computer network administration",
     "c.tmb.m": "Master's course · 15 lectures · 21 practical classes",
     "c.tmb.d": "Network services, monitoring, security and automation: hands-on tasks in admin console simulators.",
