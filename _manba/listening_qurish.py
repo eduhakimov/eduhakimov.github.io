@@ -5,13 +5,15 @@
 - rasmlar img/ ga, audio audio/ ga alohida fayl bo'lib chiqadi (base64 emas);
 - audio ASL sifatida saqlanadi, qayta siqilmaydi (muallif yozuvlarni o'zi tayyorlagan);
   faqat 95 MB dan katta klip bo'lsa, o'shanisi qayta siqiladi;
+- ilova va rasmlar eduhakimov.github.io/lingvix-listening/ papkasida (bu manzil ko'p joyda tarqatilgan;
+  "lingvix-listening" nomli repo esa muallifning yopiq zaxirasi, unga tegilmaydi);
 - GitHub Pages 1 GB chegarasi uchun audio darajalar bo'yicha uch repoga bo'linadi:
-  lingvix-listening (ilova, rasmlar, Starters/A1/B1 audio), lingvix-listening-a2, lingvix-listening-b2.
+  lingvix-listening-starters (Starters/A1/B1), lingvix-listening-a2, lingvix-listening-b2.
   Hammasi bitta eduhakimov.github.io manzilida: ilova ularni ../<repo>/audio/ orqali yuklaydi;
 - testlar va audio manbasi (englishpracticetest.net) ko'rsatiladi, mualliflik himoyasi qo'shiladi.
 
 Ishga tushirish:  python -X utf8 _manba/listening_qurish.py
-Natija: D:/Bahtiyor/Saytlar/lingvix-listening, lingvix-listening-a2, lingvix-listening-b2
+Natija: eduhakimov.github.io/lingvix-listening/ va D:/Bahtiyor/Saytlar/lingvix-listening-{starters,a2,b2}
 """
 import base64, json, os, re, subprocess, sys, tempfile
 from concurrent.futures import ThreadPoolExecutor
@@ -21,12 +23,12 @@ from ilovalar_qurish import himoyala, litsenziya, readme, FONTS  # noqa: E402
 
 MANBA = r"D:\Bahtiyor\10_Arxiv\Ish stoli nusxalari\rab stol 08.11.2026\Lingvix"
 SAYTLAR = r"D:\Bahtiyor\Saytlar"
-ASOSIY = "lingvix-listening"
+ASOSIY = None  # ilova papkasida audio yo'q, hammasi audio repolarida
 # (manba fayl, audio joylanadigan repo)
-FAYLLAR = [("Lingvix-Listening-Starters-A1-B1.html", ASOSIY),
+FAYLLAR = [("Lingvix-Listening-Starters-A1-B1.html", "lingvix-listening-starters"),
            ("Lingvix-Listening-A2.html", "lingvix-listening-a2"),
            ("Lingvix-Listening-B2.html", "lingvix-listening-b2")]
-CHIQ = os.path.join(SAYTLAR, ASOSIY)
+CHIQ = os.path.join(SAYTLAR, "eduhakimov.github.io", "lingvix-listening")
 URL = "https://eduhakimov.github.io/lingvix-listening/"
 NOM = "Lingvix Listening"
 DARAJALAR = ["Pre-A1", "A1", "A2", "B1", "B2"]
@@ -153,17 +155,9 @@ def main():
     yoz(os.path.join(CHIQ, "LICENSE.txt"), litsenziya(NOM, URL, UCHINCHI))
     tavsif = ("Ingliz tilida tinglab tushunish mashqlari: Pre-A1 dan B2 gacha darajalar, audio, savollar, "
               "javoblarni tekshirish va audioskript. Testlar va audio manbasi: englishpracticetest.net.")
-    yoz(os.path.join(CHIQ, "README.md"), readme(NOM, URL, tavsif).replace(
-        "Bitta HTML fayldan iborat: o'rnatish va server talab qilinmaydi, brauzerda ishlaydi.",
-        "Brauzerda ishlaydi. `index.html` ilova, `img/` rasmlar, `audio/` Starters/A1/B1 audiosi (asl MP3). "
-        "A2 va B2 audiosi [lingvix-listening-a2](https://github.com/eduhakimov/lingvix-listening-a2) va "
-        "[lingvix-listening-b2](https://github.com/eduhakimov/lingvix-listening-b2) repolarida "
-        "(GitHub Pages hajm chegarasi uchun)."))
-    yoz(os.path.join(CHIQ, "robots.txt"), "User-agent: *\nAllow: /\n")
-
-    for _, repo in FAYLLAR[1:]:
+    for _, repo in FAYLLAR:
         papka = os.path.join(SAYTLAR, repo)
-        daraja = repo.split("-")[-1].upper()
+        daraja = {"starters": "Starters/A1/B1"}.get(repo.split("-")[-1], repo.split("-")[-1].upper())
         yoz(os.path.join(papka, "index.html"),
             '<!doctype html><html lang="uz"><meta charset="utf-8"><title>%s: %s audio</title>'
             '<meta name="author" content="Hakimov Bahtiyorjon Muzaffar o\'g\'li">'

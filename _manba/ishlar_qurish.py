@@ -48,7 +48,7 @@ ISHLAR = [
                  ("Konteynerda joylash", "Dockerfile orqali Railway, Render yoki istalgan VPS'ga joylanadi; migratsiya va kontent importi o'zi bajariladi.")],
       holat="Ishlab chiqilmoqda.", sabab="o'quv materiali va test savollari himoyasi"),
  dict(bolim="talim", slug="lingvix-listening", nom="Lingvix Listening", turi="ochiq",
-      havola="https://eduhakimov.github.io/lingvix-listening/", repo=GH+"lingvix-listening",
+      havola="https://eduhakimov.github.io/lingvix-listening/", repo=GH+"eduhakimov.github.io",
       qisqa="Pre-A1 dan B2 gacha 253 ta tinglab tushunish testi: audio, savollar, javoblarni tekshirish va audioskript.",
       teg=["HTML", "Audio", "Ingliz tili"],
       nima="Ingliz tilida tinglab tushunishni mashq qilish uchun oflayn ilovalar to'plami. Har bir daraja (Pre-A1, A1, A2, B1, B2) alohida ilova bo'lib, audio va topshiriqlar ichiga joylangan.",
