@@ -31,6 +31,9 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "c.pth": "Parallel and distributed computing in information security",
+    "c.pth.m": "Master's course · 9 lectures · 15 practical classes",
+    "c.pth.d": "Parallel algorithms, distributed systems and their use in information security, with interactive simulators.",
     "c.cms": "CMS systems",
     "c.cms.m": "University course · 15 lectures · 21 lab works",
     "c.cms.d": "Content management systems: building sites, themes, plugins, users and content work in simulators.",
