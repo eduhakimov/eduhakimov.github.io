@@ -31,6 +31,9 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "c.cms": "CMS systems",
+    "c.cms.m": "University course · 15 lectures · 21 lab works",
+    "c.cms.d": "Content management systems: building sites, themes, plugins, users and content work in simulators.",
     "c.ai": "Artificial intelligence: using modern AI tools",
     "c.ai.m": "Author's course · 12 lectures · 12 practical classes",
     "c.ai.d": "What AI is, tokens and prompt engineering: using Claude, ChatGPT, Gemini, Copilot and DeepSeek correctly and safely, with a tokenizer, prompt builder and simulators.",
