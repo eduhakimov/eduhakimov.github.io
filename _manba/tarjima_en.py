@@ -31,6 +31,9 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "c.txk": "Computer maintenance and repair",
+    "c.txk.m": "University course · 15 lectures · 21 lab works",
+    "c.txk.d": "Assembling, diagnosing, troubleshooting and repairing computers in a virtual service workshop.",
     "c.tzv": "Modern technical devices and their use",
     "c.tzv.m": "University course · 15 lectures · 21 lab works",
     "c.tzv.d": "Modern gadgets, peripherals and multimedia devices: choosing, setting up and testing them in simulators.",
