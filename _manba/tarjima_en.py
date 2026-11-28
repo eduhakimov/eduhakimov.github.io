@@ -31,6 +31,9 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "c.mk": "Microcontrollers and programming",
+    "c.mk.m": "University course · 15 lectures · 21 lab works",
+    "c.mk.d": "An in-browser Arduino simulator in every lesson: virtual Uno and ESP32, LEDs, sensors, Serial Monitor and auto-checked missions.",
     "c.atl": "Information systems design",
     "c.atl.m": "Master's course · 15 lectures · 21 practical classes",
     "c.atl.d": "Requirements analysis, UML diagrams, architecture and data models: designing an information system step by step.",
