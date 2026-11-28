@@ -31,6 +31,9 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "c.bt": "Cloud technologies",
+    "c.bt.m": "University course · 15 lectures · 21 lab works",
+    "c.bt.d": "IaaS, PaaS, SaaS, virtualization, containers and cloud services, with hands-on work in cloud console simulators.",
     "c.pth": "Parallel and distributed computing in information security",
     "c.pth.m": "Master's course · 9 lectures · 15 practical classes",
     "c.pth.d": "Parallel algorithms, distributed systems and their use in information security, with interactive simulators.",
