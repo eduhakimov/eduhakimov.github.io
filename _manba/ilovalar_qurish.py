@@ -35,16 +35,7 @@ ILOVALAR = [
          uchinchi=[THREE,
                    "3D character models (Adventurers & Skeletons) by Kay Lousberg (kaylousberg.com) - CC0 1.0 (public domain).",
                    FONTS]),
-    # Muallif qarori (2026-11-28): kitob mashqlari bilan, ta'lim maqsadida, manbalari ko'rsatilib ochiq.
-    dict(slug="test-master", nom="Test Master",
-         manba=os.path.join(MAT, "Boshqa", "Test Master.html"),
-         tavsif="Ingliz tili bo'yicha test topshirish va natijani darhol ko'rish uchun test platformasi: "
-                "grammatika va lug'at testlari, mashq va imtihon rejimlari. Bepul, notijorat, ta'lim maqsadida.",
-         manba_yozuv="Manbalar: Destination B1 (Macmillan), Test Your Vocabulary (Penguin), Test Master Book 1-4",
-         uchinchi=["Test items are based on: Destination B1 (Malcolm Mann, Steve Taylore-Knowles; Macmillan Education); "
-                   "Test Your Vocabulary 1-3 (Peter Watcyn-Jones; Penguin / Pearson Longman); Test Master Book 1-4 "
-                   "test collections - copyright of their respective authors and publishers; used for free, "
-                   "non-commercial education.", FONTS]),
+    # Test Master olib tashlandi (2026-11-28): u Lingvix'ning boshlang'ich versiyasi, Ishlarim'da tavsif sifatida turadi.
 ]
 
 

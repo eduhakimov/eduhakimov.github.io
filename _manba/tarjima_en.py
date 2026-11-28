@@ -431,15 +431,15 @@ ISHLAR = {
     sabab="copyright on the audio materials"),
  "test-master": dict(
     nom="Test Master",
-    qisqa="An offline test platform for taking English tests and seeing the result immediately.",
+    qisqa="The early version of Lingvix: a single-file platform for taking English tests and seeing the result immediately.",
     nima="A test platform contained in a single HTML file. It supports different question types (multiple choice, text input, number input) and calculates the result immediately.",
     imkon=["Several question types: multiple choice, written answer, number input.",
            "Results and an analysis of mistakes appear immediately.",
            "Works offline, right in the browser."],
     tushuncha=[("Automatic grading", "Each answer is checked as soon as it is entered; for a wrong answer, the correct option is shown."),
                ("Single-file app", "No installation is required: opening the file is enough.")],
-    holat="Used in classes (August version).",
-    sabab="protection of test questions"),
+    holat="Used in classes (August version), then developed into the Lingvix platform.",
+    sabab="the early version of Lingvix; the current open version is Lingvix"),
  "master-vocabulary": dict(
     nom="Master Vocabulary",
     qisqa="An app for memorising English words in test form."),
