@@ -31,6 +31,9 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "c.atl": "Information systems design",
+    "c.atl.m": "Master's course · 15 lectures · 21 practical classes",
+    "c.atl.d": "Requirements analysis, UML diagrams, architecture and data models: designing an information system step by step.",
     "c.bt": "Cloud technologies",
     "c.bt.m": "University course · 15 lectures · 21 lab works",
     "c.bt.d": "IaaS, PaaS, SaaS, virtualization, containers and cloud services, with hands-on work in cloud console simulators.",
