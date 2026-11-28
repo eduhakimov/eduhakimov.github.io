@@ -31,6 +31,9 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "c.tta": "Information technologies in technical systems",
+    "c.tta.m": "University course · 12 lectures · 12 practicals · 12 labs",
+    "c.tta.d": "IT in technical systems through food-production examples: sensors, control panels and data processing.",
     "c.ilb": "Innovation and project management",
     "c.ilb.m": "Master's course · 9 lectures · 15 practical classes",
     "c.ilb.d": "Innovation processes, project planning, resources, risks and team management with interactive planners.",
