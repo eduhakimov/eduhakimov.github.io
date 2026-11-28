@@ -252,5 +252,173 @@
    "大学课程 · 14次讲座 · 21次实验",
    "Windows 与 Linux、进程、内存、文件系统与虚拟化，配有 Windows 11 安装程序和 bash 终端模拟器。"
   ]
+ },
+ {
+  "slug": "parallel-hisoblash",
+  "key": "pth",
+  "readme": [
+   "Parallel and Distributed Computing in Information Security",
+   "9 lectures + 15 practicals: parallel algorithms, distributed systems and cryptanalysis"
+  ],
+  "uz": [
+   "Axborot xavfsizligida parallel va taqsimlangan hisoblash",
+   "Magistratura fani · 9 ma'ruza · 15 amaliy mashg'ulot",
+   "Parallel algoritmlar, taqsimlangan tizimlar va ularning axborot xavfsizligida qo'llanilishi: interaktiv simulyatorlar bilan."
+  ],
+  "en": [
+   "Parallel and distributed computing in information security",
+   "Master's course · 9 lectures · 15 practical classes",
+   "Parallel algorithms, distributed systems and their use in information security, with interactive simulators."
+  ],
+  "ru": [
+   "Параллельные и распределённые вычисления в информационной безопасности",
+   "Магистерский курс · 9 лекций · 15 практических занятий",
+   "Параллельные алгоритмы, распределённые системы и их применение в информационной безопасности с интерактивными симуляторами."
+  ],
+  "zh": [
+   "信息安全中的并行与分布式计算",
+   "硕士课程 · 9次讲座 · 15次实践课",
+   "并行算法、分布式系统及其在信息安全中的应用，配有交互式模拟器。"
+  ]
+ },
+ {
+  "slug": "bulutli-texnologiyalar",
+  "key": "bt",
+  "readme": [
+   "Cloud Technologies",
+   "15 lectures + 21 lab works: IaaS, PaaS, SaaS, virtualization, containers and cloud services"
+  ],
+  "uz": [
+   "Bulutli texnologiyalar",
+   "Universitet fani · 15 ma'ruza · 21 laboratoriya ishi",
+   "IaaS, PaaS, SaaS, virtuallashtirish, konteynerlar va bulut xizmatlari: bulut konsoli simulyatorlarida amaliy ishlar."
+  ],
+  "en": [
+   "Cloud technologies",
+   "University course · 15 lectures · 21 lab works",
+   "IaaS, PaaS, SaaS, virtualization, containers and cloud services, with hands-on work in cloud console simulators."
+  ],
+  "ru": [
+   "Облачные технологии",
+   "Университетский курс · 15 лекций · 21 лабораторная работа",
+   "IaaS, PaaS, SaaS, виртуализация, контейнеры и облачные сервисы: практика в симуляторах облачной консоли."
+  ],
+  "zh": [
+   "云技术",
+   "大学课程 · 15次讲座 · 21次实验",
+   "IaaS、PaaS、SaaS、虚拟化、容器与云服务，在云控制台模拟器中实践。"
+  ]
+ },
+ {
+  "slug": "at-loyihalash",
+  "key": "atl",
+  "readme": [
+   "Information Systems Design",
+   "15 lectures + 21 practicals: requirements, UML, architecture and system design"
+  ],
+  "uz": [
+   "Axborot tizimlarini loyihalash",
+   "Magistratura fani · 15 ma'ruza · 21 amaliy mashg'ulot",
+   "Talablarni tahlil qilish, UML diagrammalar, arxitektura va ma'lumotlar modeli: axborot tizimini bosqichma-bosqich loyihalash."
+  ],
+  "en": [
+   "Information systems design",
+   "Master's course · 15 lectures · 21 practical classes",
+   "Requirements analysis, UML diagrams, architecture and data models: designing an information system step by step."
+  ],
+  "ru": [
+   "Проектирование информационных систем",
+   "Магистерский курс · 15 лекций · 21 практическое занятие",
+   "Анализ требований, UML-диаграммы, архитектура и модель данных: поэтапное проектирование информационной системы."
+  ],
+  "zh": [
+   "信息系统设计",
+   "硕士课程 · 15次讲座 · 21次实践课",
+   "需求分析、UML 图、架构与数据模型：逐步设计信息系统。"
+  ]
+ },
+ {
+  "slug": "mikrokontroller",
+  "key": "mk",
+  "readme": [
+   "Microcontrollers and Programming",
+   "15 lectures + 21 lab works: an in-browser Arduino Uno/ESP32 simulator in every lesson"
+  ],
+  "uz": [
+   "Mikrokontroller va dasturlash",
+   "Universitet fani · 15 ma'ruza · 21 laboratoriya ishi",
+   "Har bir darsda brauzerdagi Arduino simulyatori: virtual Uno va ESP32, LED, datchiklar, Serial Monitor va avtomatik tekshiriladigan topshiriqlar."
+  ],
+  "en": [
+   "Microcontrollers and programming",
+   "University course · 15 lectures · 21 lab works",
+   "An in-browser Arduino simulator in every lesson: virtual Uno and ESP32, LEDs, sensors, Serial Monitor and auto-checked missions."
+  ],
+  "ru": [
+   "Микроконтроллеры и программирование",
+   "Университетский курс · 15 лекций · 21 лабораторная работа",
+   "Симулятор Arduino в браузере на каждом уроке: виртуальные Uno и ESP32, светодиоды, датчики, Serial Monitor и автопроверяемые задания."
+  ],
+  "zh": [
+   "微控制器与编程",
+   "大学课程 · 15次讲座 · 21次实验",
+   "每节课都有浏览器 Arduino 模拟器：虚拟 Uno 与 ESP32、LED、传感器、串口监视器和自动检查的任务。"
+  ]
+ },
+ {
+  "slug": "oyd",
+  "key": "oyd",
+  "readme": [
+   "Object-Oriented Programming Languages",
+   "15 lectures + 21 lab works: classes, inheritance, polymorphism and design patterns"
+  ],
+  "uz": [
+   "Obyektga yo'naltirilgan dasturlash tillari",
+   "Universitet fani · 15 ma'ruza · 21 laboratoriya ishi",
+   "Sinflar, obyektlar, inkapsulyatsiya, vorislik, polimorfizm va dizayn andozalari: brauzerda ishlaydigan kod muharriri bilan."
+  ],
+  "en": [
+   "Object-oriented programming languages",
+   "University course · 15 lectures · 21 lab works",
+   "Classes, objects, encapsulation, inheritance, polymorphism and design patterns, with an in-browser code editor."
+  ],
+  "ru": [
+   "Объектно-ориентированные языки программирования",
+   "Университетский курс · 15 лекций · 21 лабораторная работа",
+   "Классы, объекты, инкапсуляция, наследование, полиморфизм и шаблоны проектирования с редактором кода в браузере."
+  ],
+  "zh": [
+   "面向对象编程语言",
+   "大学课程 · 15次讲座 · 21次实验",
+   "类、对象、封装、继承、多态与设计模式，配有浏览器代码编辑器。"
+  ]
+ },
+ {
+  "slug": "mashinali-oqitish",
+  "key": "ml",
+  "readme": [
+   "Introduction to Machine Learning",
+   "15 lectures + 21 lab works: regression, classification, clustering and neural networks"
+  ],
+  "uz": [
+   "Mashinali o'qitishga kirish",
+   "Universitet fani · 15 ma'ruza · 21 laboratoriya ishi",
+   "Regressiya, tasniflash, klasterlash va neyron tarmoqlar: brauzerdagi Python va vizual model simulyatorlari bilan."
+  ],
+  "en": [
+   "Introduction to machine learning",
+   "University course · 15 lectures · 21 lab works",
+   "Regression, classification, clustering and neural networks with in-browser Python and visual model simulators."
+  ],
+  "ru": [
+   "Введение в машинное обучение",
+   "Университетский курс · 15 лекций · 21 лабораторная работа",
+   "Регрессия, классификация, кластеризация и нейронные сети с Python в браузере и визуальными симуляторами моделей."
+  ],
+  "zh": [
+   "机器学习入门",
+   "大学课程 · 15次讲座 · 21次实验",
+   "回归、分类、聚类与神经网络，配有浏览器中的 Python 和可视化模型模拟器。"
+  ]
  }
 ]

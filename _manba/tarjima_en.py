@@ -31,6 +31,12 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "c.ml": "Introduction to machine learning",
+    "c.ml.m": "University course · 15 lectures · 21 lab works",
+    "c.ml.d": "Regression, classification, clustering and neural networks with in-browser Python and visual model simulators.",
+    "c.oyd": "Object-oriented programming languages",
+    "c.oyd.m": "University course · 15 lectures · 21 lab works",
+    "c.oyd.d": "Classes, objects, encapsulation, inheritance, polymorphism and design patterns, with an in-browser code editor.",
     "c.mk": "Microcontrollers and programming",
     "c.mk.m": "University course · 15 lectures · 21 lab works",
     "c.mk.d": "An in-browser Arduino simulator in every lesson: virtual Uno and ESP32, LEDs, sensors, Serial Monitor and auto-checked missions.",
