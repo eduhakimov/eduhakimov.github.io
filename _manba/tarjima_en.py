@@ -9,6 +9,8 @@ LANG = "en"
 
 # ---------------------------------------------------------------- umumiy (i18n.js)
 COMMON = {
+    "rang.label": "Design colour",
+    "menu.label": "Menu",
     "tema.light": "Light mode",
     "tema.dark": "Dark mode",
     "sw.label": "Language",

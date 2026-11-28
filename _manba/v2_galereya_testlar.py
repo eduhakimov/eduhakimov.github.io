@@ -9,7 +9,7 @@ _ns = {}
 exec(_src[_src.index("TEMA_HEAD = ("):_src.index("# ---------- tillar (i18n)")], _ns)
 TEMA_HEAD, TOP = _ns["TEMA_HEAD"], _ns["TOP"]
 
-ERTA = "<script>try{var t=localStorage.getItem('eduhakimov.theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>\n"
+ERTA = "<script>try{var t=localStorage.getItem('eduhakimov.theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);var r=localStorage.getItem('eduhakimov.rang');if(r)document.documentElement.setAttribute('data-rang',r)}catch(e){}</script>\n"
 FONT = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
         '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&display=swap">\n')
 TUGMA = TOP[TOP.index('<button class="tema"'):TOP.index('</button>') + 9]

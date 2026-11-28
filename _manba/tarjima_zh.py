@@ -4,6 +4,8 @@ LANG = "zh"
 
 # ---------------------------------------------------------------- umumiy (i18n.js)
 COMMON = {
+    "rang.label": "设计配色",
+    "menu.label": "菜单",
     "tema.light": "浅色模式",
     "tema.dark": "深色模式",
     "sw.label": "语言",

@@ -3,6 +3,8 @@
 LANG = "ru"
 
 COMMON = {
+    "rang.label": "Цвет оформления",
+    "menu.label": "Меню",
     "tema.light": "Светлая тема",
     "tema.dark": "Тёмная тема",
     "sw.label": "Язык",

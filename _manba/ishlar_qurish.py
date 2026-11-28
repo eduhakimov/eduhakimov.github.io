@@ -290,7 +290,7 @@ ul{padding-left:22px}li{margin:0 0 8px}dl dt{font-weight:700;margin-top:14px}dl 
 img{max-width:100%}footer{margin-top:48px;padding-top:22px;border-top:1px solid var(--line);color:var(--mut);font-size:13px}"""
 
 # Yuqori panel (logotip, til, rejim) va dizayn ulanishi — bosh sahifa bilan bir xil
-TEMA_HEAD = ("<script>try{var t=localStorage.getItem('eduhakimov.theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>\n"
+TEMA_HEAD = ("<script>try{var t=localStorage.getItem('eduhakimov.theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);var r=localStorage.getItem('eduhakimov.rang');if(r)document.documentElement.setAttribute('data-rang',r)}catch(e){}</script>\n"
              '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
              '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&display=swap">'
              '<link rel="stylesheet" href="../dizayn.css">\n')

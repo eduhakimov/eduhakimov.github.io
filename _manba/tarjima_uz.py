@@ -4,6 +4,8 @@ Qolgan o'zbekcha matnlar HTML sahifalarning o'zidan olinadi (i18n_qurish.py)."""
 LANG = "uz"
 
 COMMON = {
+    "rang.label": "Dizayn rangi",
+    "menu.label": "Menyu",
     "tema.light": "Yorug' rejim",
     "tema.dark": "Qorong'i rejim",
     "sw.label": "Til",

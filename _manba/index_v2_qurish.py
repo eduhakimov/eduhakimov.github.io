@@ -33,7 +33,7 @@ for key, opn in (("idx.h.2026", True), ("idx.h.2024", False), ("idx.h.book", Tru
     h2, ol = blok(key)
     pubs += '<details class="pub"%s><summary>%s</summary>%s</details>\n' % (" open" if opn else "", h2, ol)
 
-out = head + """<script>try{var t=localStorage.getItem('eduhakimov.theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+out = head + """<script>try{var t=localStorage.getItem('eduhakimov.theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);var r=localStorage.getItem('eduhakimov.rang');if(r)document.documentElement.setAttribute('data-rang',r)}catch(e){}</script>
 <meta name="theme-color" content="#0a0a0c" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#f4f2ee" media="(prefers-color-scheme: light)">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&display=swap">
