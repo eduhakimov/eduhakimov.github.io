@@ -31,6 +31,9 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "c.ai": "Artificial intelligence: using modern AI tools",
+    "c.ai.m": "Author's course · 12 lectures · 12 practical classes",
+    "c.ai.d": "What AI is, tokens and prompt engineering: using Claude, ChatGPT, Gemini, Copilot and DeepSeek correctly and safely, with a tokenizer, prompt builder and simulators.",
     "c.tta": "Information technologies in technical systems",
     "c.tta.m": "University course · 12 lectures · 12 practicals · 12 labs",
     "c.tta.d": "IT in technical systems through food-production examples: sensors, control panels and data processing.",
