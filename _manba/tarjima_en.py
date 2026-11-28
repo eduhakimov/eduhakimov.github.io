@@ -31,6 +31,9 @@ COMMON = {
 
 # ---------------------------------------------------------------- index.html
 INDEX = {
+    "c.ilb": "Innovation and project management",
+    "c.ilb.m": "Master's course · 9 lectures · 15 practical classes",
+    "c.ilb.d": "Innovation processes, project planning, resources, risks and team management with interactive planners.",
     "c.txk": "Computer maintenance and repair",
     "c.txk.m": "University course · 15 lectures · 21 lab works",
     "c.txk.d": "Assembling, diagnosing, troubleshooting and repairing computers in a virtual service workshop.",
